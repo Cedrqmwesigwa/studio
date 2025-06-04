@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -95,7 +96,7 @@ export default function ShopPage() {
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 fade-in" style={{animationDelay: '0.2s'}}>
         {products.map((product, index) => (
           <Card key={product.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.05 + 0.2}s`}}>
-            <Link href={`/shop/${product.id}`} className="block aspect-[4/3] overflow-hidden relative">
+            <Link href={`/shop`} className="block aspect-[4/3] overflow-hidden relative">
               <Image
                 src={product.imageUrl}
                 alt={product.name}
@@ -108,7 +109,7 @@ export default function ShopPage() {
             </Link>
             <CardHeader>
               <CardTitle className="font-headline text-lg h-14 overflow-hidden">
-                <Link href={`/shop/${product.id}`} className="hover:text-primary transition-colors">
+                <Link href={`/shop`} className="hover:text-primary transition-colors">
                   {product.name}
                 </Link>
               </CardTitle>
@@ -127,9 +128,9 @@ export default function ShopPage() {
             </CardContent>
             <CardFooter>
               <Button asChild className="w-full bg-primary hover:bg-primary/90" disabled={product.stock === 0}>
-                <Link href={`/shop/${product.id}`}>
+                <Link href={`/shop`}>
                   <ShoppingCart className="mr-2 h-4 w-4" />
-                  View Product
+                  View Product Details
                 </Link>
               </Button>
             </CardFooter>
@@ -137,7 +138,7 @@ export default function ShopPage() {
         ))}
       </section>
        <p className="text-center text-muted-foreground text-sm fade-in" style={{animationDelay: '0.4s'}}>
-        Full e-commerce functionality including cart and checkout is under development.
+        Full e-commerce functionality including cart and checkout is under development. Individual product pages are not yet available.
       </p>
     </div>
   );

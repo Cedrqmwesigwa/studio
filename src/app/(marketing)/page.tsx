@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -13,9 +14,9 @@ const featuredServices = [
 ];
 
 const featuredProjects = [
-  { title: "Modern Villa", image: "https://placehold.co/600x400.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio/modern-villa" },
-  { title: "Commercial Complex", image: "https://placehold.co/600x400.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio/commercial-complex" },
-  { title: "Luxury Apartment", image: "https://placehold.co/600x400.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio/luxury-apartment" },
+  { title: "Modern Villa", image: "https://placehold.co/600x400.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
+  { title: "Commercial Complex", image: "https://placehold.co/600x400.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
+  { title: "Luxury Apartment", image: "https://placehold.co/600x400.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
 ];
 
 export default function HomePage() {
@@ -120,7 +121,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <Button variant="outline" asChild className="w-full">
-                  <Link href={project.href}>View Project</Link>
+                  <Link href={project.href}>View Project Details</Link>
                 </Button>
               </CardContent>
             </Card>

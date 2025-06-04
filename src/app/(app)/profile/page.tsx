@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useAuth } from '@/contexts/auth-context';
@@ -12,6 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useState, useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase/client';
+import { Badge } from '@/components/ui/badge';
 
 export default function ProfilePage() {
   const { user, loading } = useAuth();
