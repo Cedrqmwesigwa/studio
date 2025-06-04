@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteConfig, type NavItem } from '@/config/site';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Building2 } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
 import { SignInButton } from '@/components/auth/sign-in-button';
 import { UserNav } from '@/components/auth/user-nav';
@@ -23,8 +24,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <Building2 className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold text-primary">{siteConfig.name}</span>
+          {siteConfig.logoUrl ? (
+            <Image src={siteConfig.logoUrl} alt={siteConfig.name} width={32} height={32} className="h-8 w-auto" priority />
+          ) : (
+            <span className="font-headline text-xl font-bold text-primary">{siteConfig.name.charAt(0)}</span> 
+          )}
+          <span className="font-headline text-xl font-bold text-primary hidden sm:inline-block">{siteConfig.name}</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">

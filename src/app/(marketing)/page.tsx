@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Building, Users, Wrench } from 'lucide-react';
+import { CheckCircle, Building, Users, Wrench, TrendingUp, Eye } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 // Mock data for services and portfolio items
@@ -11,6 +11,13 @@ const featuredServices = [
   { name: "New Construction", description: "Building your vision from the ground up.", icon: Building, href: "/services#new-construction" },
   { name: "Renovations", description: "Transforming spaces with modern designs.", icon: Wrench, href: "/services#renovations" },
   { name: "Project Management", description: "Expert oversight for seamless execution.", icon: Users, href: "/services#project-management" },
+];
+
+const whyChooseUsItems = [
+  { title: "Sterling Quality", description: "Exacting standards and high-quality materials in every detail, reflecting our name.", icon: CheckCircle },
+  { title: "Efficient & Timely", description: "Data-driven project management ensures on-schedule delivery, because your time is valuable.", icon: TrendingUp },
+  { title: "Transparent Operations", description: "Clear communication, upfront pricing, and transparent use of funds to build lasting trust.", icon: Eye },
+  { title: "Experienced & Analytical", description: "Leveraging years of industry experience and quantitative expertise for your project's success.", icon: Users },
 ];
 
 const featuredProjects = [
@@ -29,7 +36,7 @@ export default function HomePage() {
             Building Excellence, Delivering Quality
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-blue-100">
-            Sterling Solutions Hub is your trusted partner for all construction and hardware needs. We bring expertise, reliability, and innovation to every project.
+            {siteConfig.name} is your trusted partner in Kampala for construction and contracting, delivering sterling quality through data-driven efficiency and transparent practices.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -72,20 +79,15 @@ export default function HomePage() {
       <section className="w-full py-12 md:py-20 bg-secondary rounded-lg fade-in" style={{animationDelay: '0.4s'}}>
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Why Sterling Solutions?</h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Why {siteConfig.name}?</h2>
             <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
               Experience the difference with our commitment to quality and client satisfaction.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Quality Craftsmanship", description: "Exacting standards in every detail." },
-              { title: "Reliable Timelines", description: "Projects delivered on schedule, every time." },
-              { title: "Transparent Pricing", description: "Clear, upfront costs with no surprises." },
-              { title: "Expert Team", description: "Skilled professionals dedicated to your success." },
-            ].map((item) => (
+            {whyChooseUsItems.map((item) => (
               <div key={item.title} className="flex flex-col items-center text-center p-4">
-                <CheckCircle className="h-10 w-10 text-accent mb-3" />
+                <item.icon className="h-10 w-10 text-accent mb-3" />
                 <h3 className="font-headline text-lg font-semibold mb-1">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
@@ -139,7 +141,7 @@ export default function HomePage() {
         <div className="container px-4 md:px-6 text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Ready to Start Your Next Project?</h2>
           <p className="mt-4 max-w-xl mx-auto text-lg text-blue-100">
-            Let's discuss how Sterling Solutions Hub can bring your vision to life.
+            Let's discuss how {siteConfig.name} can bring your vision to life.
           </p>
           <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
             <Link href={siteConfig.support.email ? `mailto:${siteConfig.support.email}` : "/contact"}>Contact Us Today</Link>

@@ -14,6 +14,7 @@ export type SiteConfig = {
   description: string;
   url: string;
   ogImage: string;
+  logoUrl?: string;
   mainNav: NavItem[];
   footerNav?: NavItem[];
   support: {
@@ -26,9 +27,10 @@ export type SiteConfig = {
 
 export const siteConfig: SiteConfig = {
   name: "Sterling Contractors",
-  description: "Your trusted partner for construction and contracting services in Kampala.",
+  description: "Sterling Contractors: Building Uganda's future with quality, transparency, and data-driven efficiency. Your trusted partner in Kampala for all construction and contracting needs.",
   url: "https://sterlingcontractors.example.com", // Replace with actual URL
   ogImage: "https://sterlingcontractors.example.com/og.jpg", // Replace with actual OG image
+  logoUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/3a3e4546-9140-45e6-b81c-9ca8c67b3624_SterlingContractorsLogo.png",
   mainNav: [
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
@@ -44,9 +46,9 @@ export const siteConfig: SiteConfig = {
     { title: "Make Deposit", href: "/deposits", authRequired: true },
   ],
   support: {
-    phone: "+254 700 000 000", // Kept existing, update if new one provided
-    email: "support@sterlingcontractors.example.com", // Updated domain to match name, update if new one provided
+    phone: "+254 700 000 000", // Please provide the correct Ugandan phone number
+    email: "support@sterlingcontractors.example.com", // Update with actual email if available
     address: "Nakasero, Kampala, Uganda",
-    operatingHours: "Mon-Fri: 8 AM - 5 PM, Sat: 9 AM - 1 PM", // Kept existing, update if new one provided
+    operatingHours: "Mon-Fri: 8 AM - 5 PM, Sat: 9 AM - 1 PM", // Please confirm/update operating hours
   },
 };

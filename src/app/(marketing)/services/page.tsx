@@ -27,7 +27,7 @@ const services = [
   {
     id: "project-management",
     name: "Project Management",
-    description: "Our seasoned project managers ensure your project stays on track, within budget, and meets all quality standards. We coordinate all aspects from planning to execution.",
+    description: "Our seasoned project managers ensure your project stays on track, within budget, and meets all quality standards. We coordinate all aspects from planning to execution using efficient, data-informed strategies.",
     benefits: ["Budget control", "Quality assurance", "Risk management", "Effective communication"],
     visualUrl: "https://placehold.co/600x400.png",
     dataAiHint: "blueprint project plan",
@@ -36,8 +36,8 @@ const services = [
   {
     id: "hardware-supply",
     name: "Hardware & Material Supply",
-    description: "Access a wide range of high-quality construction materials and hardware through our e-commerce platform or direct orders. Competitive pricing and reliable delivery.",
-    benefits: ["Extensive product catalog", "Competitive pricing", "Bulk order discounts", "Fast delivery"],
+    description: "Access a wide range of high-quality construction materials and hardware. Leveraging direct industry experience, we ensure competitive pricing and reliable delivery for your project needs.",
+    benefits: ["Extensive product catalog", "Competitive pricing", "Bulk order discounts", "Reliable delivery"],
     visualUrl: "https://placehold.co/600x400.png",
     dataAiHint: "hardware tools materials",
     icon: Truck,
@@ -45,7 +45,7 @@ const services = [
   {
     id: "consultation-services",
     name: "Construction Consultation",
-    description: "Leverage our expertise for your project planning. We offer consultation on design, material selection, budgeting, and regulatory compliance.",
+    description: "Leverage our expert advice for your project planning. Our consultations are grounded in quantitative analysis and up-to-date market insights for design, material selection, budgeting, and regulatory compliance.",
     benefits: ["Expert advice", "Cost-saving strategies", "Feasibility studies", "Compliance guidance"],
     visualUrl: "https://placehold.co/600x400.png",
     dataAiHint: "construction worker meeting",
@@ -54,7 +54,7 @@ const services = [
    {
     id: "custom-fabrication",
     name: "Custom Fabrication",
-    description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs.",
+    description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs with sterling quality.",
     benefits: ["Tailored solutions", "Precision engineering", "Durable materials", "Unique designs"],
     visualUrl: "https://placehold.co/600x400.png",
     dataAiHint: "metal welding workshop",

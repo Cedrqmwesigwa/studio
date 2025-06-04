@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteConfig } from '@/config/site';
-import { Building2, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -8,10 +9,14 @@ export default function Footer() {
       <div className="container max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <Link href="/" className="flex items-center space-x-2 mb-4">
-            <Building2 className="h-8 w-8 text-primary" />
+            {siteConfig.logoUrl ? (
+                <Image src={siteConfig.logoUrl} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" />
+              ) : (
+                <span className="font-headline text-2xl font-bold text-primary">{siteConfig.name.charAt(0)}</span>
+            )}
             <span className="font-headline text-2xl font-bold text-primary">{siteConfig.name}</span>
           </Link>
-          <p className="text-sm">{siteConfig.description}</p>
+          <p className="text-sm">{siteConfig.description.split('.')[0] + '.'}</p>
         </div>
 
         <div>
