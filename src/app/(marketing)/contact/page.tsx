@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -51,6 +52,9 @@ export default function ContactPage() {
     });
     form.reset();
   }
+
+  const mapCoordinates = { lat: 0.310140, lng: 32.579832 };
+  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${mapCoordinates.lat},${mapCoordinates.lng}&hl=en&z=16&amp;output=embed`;
 
   return (
     <div className="space-y-16">
@@ -149,7 +153,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Phone Number (Optional)</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder="+254 700 000 000" {...field} />
+                        <Input type="tel" placeholder="+256 751 979 777" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -191,9 +195,17 @@ export default function ContactPage() {
       {/* Map Section Placeholder - In a real app, embed a map here */}
       <section className="fade-in" style={{ animationDelay: '0.4s' }}>
         <h2 className="font-headline text-2xl font-semibold text-center mb-6">Find Us On The Map</h2>
-        <div className="aspect-video bg-muted rounded-lg flex items-center justify-center shadow-md">
-          <p className="text-muted-foreground">Embedded Map (e.g., Google Maps) will be displayed here.</p>
-          {/* Example: <iframe src="google_maps_embed_url" width="100%" height="100%" style={{border:0}} allowfullscreen="" loading="lazy"></iframe> */}
+        <div className="aspect-video bg-muted rounded-lg shadow-md overflow-hidden">
+          <iframe 
+            src={googleMapsEmbedUrl}
+            width="100%" 
+            height="100%" 
+            style={{border:0}} 
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Sterling Contractors Location"
+          ></iframe>
         </div>
       </section>
     </div>
