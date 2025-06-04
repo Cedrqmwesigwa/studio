@@ -1,1 +1,6 @@
-// Flows will be imported for their side effects in this file.
+import { config } from 'dotenv';
+config();
+
+import '@/ai/flows/ai-product-recommendation.ts';
+import '@/ai/flows/ai-deposit-estimator.ts';
+import '@/ai/flows/automated-image-tagging.ts';
