@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,7 +13,7 @@ const blogPosts = [
     slug: "top-5-construction-trends-2024",
     title: "Top 5 Construction Trends to Watch in 2024",
     excerpt: "Discover the latest innovations shaping the construction industry, from sustainable materials to AI-driven project management.",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/construction-site-future-thumb.png",
     dataAiHint: "construction site future",
     author: "Jane Doe, Lead Architect",
     publishDate: "2024-07-15",
@@ -24,7 +25,7 @@ const blogPosts = [
     slug: "choosing-right-materials-project",
     title: "Choosing the Right Materials for Your Project",
     excerpt: "A comprehensive guide to selecting durable, cost-effective, and aesthetically pleasing materials for your next construction endeavor.",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/building-materials-samples-thumb.png",
     dataAiHint: "building materials samples",
     author: "John Smith, Materials Expert",
     publishDate: "2024-06-28",
@@ -36,7 +37,7 @@ const blogPosts = [
     slug: "sterling-solutions-community-project",
     title: "Sterling Solutions Completes Community Center Build",
     excerpt: "We're proud to announce the successful completion of the new community center, a project close to our hearts.",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/community-center-building-thumb.png",
     dataAiHint: "community center building",
     author: "Sterling Team",
     publishDate: "2024-05-10",
@@ -51,7 +52,7 @@ export default function BlogPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Blog</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Stay updated with the latest news, insights, and project updates from Sterling Solutions Hub.
+          Stay updated with the latest news, insights, and project updates from Sterling Contractors.
         </p>
       </section>
 
@@ -111,3 +112,5 @@ export default function BlogPage() {
     </div>
   );
 }
+
+    

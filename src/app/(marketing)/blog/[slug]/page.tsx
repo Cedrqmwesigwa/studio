@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -34,11 +35,11 @@ const blogPosts = [
       <br/>
       <p>Staying ahead of these trends is crucial for success in the modern construction landscape. At Sterling Solutions Hub, we are committed to integrating these innovations into our projects to deliver superior results for our clients.</p>
     `,
-    imageUrl: "https://placehold.co/1200x600.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/construction-site-modern.png",
     dataAiHint: "construction site modern",
     author: "Jane Doe",
     authorTitle: "Lead Architect",
-    authorImage: "https://placehold.co/100x100.png",
+    authorImage: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/author_images/professional-woman-portrait.png",
     dataAiAuthorHint: "professional woman portrait",
     publishDate: "2024-07-15",
     category: "Industry News",
@@ -68,11 +69,11 @@ const blogPosts = [
       <br/>
       <p>Consulting with professionals like architects and engineers can provide valuable insights and help you make informed decisions. At Sterling Solutions Hub, we offer material consultation as part of our services.</p>
     `,
-    imageUrl: "https://placehold.co/1200x600.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/various-building-materials.png",
     dataAiHint: "various building materials",
     author: "John Smith",
     authorTitle: "Materials Expert",
-    authorImage: "https://placehold.co/100x100.png",
+    authorImage: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/author_images/professional-man-portrait.png",
     dataAiAuthorHint: "professional man portrait",
     publishDate: "2024-06-28",
     category: "Guides",
@@ -91,11 +92,11 @@ const blogPosts = [
       <br/>
       <p>The center is now open and already hosting various community programs. We look forward to seeing it become a vibrant hub of activity and learning.</p>
     `,
-    imageUrl: "https://placehold.co/1200x600.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/community-center-opening.png",
     dataAiHint: "community center opening",
     author: "Sterling Team",
     authorTitle: "Sterling Solutions Hub",
-    authorImage: "", // No specific author image, use fallback
+    authorImage: "", // No specific author image, use fallback - could be company logo
     dataAiAuthorHint: "company logo",
     publishDate: "2024-05-10",
     category: "Project Updates",
@@ -208,3 +209,5 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
+
+    

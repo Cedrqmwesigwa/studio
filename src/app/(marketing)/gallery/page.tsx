@@ -1,27 +1,45 @@
+
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowLeft, ArrowRight, Expand, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-// Mock data for gallery images
-const galleryImages = [
-  { id: 1, src: "https://placehold.co/800x600.png", alt: "Completed modern kitchen", dataAiHint: "modern kitchen", category: "Residential" },
-  { id: 2, src: "https://placehold.co/800x600.png", alt: "Office building facade", dataAiHint: "office building", category: "Commercial" },
-  { id: 3, src: "https://placehold.co/800x600.png", alt: "Luxury bathroom tiling", dataAiHint: "luxury bathroom", category: "Residential" },
-  { id: 4, src: "https://placehold.co/800x600.png", alt: "Industrial warehouse interior", dataAiHint: "warehouse interior", category: "Industrial" },
-  { id: 5, src: "https://placehold.co/800x600.png", alt: "Landscaped garden for villa", dataAiHint: "landscaped garden", category: "Residential" },
-  { id: 6, src: "https://placehold.co/800x600.png", alt: "Retail store layout", dataAiHint: "retail store", category: "Commercial" },
-  { id: 7, src: "https://placehold.co/800x600.png", alt: "Custom staircase", dataAiHint: "custom staircase", category: "Residential" },
-  { id: 8, src: "https://placehold.co/800x600.png", alt: "Building foundation work", dataAiHint: "building foundation", category: "Construction Process" },
-  { id: 9, src: "https://placehold.co/800x600.png", alt: "Roof installation", dataAiHint: "roof installation", category: "Construction Process" },
+const initialGalleryImages = [
+  { id: 1, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen", dataAiHint: "modern kitchen", category: "Residential" },
+  { id: 2, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/office-building.png", alt: "Office building facade", dataAiHint: "office building", category: "Commercial" },
+  { id: 3, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling", dataAiHint: "luxury bathroom", category: "Residential" },
+  { id: 4, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/warehouse-interior.png", alt: "Industrial warehouse interior", dataAiHint: "warehouse interior", category: "Industrial" },
+  { id: 5, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/landscaped-garden.png", alt: "Landscaped garden for villa", dataAiHint: "landscaped garden", category: "Residential" },
+  { id: 6, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/retail-store.png", alt: "Retail store layout", dataAiHint: "retail store", category: "Commercial" },
+  { id: 7, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/custom-staircase.png", alt: "Custom staircase", dataAiHint: "custom staircase", category: "Residential" },
+  { id: 8, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/building-foundation.png", alt: "Building foundation work", dataAiHint: "building foundation", category: "Construction Process" },
+  { id: 9, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/roof-installation.png", alt: "Roof installation", dataAiHint: "roof installation", category: "Construction Process" },
 ];
+
+// Function to shuffle an array
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
 
 export default function GalleryPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [galleryImages, setGalleryImages] = useState(initialGalleryImages);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    setGalleryImages(shuffleArray(initialGalleryImages));
+  }, []);
+
 
   const openModal = (index: number) => setSelectedImageIndex(index);
   const closeModal = () => setSelectedImageIndex(null);
@@ -39,6 +57,22 @@ export default function GalleryPage() {
   };
   
   const currentImage = selectedImageIndex !== null ? galleryImages[selectedImageIndex] : null;
+
+  if (!isClient) {
+    // Render a loading state or null on the server to avoid hydration mismatch
+    // for the shuffled gallery. The actual shuffle happens client-side.
+    return (
+        <div className="space-y-12">
+            <section className="text-center fade-in">
+                <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Image Gallery</h1>
+                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                A visual showcase of our completed projects, hardware installations, and the quality we deliver.
+                </p>
+            </section>
+            <div className="text-center text-muted-foreground">Loading gallery...</div>
+        </div>
+    );
+  }
 
   return (
     <div className="space-y-12">
@@ -62,6 +96,7 @@ export default function GalleryPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     data-ai-hint={image.dataAiHint}
+                    priority={index < 4} // Prioritize loading images visible above the fold
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <Expand className="h-8 w-8 text-white" />
@@ -81,13 +116,13 @@ export default function GalleryPage() {
                     data-ai-hint={currentImage.dataAiHint}
                   />
                 </div>
-                <Button variant="ghost" size="icon" className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/75" onClick={closeModal}>
+                <Button variant="ghost" size="icon" className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/75 z-10" onClick={closeModal}>
                   <X className="h-6 w-6" />
                 </Button>
-                <Button variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/75" onClick={prevImage}>
+                <Button variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/75 z-10" onClick={prevImage}>
                   <ArrowLeft className="h-6 w-6" />
                 </Button>
-                <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/75" onClick={nextImage}>
+                <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/75 z-10" onClick={nextImage}>
                   <ArrowRight className="h-6 w-6" />
                 </Button>
               </DialogContent>
@@ -98,3 +133,5 @@ export default function GalleryPage() {
     </div>
   );
 }
+
+    

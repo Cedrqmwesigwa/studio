@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -15,9 +16,13 @@ const allProjects = [
     id: "modern-villa-nairobi",
     title: "Modern Villa in Karen",
     description: "A stunning contemporary villa featuring spacious interiors, smart home technology, and eco-friendly design principles. Completed ahead of schedule and within budget.",
-    photos: ["https://placehold.co/600x400.png", "https://placehold.co/600x400.png", "https://placehold.co/600x400.png"],
+    photos: [
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/modern-villa-exterior.png", 
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/modern-living-room.png", 
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/luxury-bathroom-villa.png"
+    ],
     dataAiHints: ["modern villa exterior", "modern living room", "luxury bathroom"],
-    clientTestimonial: "Sterling Solutions Hub exceeded our expectations. Their attention to detail and professionalism were outstanding. We love our new home!",
+    clientTestimonial: "Sterling Contractors exceeded our expectations. Their attention to detail and professionalism were outstanding. We love our new home!",
     projectType: "Residential",
     year: 2023,
     location: "Nairobi, Kenya",
@@ -26,9 +31,12 @@ const allProjects = [
     id: "commercial-hub-cbd",
     title: "CBD Commercial Hub",
     description: "Development of a multi-story commercial complex in the heart of the CBD, including office spaces, retail outlets, and modern amenities.",
-    photos: ["https://placehold.co/600x400.png", "https://placehold.co/600x400.png"],
+    photos: [
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/office-building-exterior-cbd.png", 
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/modern-office-interior-cbd.png"
+    ],
     dataAiHints: ["office building exterior", "modern office interior"],
-    clientTestimonial: "The team at Sterling Solutions was efficient and highly skilled. They delivered a landmark project for our company.",
+    clientTestimonial: "The team at Sterling Contractors was efficient and highly skilled. They delivered a landmark project for our company.",
     projectType: "Commercial",
     year: 2022,
     location: "Nairobi CBD",
@@ -37,7 +45,10 @@ const allProjects = [
     id: "luxury-apartments-westlands",
     title: "Westlands Luxury Apartments",
     description: "Construction of high-end residential apartments with premium finishes, rooftop pool, and state-of-the-art security systems.",
-    photos: ["https://placehold.co/600x400.png", "https://placehold.co/600x400.png"],
+    photos: [
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/apartment-building-design-westlands.png", 
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/luxury-apartment-pool-westlands.png"
+    ],
     dataAiHints: ["apartment building design", "luxury apartment pool"],
     projectType: "Residential",
     year: 2024,
@@ -47,7 +58,7 @@ const allProjects = [
     id: "industrial-warehouse-complex",
     title: "Industrial Warehouse Complex",
     description: "Design and construction of a large-scale industrial warehouse complex with optimized logistics flow and heavy-duty infrastructure.",
-    photos: ["https://placehold.co/600x400.png"],
+    photos: ["https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/large-warehouse-exterior-industrial.png"],
     dataAiHints: ["large warehouse exterior"],
     projectType: "Industrial",
     year: 2023,
@@ -57,7 +68,10 @@ const allProjects = [
     id: "boutique-hotel-renovation",
     title: "Boutique Hotel Renovation",
     description: "Complete renovation and modernization of a boutique hotel, preserving its historical charm while upgrading facilities and guest experience.",
-    photos: ["https://placehold.co/600x400.png", "https://placehold.co/600x400.png"],
+    photos: [
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/hotel-lobby-design-renovated.png", 
+        "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/luxury-hotel-room-renovated.png"
+    ],
     dataAiHints: ["hotel lobby design", "luxury hotel room"],
     projectType: "Commercial",
     year: 2022,
@@ -140,3 +154,5 @@ export default function PortfolioPage() {
     </div>
   );
 }
+
+    

@@ -21,9 +21,9 @@ const whyChooseUsItems = [
 ];
 
 const featuredProjects = [
-  { title: "Modern Villa", image: "https://placehold.co/600x400.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
-  { title: "Commercial Complex", image: "https://placehold.co/600x400.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
-  { title: "Luxury Apartment", image: "https://placehold.co/600x400.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
+  { title: "Modern Villa", image: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/modern-villa.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
+  { title: "Commercial Complex", image: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/commercial-building.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
+  { title: "Luxury Apartment", image: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/luxury-apartment.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
 ];
 
 export default function HomePage() {
@@ -36,7 +36,7 @@ export default function HomePage() {
             Building Excellence, Delivering Quality
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-blue-100">
-            {siteConfig.name} is your trusted partner in Kampala for construction and contracting, delivering sterling quality through data-driven efficiency and transparent practices.
+            {siteConfig.description}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -54,7 +54,7 @@ export default function HomePage() {
         <div className="text-center mb-12">
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Our Core Services</h2>
           <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Comprehensive solutions tailored to your project requirements.
+            Comprehensive solutions tailored to your project requirements, backed by data-driven efficiency and transparent practices.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Why {siteConfig.name}?</h2>
             <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Experience the difference with our commitment to quality and client satisfaction.
+              Experience the difference with our commitment to quality, transparency, and client satisfaction.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -151,3 +151,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    

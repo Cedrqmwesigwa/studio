@@ -14,7 +14,7 @@ const products = [
     description: "Reliable and durable cement mixer for large construction projects. 200L capacity.",
     price: 45000.00,
     category: "Machinery",
-    imageUrl: "https://placehold.co/400x300.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/product_images/cement-mixer.png",
     dataAiHint: "cement mixer",
     stock: 15,
     rating: 4.5,
@@ -26,7 +26,7 @@ const products = [
     description: "High-strength Portland cement suitable for all types of construction work.",
     price: 650.00,
     category: "Materials",
-    imageUrl: "https://placehold.co/400x300.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/product_images/cement-bag.png",
     dataAiHint: "cement bag",
     stock: 200,
     rating: 4.8,
@@ -38,7 +38,7 @@ const products = [
     description: "Comprehensive toolset for contractors, including wrenches, screwdrivers, pliers, and more.",
     price: 8500.00,
     category: "Tools",
-    imageUrl: "https://placehold.co/400x300.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/product_images/tool-set-box.png",
     dataAiHint: "tool set box",
     stock: 30,
     rating: 4.2,
@@ -50,7 +50,7 @@ const products = [
     description: "Hard hat for construction site safety. Meets industry standards.",
     price: 800.00,
     category: "Safety Gear",
-    imageUrl: "https://placehold.co/400x300.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/product_images/safety-helmet.png",
     dataAiHint: "safety helmet",
     stock: 100,
     rating: 4.0,
@@ -62,7 +62,7 @@ const products = [
     description: "High-tensile deformed steel bars for concrete reinforcement. Various sizes available.",
     price: 95000.00,
     category: "Materials",
-    imageUrl: "https://placehold.co/400x300.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/product_images/steel-rebar.png",
     dataAiHint: "steel rebar",
     stock: 50, // tons
     rating: 4.6,
@@ -74,7 +74,7 @@ const products = [
     description: "Heavy-duty waterproof tarpaulin for covering materials and equipment.",
     price: 3200.00,
     category: "Equipment",
-    imageUrl: "https://placehold.co/400x300.png",
+    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/product_images/blue-tarpaulin.png",
     dataAiHint: "blue tarpaulin",
     stock: 75,
     rating: 4.3,
@@ -143,3 +143,5 @@ export default function ShopPage() {
     </div>
   );
 }
+
+    

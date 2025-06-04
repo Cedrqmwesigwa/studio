@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -11,7 +12,7 @@ const services = [
     name: "New Construction",
     description: "From concept to completion, we build robust and beautiful structures tailored to your specifications. We handle all phases of new construction projects for residential, commercial, and industrial clients.",
     benefits: ["Turnkey solutions", "High-quality materials", "Adherence to timelines", "Experienced professionals"],
-    visualUrl: "https://placehold.co/600x400.png",
+    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/construction-site-building.png",
     dataAiHint: "construction site building",
     icon: Building,
   },
@@ -20,7 +21,7 @@ const services = [
     name: "Renovations & Remodeling",
     description: "Modernize your space with our expert renovation services. We specialize in kitchen, bathroom, and full-home remodels, enhancing functionality and aesthetic appeal.",
     benefits: ["Innovative designs", "Space optimization", "Increased property value", "Minimal disruption"],
-    visualUrl: "https://placehold.co/600x400.png",
+    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/modern-kitchen-renovation.png",
     dataAiHint: "modern kitchen renovation",
     icon: Wrench,
   },
@@ -29,7 +30,7 @@ const services = [
     name: "Project Management",
     description: "Our seasoned project managers ensure your project stays on track, within budget, and meets all quality standards. We coordinate all aspects from planning to execution using efficient, data-informed strategies.",
     benefits: ["Budget control", "Quality assurance", "Risk management", "Effective communication"],
-    visualUrl: "https://placehold.co/600x400.png",
+    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/blueprint-project-plan.png",
     dataAiHint: "blueprint project plan",
     icon: Users,
   },
@@ -38,7 +39,7 @@ const services = [
     name: "Hardware & Material Supply",
     description: "Access a wide range of high-quality construction materials and hardware. Leveraging direct industry experience, we ensure competitive pricing and reliable delivery for your project needs.",
     benefits: ["Extensive product catalog", "Competitive pricing", "Bulk order discounts", "Reliable delivery"],
-    visualUrl: "https://placehold.co/600x400.png",
+    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/hardware-tools-materials.png",
     dataAiHint: "hardware tools materials",
     icon: Truck,
   },
@@ -47,7 +48,7 @@ const services = [
     name: "Construction Consultation",
     description: "Leverage our expert advice for your project planning. Our consultations are grounded in quantitative analysis and up-to-date market insights for design, material selection, budgeting, and regulatory compliance.",
     benefits: ["Expert advice", "Cost-saving strategies", "Feasibility studies", "Compliance guidance"],
-    visualUrl: "https://placehold.co/600x400.png",
+    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/construction-worker-meeting.png",
     dataAiHint: "construction worker meeting",
     icon: HardHat,
   },
@@ -56,7 +57,7 @@ const services = [
     name: "Custom Fabrication",
     description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs with sterling quality.",
     benefits: ["Tailored solutions", "Precision engineering", "Durable materials", "Unique designs"],
-    visualUrl: "https://placehold.co/600x400.png",
+    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/metal-welding-workshop.png",
     dataAiHint: "metal welding workshop",
     icon: Package,
   },
@@ -116,3 +117,5 @@ export default function ServicesPage() {
     </div>
   );
 }
+
+    
