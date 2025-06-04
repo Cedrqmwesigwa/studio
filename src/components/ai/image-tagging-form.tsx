@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,7 @@ import { tagImage, type TagImageInput, type TagImageOutput } from '@/ai/flows/au
 import { useState, ChangeEvent } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Tags, UploadCloud, Image as ImageIcon } from 'lucide-react';
-import Image from 'next/image'; // next/image for preview
+import NextImage from 'next/image'; // Renamed to avoid conflict with ImageIcon lucide icon
 import { Badge } from '@/components/ui/badge';
 
 export default function ImageTaggingForm() {
@@ -56,10 +57,11 @@ export default function ImageTaggingForm() {
     setIsLoading(true);
     setTaggingResult(null);
 
-    try {
-      const reader = new FileReader();
-      reader.readAsDataURL(selectedFile);
-      reader.onload = async (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+
+    reader.onload = async (e) => {
+      try {
         const photoDataUri = e.target?.result as string;
         if (!photoDataUri) {
             throw new Error("Could not read file data.");
@@ -71,20 +73,27 @@ export default function ImageTaggingForm() {
           title: "Image Tagged!",
           description: "AI-generated tags have been applied.",
         });
-         setIsLoading(false);
-      };
-      reader.onerror = (error) => {
-        throw error;
+      } catch (error) {
+        console.error("Error tagging image during processing:", error);
+        toast({
+          title: "Tagging Failed",
+          description: "An error occurred while processing the image for tagging. Please ensure it's a valid image format (JPEG, PNG, WEBP) and try again.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Error tagging image:", error);
+    };
+
+    reader.onerror = (error) => {
+      console.error("Error reading file:", error);
       toast({
-        title: "Tagging Failed",
-        description: "An error occurred while tagging the image. Please ensure it's a valid image format (JPEG, PNG, WEBP) and try again.",
+        title: "File Read Error",
+        description: "Could not read the selected file. Please try again with a different file.",
         variant: "destructive",
       });
       setIsLoading(false);
-    }
+    };
   }
 
   return (
@@ -118,7 +127,7 @@ export default function ImageTaggingForm() {
             <div className="mt-4">
               <h4 className="font-semibold mb-2 text-foreground flex items-center"><ImageIcon className="mr-2 h-5 w-5 text-accent"/>Image Preview:</h4>
               <div className="relative w-full max-w-md h-64 border border-border rounded-md overflow-hidden mx-auto">
-                <Image src={previewUrl} alt="Selected preview" layout="fill" objectFit="contain" />
+                <NextImage src={previewUrl} alt="Selected preview" layout="fill" objectFit="contain" />
               </div>
             </div>
           )}
