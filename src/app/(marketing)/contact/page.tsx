@@ -19,8 +19,11 @@ import { useToast } from "@/hooks/use-toast";
 import { siteConfig } from "@/config/site";
 import { Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// Metadata should be handled by a parent server component or RootLayout for client components
+// For SEO on this page, ensure the RootLayout or a parent server component handles metadata.
+// If this page were a Server Component, you could export Metadata.
 
-export const revalidate = 3600; // Revalidate at most once per hour
+export const revalidate = 3600; // Revalidate at most once per hour (effective if it were a Server Component)
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -31,6 +34,13 @@ const contactFormSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+// For a client component, metadata should be handled by a parent server component or RootLayout.
+// However, if this page were server-rendered without being a client component, you'd do:
+// export const metadata: Metadata = {
+//   title: 'Contact Us | Sterling Contractors',
+//   description: 'Get in touch with Sterling Contractors for your construction and hardware needs in Kampala, Uganda. Call us, email, or visit our Nakasero office.',
+// };
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -63,7 +73,7 @@ export default function ContactPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Get in Touch</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          We're here to help with your construction and hardware needs. Reach out to us through any of the channels below or use the contact form.
+          We're here to help with your construction and hardware needs in Kampala. Reach out to us through any of the channels below or use the contact form.
         </p>
       </section>
 
@@ -106,7 +116,7 @@ export default function ContactPage() {
               <MessageSquare className="h-6 w-6 mr-4 mt-1 text-primary flex-shrink-0" />
               <div>
                 <h3 className="font-semibold text-foreground">Live Chat</h3>
-                <Button variant="link" className="p-0 h-auto text-primary hover:underline">
+                <Button variant="link" className="p-0 h-auto text-primary hover:underline" disabled>
                   Chat with us (Coming Soon)
                 </Button>
               </div>
@@ -129,7 +139,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" {...field} />
+                        <Input placeholder="e.g., Jane Namukasa" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -155,7 +165,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Phone Number (Optional)</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder="+256 751 979 777" {...field} />
+                        <Input type="tel" placeholder={siteConfig.support.phone} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -168,7 +178,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Subject</FormLabel>
                       <FormControl>
-                        <Input placeholder="Project Inquiry" {...field} />
+                        <Input placeholder="e.g., Project Inquiry, Quote Request" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -194,7 +204,6 @@ export default function ContactPage() {
         </Card>
       </section>
 
-      {/* Map Section Placeholder - In a real app, embed a map here */}
       <section className="fade-in" style={{ animationDelay: '0.4s' }}>
         <h2 className="font-headline text-2xl font-semibold text-center mb-6">Find Us On The Map</h2>
         <div className="aspect-video bg-muted rounded-lg shadow-md overflow-hidden">
@@ -206,7 +215,7 @@ export default function ContactPage() {
             allowFullScreen={false}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Sterling Contractors Location"
+            title={`${siteConfig.name} Location`}
           ></iframe>
         </div>
       </section>

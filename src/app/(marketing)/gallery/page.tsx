@@ -7,19 +7,25 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowLeft, ArrowRight, Expand, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+// Metadata should be handled by a parent server component or RootLayout for client components
+// export const metadata: Metadata = {
+//   title: 'Image Gallery | Sterling Contractors',
+//   description: 'A visual showcase of completed projects, hardware installations, and the quality Sterling Contractors delivers in Kampala, Uganda.',
+// };
 
-export const revalidate = 3600; // Revalidate at most once per hour
+
+export const revalidate = 3600; // Revalidate at most once per hour (effective if it were a Server Component)
 
 const initialGalleryImages = [
-  { id: 1, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen", dataAiHint: "modern kitchen", category: "Residential" },
-  { id: 2, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/office-building.png", alt: "Office building facade", dataAiHint: "office building", category: "Commercial" },
-  { id: 3, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling", dataAiHint: "luxury bathroom", category: "Residential" },
-  { id: 4, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/warehouse-interior.png", alt: "Industrial warehouse interior", dataAiHint: "warehouse interior", category: "Industrial" },
-  { id: 5, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/landscaped-garden.png", alt: "Landscaped garden for villa", dataAiHint: "landscaped garden", category: "Residential" },
-  { id: 6, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/retail-store.png", alt: "Retail store layout", dataAiHint: "retail store", category: "Commercial" },
-  { id: 7, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/custom-staircase.png", alt: "Custom staircase", dataAiHint: "custom staircase", category: "Residential" },
-  { id: 8, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/building-foundation.png", alt: "Building foundation work", dataAiHint: "building foundation", category: "Construction Process" },
-  { id: 9, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/roof-installation.png", alt: "Roof installation", dataAiHint: "roof installation", category: "Construction Process" },
+  { id: 1, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen in a Kampala home", dataAiHint: "modern kitchen", category: "Residential" },
+  { id: 2, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/office-building.png", alt: "Office building facade in Nakasero", dataAiHint: "office building", category: "Commercial" },
+  { id: 3, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling in a Kololo apartment", dataAiHint: "luxury bathroom", category: "Residential" },
+  { id: 4, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/warehouse-interior.png", alt: "Industrial warehouse interior in Ntinda", dataAiHint: "warehouse interior", category: "Industrial" },
+  { id: 5, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/landscaped-garden.png", alt: "Landscaped garden for a villa in Muyenga", dataAiHint: "landscaped garden", category: "Residential" },
+  { id: 6, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/retail-store.png", alt: "Retail store layout in Acacia Mall", dataAiHint: "retail store", category: "Commercial" },
+  { id: 7, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/custom-staircase.png", alt: "Custom staircase in a Bugolobi home", dataAiHint: "custom staircase", category: "Residential" },
+  { id: 8, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/building-foundation.png", alt: "Building foundation work for a new construction in Kampala", dataAiHint: "building foundation", category: "Construction Process" },
+  { id: 9, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/roof-installation.png", alt: "Roof installation on a commercial property", dataAiHint: "roof installation", category: "Construction Process" },
 ];
 
 // Function to shuffle an array
@@ -60,6 +66,12 @@ export default function GalleryPage() {
   
   const currentImage = selectedImageIndex !== null ? galleryImages[selectedImageIndex] : null;
 
+  // Set page title dynamically on client if needed, though metadata API is preferred for SEO
+  useEffect(() => {
+    document.title = 'Image Gallery | Sterling Contractors';
+  }, []);
+
+
   if (!isClient) {
     // Render a loading state or null on the server to avoid hydration mismatch
     // for the shuffled gallery. The actual shuffle happens client-side.
@@ -68,7 +80,7 @@ export default function GalleryPage() {
             <section className="text-center fade-in">
                 <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Image Gallery</h1>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                A visual showcase of our completed projects, hardware installations, and the quality we deliver.
+                A visual showcase of our completed projects, hardware installations, and the quality we deliver in Kampala and Uganda.
                 </p>
             </section>
             <div className="text-center text-muted-foreground">Loading gallery...</div>
@@ -81,7 +93,7 @@ export default function GalleryPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Image Gallery</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          A visual showcase of our completed projects, hardware installations, and the quality we deliver.
+          A visual showcase of our completed projects, hardware installations, and the quality Sterling Contractors delivers in Kampala and Uganda.
         </p>
       </section>
 

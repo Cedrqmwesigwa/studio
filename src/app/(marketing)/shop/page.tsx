@@ -4,7 +4,13 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Tag } from 'lucide-react';
+import { ShoppingCart, Tag, Eye } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hardware & Materials Shop | Sterling Contractors',
+  description: 'Browse high-quality construction hardware, tools, and materials. Secure online purchasing and deposits coming soon to Sterling Contractors.',
+};
 
 export const revalidate = 3600; // Revalidate at most once per hour
 
@@ -91,14 +97,14 @@ export default function ShopPage() {
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Hardware & Materials Shop</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
           Browse our selection of high-quality construction hardware, tools, and materials. 
-          Secure payment and deposit processing coming soon.
+          Full e-commerce functionality with cart, checkout, and various payment options is under development.
         </p>
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 fade-in" style={{animationDelay: '0.2s'}}>
         {products.map((product, index) => (
-          <Card key={product.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.05 + 0.2}s`}}>
-            <Link href={`/shop`} className="block aspect-[4/3] overflow-hidden relative">
+          <Card key={product.id} className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.05 + 0.2}s`}}>
+            <div className="aspect-[4/3] overflow-hidden relative">
               <Image
                 src={product.imageUrl}
                 alt={product.name}
@@ -108,17 +114,21 @@ export default function ShopPage() {
                 data-ai-hint={product.dataAiHint}
               />
               <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
-            </Link>
+              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <Button variant="outline" size="sm" className="text-white border-white hover:bg-white/20" onClick={() => alert('Product page coming soon!')}>
+                  <Eye className="mr-2 h-4 w-4" /> Quick View
+                </Button>
+              </div>
+            </div>
             <CardHeader>
               <CardTitle className="font-headline text-lg h-14 overflow-hidden">
-                <Link href={`/shop`} className="hover:text-primary transition-colors">
-                  {product.name}
-                </Link>
+                {product.name}
               </CardTitle>
-              <CardDescription className="h-16 overflow-y-auto text-sm">{product.description}</CardDescription>
+              {/* Optional: Short description if needed, but keeping it clean for now */}
+              {/* <CardDescription className="h-10 overflow-y-auto text-xs">{product.description}</CardDescription> */}
             </CardHeader>
             <CardContent className="flex-grow">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-2">
                 <p className="text-xl font-semibold text-primary flex items-center">
                   <Tag className="h-5 w-5 mr-1.5 text-accent" />
                   Ksh {product.price.toLocaleString()}
@@ -127,20 +137,22 @@ export default function ShopPage() {
                   {product.stock > 0 ? `${product.stock} in stock` : "Out of Stock"}
                 </Badge>
               </div>
+               <p className="text-xs text-muted-foreground">{product.description}</p>
             </CardContent>
-            <CardFooter>
-              <Button asChild className="w-full bg-primary hover:bg-primary/90" disabled={product.stock === 0}>
-                <Link href={`/shop`}>
-                  <ShoppingCart className="mr-2 h-4 w-4" />
-                  View Product Details
-                </Link>
+            <CardFooter className="flex-col items-stretch space-y-2">
+              <Button className="w-full bg-primary hover:bg-primary/90" disabled={product.stock === 0} onClick={() => alert('Adding to cart functionality coming soon!')}>
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                Add to Cart
               </Button>
+               <Button variant="link" asChild className="text-primary p-0 text-sm">
+                 <Link href="/shop">Learn More</Link>
+               </Button>
             </CardFooter>
           </Card>
         ))}
       </section>
        <p className="text-center text-muted-foreground text-sm fade-in" style={{animationDelay: '0.4s'}}>
-        Full e-commerce functionality including cart and checkout is under development. Individual product pages are not yet available.
+        Note: Individual product pages, cart, and checkout functionalities are currently under development. For purchases or inquiries, please <Link href="/contact" className="text-primary hover:underline">contact us</Link>.
       </p>
     </div>
   );

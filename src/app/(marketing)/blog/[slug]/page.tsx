@@ -8,6 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { siteConfig } from '@/config/site';
 
 export const revalidate = 3600; // Revalidate at most once per hour
 
@@ -17,6 +19,7 @@ const blogPosts = [
     id: "1",
     slug: "top-5-construction-trends-2024",
     title: "Top 5 Construction Trends to Watch in 2024",
+    excerpt: "Explore the leading innovations like sustainable materials, AI in project management, modular construction, advanced BIM, and robotics shaping the future of the building industry.",
     content: `
       <p>The construction industry is constantly evolving, and 2024 is no exception. Here are five key trends that are shaping the future of building and design:</p>
       <br/>
@@ -35,7 +38,7 @@ const blogPosts = [
       <h3 class="font-headline text-xl font-semibold mt-4 mb-2">5. Robotics and Drones</h3>
       <p>Robots are increasingly used for tasks like bricklaying, welding, and demolition. Drones are indispensable for site surveys, progress monitoring, and inspections, improving efficiency and safety.</p>
       <br/>
-      <p>Staying ahead of these trends is crucial for success in the modern construction landscape. At Sterling Solutions Hub, we are committed to integrating these innovations into our projects to deliver superior results for our clients.</p>
+      <p>Staying ahead of these trends is crucial for success in the modern construction landscape. At Sterling Contractors, we are committed to integrating these innovations into our projects to deliver superior results for our clients.</p>
     `,
     imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/construction-site-modern.png",
     dataAiHint: "construction site modern",
@@ -51,6 +54,7 @@ const blogPosts = [
     id: "2",
     slug: "choosing-right-materials-project",
     title: "Choosing the Right Materials for Your Project",
+    excerpt: "A guide to selecting materials that balance cost, quality, sustainability, aesthetics, and durability for your construction project.",
     content: `
       <p>Selecting the appropriate materials is one of the most critical decisions in any construction project. The right choices can impact durability, cost, aesthetics, and environmental footprint. Here's a guide to help you navigate this complex process:</p>
       <br/>
@@ -69,7 +73,7 @@ const blogPosts = [
       <h3 class="font-headline text-xl font-semibold mt-4 mb-2">5. Durability and Maintenance</h3>
       <p>Choose materials that can withstand the local climate and expected wear and tear. Also, factor in the long-term maintenance requirements and costs associated with each material.</p>
       <br/>
-      <p>Consulting with professionals like architects and engineers can provide valuable insights and help you make informed decisions. At Sterling Solutions Hub, we offer material consultation as part of our services.</p>
+      <p>Consulting with professionals like architects and engineers can provide valuable insights and help you make informed decisions. At Sterling Contractors, we offer material consultation as part of our services.</p>
     `,
     imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/various-building-materials.png",
     dataAiHint: "various building materials",
@@ -84,9 +88,10 @@ const blogPosts = [
   {
     id: "3",
     slug: "sterling-solutions-community-project",
-    title: "Sterling Solutions Completes Community Center Build",
+    title: "Sterling Contractors Completes Community Center Build",
+    excerpt: "Sterling Contractors proudly announces the completion of the Mwangaza Community Center, a sustainable project featuring a multi-purpose hall, library, clinic, and recreational areas.",
     content: `
-      <p>We are thrilled to announce the successful completion and handover of the new Mwangaza Community Center. This project has been a labor of love for the entire Sterling Solutions Hub team, and we are incredibly proud to contribute to a space that will serve the community for years to come.</p>
+      <p>We are thrilled to announce the successful completion and handover of the new Mwangaza Community Center. This project has been a labor of love for the entire Sterling Contractors team, and we are incredibly proud to contribute to a space that will serve the community for years to come.</p>
       <br/>
       <p>The Mwangaza Community Center features a multi-purpose hall, a library, a small clinic, and outdoor recreational areas. It was designed with sustainability in mind, incorporating rainwater harvesting systems and solar panels.</p>
       <br/>
@@ -97,19 +102,66 @@ const blogPosts = [
     imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/community-center-opening.png",
     dataAiHint: "community center opening",
     author: "Sterling Team",
-    authorTitle: "Sterling Solutions Hub",
-    authorImage: "", // No specific author image, use fallback - could be company logo
+    authorTitle: "Sterling Contractors",
+    authorImage: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/site_assets/sterling-contractors-logo.png", 
     dataAiAuthorHint: "company logo",
     publishDate: "2024-05-10",
     category: "Project Updates",
-    tags: ["Community", "CSR", "Completed Projects", "Nairobi"],
+    tags: ["Community", "CSR", "Completed Projects", "Nairobi"], // Should be Kampala if this is a Sterling Contractors project
   }
 ];
 
-// This is a placeholder for fetching data. In a real app, you'd fetch this by slug.
 async function getPostData(slug: string) {
   return blogPosts.find(post => post.slug === slug);
 }
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getPostData(params.slug);
+
+  if (!post) {
+    return {
+      title: `Post Not Found | ${siteConfig.name}`,
+      description: "The blog post you are looking for does not exist.",
+    };
+  }
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `${post.title} | ${siteConfig.name}`,
+    description: post.excerpt || 'Read this insightful blog post from Sterling Contractors.', // Fallback description
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.publishDate,
+      authors: [post.author],
+      images: [
+        {
+          url: post.imageUrl,
+          width: 1200, // Provide appropriate dimensions
+          height: 630,
+          alt: post.title,
+        },
+        ...previousImages,
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.imageUrl],
+    },
+  };
+}
+
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPostData(params.slug);

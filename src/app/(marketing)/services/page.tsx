@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, Building, Wrench, Users, Truck, Package, HardHat } from "lucide-react";
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Our Services | Sterling Contractors',
+  description: 'Explore comprehensive construction services from Sterling Contractors in Kampala, including new construction, renovations, project management, hardware supply, and consultation.',
+};
 export const revalidate = 3600; // Revalidate at most once per hour
 
 // Mock data for services
@@ -12,8 +17,8 @@ const services = [
   {
     id: "new-construction",
     name: "New Construction",
-    description: "From concept to completion, we build robust and beautiful structures tailored to your specifications. We handle all phases of new construction projects for residential, commercial, and industrial clients.",
-    benefits: ["Turnkey solutions", "High-quality materials", "Adherence to timelines", "Experienced professionals"],
+    description: "From concept to completion, we build robust and beautiful structures tailored to your specifications. We handle all phases of new construction projects for residential, commercial, and industrial clients in Kampala and across Uganda.",
+    benefits: ["Turnkey solutions", "High-quality materials", "Adherence to timelines & budget", "Experienced professionals", "Transparent processes"],
     visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/construction-site-building.png",
     dataAiHint: "construction site building",
     icon: Building,
@@ -21,8 +26,8 @@ const services = [
   {
     id: "renovations",
     name: "Renovations & Remodeling",
-    description: "Modernize your space with our expert renovation services. We specialize in kitchen, bathroom, and full-home remodels, enhancing functionality and aesthetic appeal.",
-    benefits: ["Innovative designs", "Space optimization", "Increased property value", "Minimal disruption"],
+    description: "Modernize your space with our expert renovation services. We specialize in kitchen, bathroom, office, and full-home/business remodels, enhancing functionality and aesthetic appeal with a keen eye for detail.",
+    benefits: ["Innovative designs", "Space optimization", "Increased property value", "Minimal disruption", "Quality craftsmanship"],
     visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/modern-kitchen-renovation.png",
     dataAiHint: "modern kitchen renovation",
     icon: Wrench,
@@ -30,8 +35,8 @@ const services = [
   {
     id: "project-management",
     name: "Project Management",
-    description: "Our seasoned project managers ensure your project stays on track, within budget, and meets all quality standards. We coordinate all aspects from planning to execution using efficient, data-informed strategies.",
-    benefits: ["Budget control", "Quality assurance", "Risk management", "Effective communication"],
+    description: "Our seasoned project managers ensure your project stays on track, within budget, and meets all quality standards. We coordinate all aspects from planning to execution using efficient, data-informed strategies and clear communication.",
+    benefits: ["Budget control & cost efficiency", "Quality assurance", "Risk management", "Effective communication & reporting", "On-time delivery"],
     visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/blueprint-project-plan.png",
     dataAiHint: "blueprint project plan",
     icon: Users,
@@ -39,8 +44,8 @@ const services = [
   {
     id: "hardware-supply",
     name: "Hardware & Material Supply",
-    description: "Access a wide range of high-quality construction materials and hardware. Leveraging direct industry experience, we ensure competitive pricing and reliable delivery for your project needs.",
-    benefits: ["Extensive product catalog", "Competitive pricing", "Bulk order discounts", "Reliable delivery"],
+    description: "Access a wide range of high-quality construction materials and hardware. Leveraging direct industry experience and strong supplier networks, we ensure competitive pricing and reliable delivery for your project needs.",
+    benefits: ["Extensive product catalog", "Competitive pricing", "Bulk order discounts", "Reliable & timely delivery", "Quality assurance on materials"],
     visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/hardware-tools-materials.png",
     dataAiHint: "hardware tools materials",
     icon: Truck,
@@ -48,8 +53,8 @@ const services = [
   {
     id: "consultation-services",
     name: "Construction Consultation",
-    description: "Leverage our expert advice for your project planning. Our consultations are grounded in quantitative analysis and up-to-date market insights for design, material selection, budgeting, and regulatory compliance.",
-    benefits: ["Expert advice", "Cost-saving strategies", "Feasibility studies", "Compliance guidance"],
+    description: "Leverage our expert advice for your project planning. Our consultations are grounded in quantitative analysis, market insights for design, material selection, budgeting, and regulatory compliance in Uganda.",
+    benefits: ["Expert industry advice", "Cost-saving strategies", "Feasibility studies", "Compliance & regulatory guidance", "Data-driven insights"],
     visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/construction-worker-meeting.png",
     dataAiHint: "construction worker meeting",
     icon: HardHat,
@@ -57,8 +62,8 @@ const services = [
    {
     id: "custom-fabrication",
     name: "Custom Fabrication",
-    description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs with sterling quality.",
-    benefits: ["Tailored solutions", "Precision engineering", "Durable materials", "Unique designs"],
+    description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs with sterling quality and precision.",
+    benefits: ["Tailored solutions to specifications", "Precision engineering & craftsmanship", "Durable & high-quality materials", "Unique & aesthetic designs", "Functional integrations"],
     visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/metal-welding-workshop.png",
     dataAiHint: "metal welding workshop",
     icon: Package,
@@ -71,13 +76,13 @@ export default function ServicesPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Services</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Comprehensive solutions for all your construction and hardware needs, backed by data-driven efficiency and transparent practices. We are committed to quality, reliability, and customer satisfaction.
+          Comprehensive solutions for all your construction and hardware needs, backed by data-driven efficiency and transparent practices. We are committed to quality, reliability, and customer satisfaction in every project we undertake in Kampala and beyond.
         </p>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <Card key={service.id} id={service.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+          <Card key={service.id} id={service.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in group" style={{animationDelay: `${index * 0.1}s`}}>
             {service.visualUrl && (
               <div className="aspect-video overflow-hidden">
                 <Image

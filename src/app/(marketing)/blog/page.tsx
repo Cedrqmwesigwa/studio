@@ -5,16 +5,22 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, UserCircle } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog | Sterling Contractors',
+  description: 'Stay updated with the latest news, insights, construction tips, and project updates from Sterling Contractors in Kampala, Uganda.',
+};
 
 export const revalidate = 3600; // Revalidate at most once per hour
 
-// Mock data for blog posts
+// Mock data for blog posts - Ensure excerpts are updated or generated if not present
 const blogPosts = [
   {
     id: "1",
     slug: "top-5-construction-trends-2024",
     title: "Top 5 Construction Trends to Watch in 2024",
-    excerpt: "Discover the latest innovations shaping the construction industry, from sustainable materials to AI-driven project management.",
+    excerpt: "Explore the leading innovations like sustainable materials, AI in project management, modular construction, advanced BIM, and robotics shaping the future of the building industry.",
     imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/construction-site-future-thumb.png",
     dataAiHint: "construction site future",
     author: "Jane Doe, Lead Architect",
@@ -26,7 +32,7 @@ const blogPosts = [
     id: "2",
     slug: "choosing-right-materials-project",
     title: "Choosing the Right Materials for Your Project",
-    excerpt: "A comprehensive guide to selecting durable, cost-effective, and aesthetically pleasing materials for your next construction endeavor.",
+    excerpt: "A guide to selecting materials that balance cost, quality, sustainability, aesthetics, and durability for your construction project.",
     imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/building-materials-samples-thumb.png",
     dataAiHint: "building materials samples",
     author: "John Smith, Materials Expert",
@@ -36,9 +42,9 @@ const blogPosts = [
   },
   {
     id: "3",
-    slug: "sterling-solutions-community-project",
-    title: "Sterling Solutions Completes Community Center Build",
-    excerpt: "We're proud to announce the successful completion of the new community center, a project close to our hearts.",
+    slug: "sterling-solutions-community-project", // Slug implies old name
+    title: "Sterling Contractors Completes Community Center Build", // Title updated
+    excerpt: "Sterling Contractors proudly announces the completion of the Mwangaza Community Center, a sustainable project featuring a multi-purpose hall, library, clinic, and recreational areas.", // Excerpt updated
     imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/community-center-building-thumb.png",
     dataAiHint: "community center building",
     author: "Sterling Team",
@@ -61,7 +67,7 @@ export default function BlogPage() {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in" style={{animationDelay: '0.2s'}}>
         {blogPosts.map((post, index) => (
           <Card key={post.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.1 + 0.2}s`}}>
-            <Link href={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
+            <Link href={`/blog/${post.slug}`} className="block aspect-video overflow-hidden group">
               <Image
                 src={post.imageUrl}
                 alt={post.title}
@@ -105,12 +111,6 @@ export default function BlogPage() {
           </Card>
         ))}
       </section>
-      
-      {/* Placeholder for Admin: Add New Post Button */}
-      {/* This would be conditionally rendered based on useAuth().isAdmin */}
-      {/* <div className="text-center mt-8">
-        <Button>Add New Blog Post (Admin)</Button>
-      </div> */}
     </div>
   );
 }
