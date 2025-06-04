@@ -20,6 +20,8 @@ import { siteConfig } from "@/config/site";
 import { Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),

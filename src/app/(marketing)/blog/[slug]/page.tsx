@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 // Mock data - in a real app, this would come from a database
 const blogPosts = [
   {
@@ -209,5 +211,3 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-
-    

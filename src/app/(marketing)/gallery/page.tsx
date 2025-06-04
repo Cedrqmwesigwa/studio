@@ -8,6 +8,8 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowLeft, ArrowRight, Expand, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 const initialGalleryImages = [
   { id: 1, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen", dataAiHint: "modern kitchen", category: "Residential" },
   { id: 2, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/office-building.png", alt: "Office building facade", dataAiHint: "office building", category: "Commercial" },
@@ -133,5 +135,3 @@ export default function GalleryPage() {
     </div>
   );
 }
-
-    

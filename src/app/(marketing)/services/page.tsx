@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, Building, Wrench, Users, Truck, Package, HardHat } from "lucide-react";
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 // Mock data for services
 const services = [
   {
@@ -69,7 +71,7 @@ export default function ServicesPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Services</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Comprehensive solutions for all your construction and hardware needs. We are committed to quality, reliability, and customer satisfaction.
+          Comprehensive solutions for all your construction and hardware needs, backed by data-driven efficiency and transparent practices. We are committed to quality, reliability, and customer satisfaction.
         </p>
       </section>
 
@@ -117,5 +119,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-
-    

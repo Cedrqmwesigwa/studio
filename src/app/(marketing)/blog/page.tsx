@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, UserCircle } from 'lucide-react';
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 // Mock data for blog posts
 const blogPosts = [
   {
@@ -112,5 +114,3 @@ export default function BlogPage() {
     </div>
   );
 }
-
-    

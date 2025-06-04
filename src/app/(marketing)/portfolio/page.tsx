@@ -10,6 +10,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Quote } from 'lucide-react';
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 // Mock data for projects
 const allProjects = [
   {
@@ -154,5 +156,3 @@ export default function PortfolioPage() {
     </div>
   );
 }
-
-    

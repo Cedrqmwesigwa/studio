@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Tag } from 'lucide-react';
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 // Mock data for products
 const products = [
   {
@@ -143,5 +145,3 @@ export default function ShopPage() {
     </div>
   );
 }
-
-    

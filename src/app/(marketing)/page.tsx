@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { CheckCircle, Building, Users, Wrench, TrendingUp, Eye } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
+export const revalidate = 3600; // Revalidate at most once per hour
+
 // Mock data for services and portfolio items
 const featuredServices = [
   { name: "New Construction", description: "Building your vision from the ground up.", icon: Building, href: "/services#new-construction" },
@@ -81,7 +83,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Why {siteConfig.name}?</h2>
             <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Experience the difference with our commitment to quality, transparency, and client satisfaction.
+             Experience the difference with our commitment to quality, transparency, data-driven efficiency, and client satisfaction.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -151,5 +153,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
