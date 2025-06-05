@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { User, Mail, Edit3 } from 'lucide-react';
+import { User, Mail, Edit3, Loader2 } from 'lucide-react'; // Added Loader2
 import { useToast } from '@/hooks/use-toast';
 import { useState, useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -16,9 +16,9 @@ import { db } from '@/firebase/client';
 import { Badge } from '@/components/ui/badge';
 
 export default function ProfilePage() {
-  const { user, loading } = useAuth();
+  const { user, loading: authLoading } = useAuth(); // Renamed loading to authLoading to avoid conflict
   const { toast } = useToast();
-  const [displayName, setDisplayName] = useState(user?.displayName || '');
+  const [displayName, setDisplayName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -29,7 +29,7 @@ export default function ProfilePage() {
   }, [user]);
 
   const getInitials = (name: string | null | undefined) => {
-    if (!name) return 'SS';
+    if (!name) return 'SC'; // Sterling Contractors initials
     const names = name.split(' ');
     if (names.length === 1) return names[0].substring(0, 2).toUpperCase();
     return (names[0][0] + names[names.length - 1][0]).toUpperCase();
@@ -40,15 +40,21 @@ export default function ProfilePage() {
       toast({ title: "Error", description: "Display name cannot be empty.", variant: "destructive" });
       return;
     }
+    if (!db) {
+      toast({ title: "Error", description: "Database service is not available. Cannot save profile.", variant: "destructive" });
+      return;
+    }
     setIsSaving(true);
     try {
       const userRef = doc(db, 'users', user.uid);
       await updateDoc(userRef, { displayName: displayName.trim() });
-      // Note: This updates Firestore. To update Firebase Auth profile, use updateProfile from 'firebase/auth'.
-      // For simplicity, we're only updating Firestore here. Refreshing context will show changes.
       toast({ title: "Success", description: "Profile updated successfully. Changes may take a moment to reflect everywhere." });
       setIsEditing(false);
-      // Potentially re-fetch user from context or trigger context update
+      // To reflect changes immediately, you might need to update the user object in AuthContext or re-fetch it.
+      // For simplicity, this example relies on a page refresh or AuthContext re-triggering.
+      if(user) { // Update local state for immediate reflection if user object exists
+        user.displayName = displayName.trim();
+      }
     } catch (error) {
       console.error("Error updating profile: ", error);
       toast({ title: "Error", description: "Could not update profile.", variant: "destructive" });
@@ -57,12 +63,21 @@ export default function ProfilePage() {
     }
   };
 
-  if (loading) {
-    return <div className="text-center p-8">Loading profile...</div>;
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[calc(100vh-10rem)]">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="ml-2">Loading profile...</p>
+      </div>
+    );
   }
 
   if (!user) {
-    return <div className="text-center p-8">Please sign in to view your profile.</div>;
+    return (
+      <div className="text-center p-8 text-muted-foreground">
+         Please sign in to view your profile. If Firebase services are unavailable, profile management will be disabled.
+      </div>
+    );
   }
 
   return (
@@ -80,7 +95,7 @@ export default function ProfilePage() {
             <AvatarImage src={user.photoURL || undefined} alt={user.displayName || 'User'} />
             <AvatarFallback className="text-3xl">{getInitials(user.displayName)}</AvatarFallback>
           </Avatar>
-          <CardTitle className="font-headline text-2xl">{user.displayName}</CardTitle>
+          <CardTitle className="font-headline text-2xl">{displayName || user.displayName || 'User'}</CardTitle>
           <CardDescription>{user.email}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -96,22 +111,24 @@ export default function ProfilePage() {
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   className="flex-grow"
+                  disabled={isSaving || !db}
                 />
-                <Button onClick={handleSaveProfile} disabled={isSaving}>
-                  {isSaving ? 'Saving...' : 'Save'}
+                <Button onClick={handleSaveProfile} disabled={isSaving || !db || !displayName.trim()}>
+                  {isSaving ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Saving...</> : 'Save'}
                 </Button>
-                <Button variant="outline" onClick={() => { setIsEditing(false); setDisplayName(user.displayName || ''); }}>
+                <Button variant="outline" onClick={() => { setIsEditing(false); setDisplayName(user.displayName || ''); }} disabled={isSaving}>
                   Cancel
                 </Button>
               </div>
             ) : (
               <div className="flex justify-between items-center">
-                <p className="text-foreground">{displayName || 'Not set'}</p>
-                <Button variant="ghost" size="icon" onClick={() => setIsEditing(true)}>
+                <p className="text-foreground">{displayName || user.displayName || 'Not set'}</p>
+                <Button variant="ghost" size="icon" onClick={() => setIsEditing(true)} disabled={!db}>
                   <Edit3 className="h-4 w-4" />
                 </Button>
               </div>
             )}
+            {!db && <p className="text-xs text-destructive mt-1">Profile editing disabled: Database service unavailable.</p>}
           </div>
 
           <div className="space-y-2">

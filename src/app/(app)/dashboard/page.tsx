@@ -21,7 +21,16 @@ export default function DashboardPage() {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      setLoadingTodos(false);
+      return;
+    }
+    if (!db) {
+      toast({ title: "Error", description: "Database service is not available.", variant: "destructive" });
+      setLoadingTodos(false);
+      setTodos([]);
+      return;
+    }
 
     setLoadingTodos(true);
     const todosColRef = collection(db, 'users', user.uid, 'todos');
@@ -45,6 +54,10 @@ export default function DashboardPage() {
 
   const handleAddTodo = async () => {
     if (!user || newTodo.trim() === '') return;
+    if (!db) {
+      toast({ title: "Error", description: "Database service is not available. Cannot add item.", variant: "destructive" });
+      return;
+    }
     try {
       const todosColRef = collection(db, 'users', user.uid, 'todos');
       await addDoc(todosColRef, {
@@ -62,6 +75,10 @@ export default function DashboardPage() {
 
   const handleToggleTodo = async (id: string, completed: boolean) => {
     if (!user) return;
+     if (!db) {
+      toast({ title: "Error", description: "Database service is not available. Cannot update item.", variant: "destructive" });
+      return;
+    }
     try {
       const todoDocRef = doc(db, 'users', user.uid, 'todos', id);
       await updateDoc(todoDocRef, { completed: !completed });
@@ -74,6 +91,10 @@ export default function DashboardPage() {
 
   const handleDeleteTodo = async (id: string) => {
     if (!user) return;
+    if (!db) {
+      toast({ title: "Error", description: "Database service is not available. Cannot delete item.", variant: "destructive" });
+      return;
+    }
     try {
       const todoDocRef = doc(db, 'users', user.uid, 'todos', id);
       await deleteDoc(todoDocRef);
@@ -125,6 +146,8 @@ export default function DashboardPage() {
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
               <p className="ml-2 text-muted-foreground">Loading tasks...</p>
             </div>
+          ) : !db && user ? (
+             <p className="text-center text-destructive py-4">Database service is unavailable. To-do list cannot be loaded.</p>
           ) : todos.length === 0 ? (
             <p className="text-center text-muted-foreground py-4">No tasks yet. Add one above!</p>
           ) : (
@@ -179,7 +202,7 @@ export default function DashboardPage() {
             <CardHeader>
                 <CardTitle className="font-headline text-xl">Recent Activity</CardTitle>
                 <CardDescription>Updates and notifications related to your account.</CardDescription>
-            </CardHeader>
+            </Header>
             <CardContent>
                 <p className="text-muted-foreground">Activity feed coming soon.</p>
             </CardContent>
