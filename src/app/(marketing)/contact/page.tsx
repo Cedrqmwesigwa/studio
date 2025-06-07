@@ -23,8 +23,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 // For SEO on this page, ensure the RootLayout or a parent server component handles metadata.
 // If this page were a Server Component, you could export Metadata.
 
-export const revalidate = 3600; // Revalidate at most once per hour (effective if it were a Server Component)
-
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -207,11 +205,11 @@ export default function ContactPage() {
       <section className="fade-in" style={{ animationDelay: '0.4s' }}>
         <h2 className="font-headline text-2xl font-semibold text-center mb-6">Find Us On The Map</h2>
         <div className="aspect-video bg-muted rounded-lg shadow-md overflow-hidden">
-          <iframe 
+          <iframe
             src={googleMapsEmbedUrl}
-            width="100%" 
-            height="100%" 
-            style={{border:0}} 
+            width="100%"
+            height="100%"
+            style={{border:0}}
             allowFullScreen={false}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
