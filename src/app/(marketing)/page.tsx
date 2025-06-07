@@ -117,6 +117,7 @@ export default function HomePage() {
                   height={400}
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                   data-ai-hint={project.dataAiHint}
+                  loading="lazy"
                 />
               </div>
               <CardHeader>

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { User, Mail, Edit3, Loader2 } from 'lucide-react'; // Added Loader2
+import { User, Mail, Edit3, Loader2, ShieldCheck } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useState, useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -16,7 +16,7 @@ import { db } from '@/firebase/client';
 import { Badge } from '@/components/ui/badge';
 
 export default function ProfilePage() {
-  const { user, loading: authLoading } = useAuth(); // Renamed loading to authLoading to avoid conflict
+  const { user, loading: authLoading } = useAuth();
   const { toast } = useToast();
   const [displayName, setDisplayName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -51,8 +51,7 @@ export default function ProfilePage() {
       toast({ title: "Success", description: "Profile updated successfully. Changes may take a moment to reflect everywhere." });
       setIsEditing(false);
       // To reflect changes immediately, you might need to update the user object in AuthContext or re-fetch it.
-      // For simplicity, this example relies on a page refresh or AuthContext re-triggering.
-      if(user) { // Update local state for immediate reflection if user object exists
+      if(user) { 
         user.displayName = displayName.trim();
       }
     } catch (error) {
@@ -97,6 +96,12 @@ export default function ProfilePage() {
           </Avatar>
           <CardTitle className="font-headline text-2xl">{displayName || user.displayName || 'User'}</CardTitle>
           <CardDescription>{user.email}</CardDescription>
+          {user.isAdmin && (
+            <Badge className="mt-2 bg-accent text-accent-foreground flex items-center">
+              <ShieldCheck className="mr-1.5 h-4 w-4" />
+              Administrator
+            </Badge>
+          )}
         </CardHeader>
         <CardContent className="space-y-6">
           <Separator />
@@ -145,9 +150,6 @@ export default function ProfilePage() {
              <p className="text-sm text-muted-foreground">
                 Your account is managed through Google Authentication. To change your password or primary email, please manage your Google account settings.
              </p>
-             {user.isAdmin && (
-                <Badge className="mt-4 bg-accent text-accent-foreground">Administrator Account</Badge>
-             )}
           </div>
           
         </CardContent>
