@@ -19,18 +19,25 @@ export type SiteConfig = {
   footerNav?: NavItem[];
   support: {
     phone: string;
+    rawPhone: string; // For tel: links
     email: string;
     address: string;
     operatingHours: string;
+    whatsappNumber?: string; // For WhatsApp link generation
+    whatsappLink?: string; // Full WhatsApp link
   };
 };
+
+const rawPhoneNumber = "+256751979777";
+const displayPhoneNumber = "+256 751 979 777"; // Keep this for display if you prefer spaces
+const whatsappNumberForLink = rawPhoneNumber.replace(/\D/g, ''); // Remove non-digits for wa.me link
 
 export const siteConfig: SiteConfig = {
   name: "Sterling Contractors",
   description: "Your trusted partner for construction and contracting services in Kampala. We build Uganda's future with quality, transparency, and data-driven efficiency.",
   url: "https://sterlingcontractors.org",
-  ogImage: "https://sterlingcontractors.org/og.jpg", // Updated domain
-  logoUrl: "/site_assets/sterling-contractors-logo.png", // Updated to local path
+  ogImage: "/og.jpg", // Updated to local path
+  logoUrl: "/site_assets/sterling-contractors-logo.png",
   mainNav: [
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
@@ -46,9 +53,12 @@ export const siteConfig: SiteConfig = {
     { title: "Make Deposit", href: "/deposits", authRequired: true },
   ],
   support: {
-    phone: "+256 751 979 777",
-    email: "support@sterlingcontractors.example.com",
+    phone: displayPhoneNumber,
+    rawPhone: rawPhoneNumber,
+    email: "mctyptys@gmail.com",
     address: "Nakasero, Kampala, Uganda",
     operatingHours: "Mon-Fri: 8 AM - 5 PM, Sat: 9 AM - 1 PM",
+    whatsappNumber: whatsappNumberForLink,
+    whatsappLink: `https://wa.me/${whatsappNumberForLink}`,
   },
 };
