@@ -6,10 +6,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, UserCircle } from 'lucide-react';
 import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'Blog | Sterling Contractors',
-  description: 'Stay updated with the latest news, insights, construction tips, and project updates from Sterling Contractors in Kampala, Uganda.',
+  title: `Blog | ${siteConfig.name}`,
+  description: `Stay updated with the latest news, insights, construction tips, and project updates from ${siteConfig.name} in Kampala, Uganda.`,
 };
 
 export const revalidate = 3600; // Revalidate at most once per hour
@@ -21,7 +22,7 @@ const blogPosts = [
     slug: "top-5-construction-trends-2024",
     title: "Top 5 Construction Trends to Watch in 2024",
     excerpt: "Explore the leading innovations like sustainable materials, AI in project management, modular construction, advanced BIM, and robotics shaping the future of the building industry.",
-    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/construction-site-future-thumb.png",
+    imageUrl: "/blog_images/construction-site-future-thumb.png",
     dataAiHint: "construction site future",
     author: "Jane Doe, Lead Architect",
     publishDate: "2024-07-15",
@@ -33,7 +34,7 @@ const blogPosts = [
     slug: "choosing-right-materials-project",
     title: "Choosing the Right Materials for Your Project",
     excerpt: "A guide to selecting materials that balance cost, quality, sustainability, aesthetics, and durability for your construction project.",
-    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/building-materials-samples-thumb.png",
+    imageUrl: "/blog_images/building-materials-samples-thumb.png",
     dataAiHint: "building materials samples",
     author: "John Smith, Materials Expert",
     publishDate: "2024-06-28",
@@ -45,7 +46,7 @@ const blogPosts = [
     slug: "sterling-solutions-community-project", // Slug implies old name
     title: "Sterling Contractors Completes Community Center Build", // Title updated
     excerpt: "Sterling Contractors proudly announces the completion of the Mwangaza Community Center, a sustainable project featuring a multi-purpose hall, library, clinic, and recreational areas.", // Excerpt updated
-    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/community-center-building-thumb.png",
+    imageUrl: "/blog_images/community-center-building-thumb.png",
     dataAiHint: "community center building",
     author: "Sterling Team",
     publishDate: "2024-05-10",
@@ -60,7 +61,7 @@ export default function BlogPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Blog</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Stay updated with the latest news, insights, and project updates from Sterling Contractors.
+          Stay updated with the latest news, insights, and project updates from {siteConfig.name}.
         </p>
       </section>
 

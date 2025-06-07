@@ -23,9 +23,9 @@ const whyChooseUsItems = [
 ];
 
 const featuredProjects = [
-  { title: "Modern Villa", image: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/modern-villa.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
-  { title: "Commercial Complex", image: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/commercial-building.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
-  { title: "Luxury Apartment", image: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/project_showcase_images/luxury-apartment.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
+  { title: "Modern Villa", image: "/project_showcase_images/modern-villa.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
+  { title: "Commercial Complex", image: "/project_showcase_images/commercial-building.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
+  { title: "Luxury Apartment", image: "/project_showcase_images/luxury-apartment.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
 ];
 
 export default function HomePage() {

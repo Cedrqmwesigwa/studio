@@ -7,25 +7,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowLeft, ArrowRight, Expand, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-// Metadata should be handled by a parent server component or RootLayout for client components
-// export const metadata: Metadata = {
-//   title: 'Image Gallery | Sterling Contractors',
-//   description: 'A visual showcase of completed projects, hardware installations, and the quality Sterling Contractors delivers in Kampala, Uganda.',
-// };
+import { siteConfig } from '@/config/site';
 
-
-export const revalidate = 3600; // Revalidate at most once per hour (effective if it were a Server Component)
 
 const initialGalleryImages = [
-  { id: 1, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen in a Kampala home", dataAiHint: "modern kitchen", category: "Residential" },
-  { id: 2, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/office-building.png", alt: "Office building facade in Nakasero", dataAiHint: "office building", category: "Commercial" },
-  { id: 3, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling in a Kololo apartment", dataAiHint: "luxury bathroom", category: "Residential" },
-  { id: 4, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/warehouse-interior.png", alt: "Industrial warehouse interior in Ntinda", dataAiHint: "warehouse interior", category: "Industrial" },
-  { id: 5, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/landscaped-garden.png", alt: "Landscaped garden for a villa in Muyenga", dataAiHint: "landscaped garden", category: "Residential" },
-  { id: 6, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/retail-store.png", alt: "Retail store layout in Acacia Mall", dataAiHint: "retail store", category: "Commercial" },
-  { id: 7, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/custom-staircase.png", alt: "Custom staircase in a Bugolobi home", dataAiHint: "custom staircase", category: "Residential" },
-  { id: 8, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/building-foundation.png", alt: "Building foundation work for a new construction in Kampala", dataAiHint: "building foundation", category: "Construction Process" },
-  { id: 9, src: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/gallery_images/roof-installation.png", alt: "Roof installation on a commercial property", dataAiHint: "roof installation", category: "Construction Process" },
+  { id: 1, src: "/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen in a Kampala home", dataAiHint: "modern kitchen", category: "Residential" },
+  { id: 2, src: "/gallery_images/office-building.png", alt: "Office building facade in Nakasero", dataAiHint: "office building", category: "Commercial" },
+  { id: 3, src: "/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling in a Kololo apartment", dataAiHint: "luxury bathroom", category: "Residential" },
+  { id: 4, src: "/gallery_images/warehouse-interior.png", alt: "Industrial warehouse interior in Ntinda", dataAiHint: "warehouse interior", category: "Industrial" },
+  { id: 5, src: "/gallery_images/landscaped-garden.png", alt: "Landscaped garden for a villa in Muyenga", dataAiHint: "landscaped garden", category: "Residential" },
+  { id: 6, src: "/gallery_images/retail-store.png", alt: "Retail store layout in Acacia Mall", dataAiHint: "retail store", category: "Commercial" },
+  { id: 7, src: "/gallery_images/custom-staircase.png", alt: "Custom staircase in a Bugolobi home", dataAiHint: "custom staircase", category: "Residential" },
+  { id: 8, src: "/gallery_images/building-foundation.png", alt: "Building foundation work for a new construction in Kampala", dataAiHint: "building foundation", category: "Construction Process" },
+  { id: 9, src: "/gallery_images/roof-installation.png", alt: "Roof installation on a commercial property", dataAiHint: "roof installation", category: "Construction Process" },
 ];
 
 // Function to shuffle an array
@@ -68,7 +62,7 @@ export default function GalleryPage() {
 
   // Set page title dynamically on client if needed, though metadata API is preferred for SEO
   useEffect(() => {
-    document.title = 'Image Gallery | Sterling Contractors';
+    document.title = `Image Gallery | ${siteConfig.name}`;
   }, []);
 
 
@@ -93,7 +87,7 @@ export default function GalleryPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Image Gallery</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          A visual showcase of our completed projects, hardware installations, and the quality Sterling Contractors delivers in Kampala and Uganda.
+          A visual showcase of our completed projects, hardware installations, and the quality {siteConfig.name} delivers in Kampala and Uganda.
         </p>
       </section>
 

@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, Building, Wrench, Users, Truck, Package, HardHat } from "lucide-react";
 import type { Metadata } from 'next';
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: 'Our Services | Sterling Contractors',
-  description: 'Explore comprehensive construction services from Sterling Contractors in Kampala, including new construction, renovations, project management, hardware supply, and consultation.',
+  title: `Our Services | ${siteConfig.name}`,
+  description: `Explore comprehensive construction services from ${siteConfig.name} in Kampala, including new construction, renovations, project management, hardware supply, and consultation.`,
 };
 export const revalidate = 3600; // Revalidate at most once per hour
 
@@ -19,7 +20,7 @@ const services = [
     name: "New Construction",
     description: "From concept to completion, we build robust and beautiful structures tailored to your specifications. We handle all phases of new construction projects for residential, commercial, and industrial clients in Kampala and across Uganda.",
     benefits: ["Turnkey solutions", "High-quality materials", "Adherence to timelines & budget", "Experienced professionals", "Transparent processes"],
-    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/construction-site-building.png",
+    visualUrl: "/service_visuals/construction-site-building.png",
     dataAiHint: "construction site building",
     icon: Building,
   },
@@ -28,7 +29,7 @@ const services = [
     name: "Renovations & Remodeling",
     description: "Modernize your space with our expert renovation services. We specialize in kitchen, bathroom, office, and full-home/business remodels, enhancing functionality and aesthetic appeal with a keen eye for detail.",
     benefits: ["Innovative designs", "Space optimization", "Increased property value", "Minimal disruption", "Quality craftsmanship"],
-    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/modern-kitchen-renovation.png",
+    visualUrl: "/service_visuals/modern-kitchen-renovation.png",
     dataAiHint: "modern kitchen renovation",
     icon: Wrench,
   },
@@ -37,7 +38,7 @@ const services = [
     name: "Project Management",
     description: "Our seasoned project managers ensure your project stays on track, within budget, and meets all quality standards. We coordinate all aspects from planning to execution using efficient, data-informed strategies and clear communication.",
     benefits: ["Budget control & cost efficiency", "Quality assurance", "Risk management", "Effective communication & reporting", "On-time delivery"],
-    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/blueprint-project-plan.png",
+    visualUrl: "/service_visuals/blueprint-project-plan.png",
     dataAiHint: "blueprint project plan",
     icon: Users,
   },
@@ -46,7 +47,7 @@ const services = [
     name: "Hardware & Material Supply",
     description: "Access a wide range of high-quality construction materials and hardware. Leveraging direct industry experience and strong supplier networks, we ensure competitive pricing and reliable delivery for your project needs.",
     benefits: ["Extensive product catalog", "Competitive pricing", "Bulk order discounts", "Reliable & timely delivery", "Quality assurance on materials"],
-    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/hardware-tools-materials.png",
+    visualUrl: "/service_visuals/hardware-tools-materials.png",
     dataAiHint: "hardware tools materials",
     icon: Truck,
   },
@@ -55,7 +56,7 @@ const services = [
     name: "Construction Consultation",
     description: "Leverage our expert advice for your project planning. Our consultations are grounded in quantitative analysis, market insights for design, material selection, budgeting, and regulatory compliance in Uganda.",
     benefits: ["Expert industry advice", "Cost-saving strategies", "Feasibility studies", "Compliance & regulatory guidance", "Data-driven insights"],
-    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/construction-worker-meeting.png",
+    visualUrl: "/service_visuals/construction-worker-meeting.png",
     dataAiHint: "construction worker meeting",
     icon: HardHat,
   },
@@ -64,7 +65,7 @@ const services = [
     name: "Custom Fabrication",
     description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs with sterling quality and precision.",
     benefits: ["Tailored solutions to specifications", "Precision engineering & craftsmanship", "Durable & high-quality materials", "Unique & aesthetic designs", "Functional integrations"],
-    visualUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/service_visuals/metal-welding-workshop.png",
+    visualUrl: "/service_visuals/metal-welding-workshop.png",
     dataAiHint: "metal welding workshop",
     icon: Package,
   },

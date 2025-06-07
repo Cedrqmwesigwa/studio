@@ -30,7 +30,7 @@ export const siteConfig: SiteConfig = {
   description: "Your trusted partner for construction and contracting services in Kampala. We build Uganda's future with quality, transparency, and data-driven efficiency.",
   url: "https://sterlingcontractors.org",
   ogImage: "https://sterlingcontractors.org/og.jpg", // Updated domain
-  logoUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/site_assets/sterling-contractors-logo.png",
+  logoUrl: "/site_assets/sterling-contractors-logo.png", // Updated to local path
   mainNav: [
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
@@ -47,7 +47,7 @@ export const siteConfig: SiteConfig = {
   ],
   support: {
     phone: "+256 751 979 777",
-    email: "support@sterlingcontractors.example.com", // Placeholder, update if you have actual email
+    email: "support@sterlingcontractors.example.com",
     address: "Nakasero, Kampala, Uganda",
     operatingHours: "Mon-Fri: 8 AM - 5 PM, Sat: 9 AM - 1 PM",
   },

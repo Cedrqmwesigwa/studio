@@ -40,11 +40,11 @@ const blogPosts = [
       <br/>
       <p>Staying ahead of these trends is crucial for success in the modern construction landscape. At Sterling Contractors, we are committed to integrating these innovations into our projects to deliver superior results for our clients.</p>
     `,
-    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/construction-site-modern.png",
+    imageUrl: "/blog_images/construction-site-modern.png",
     dataAiHint: "construction site modern",
     author: "Jane Doe",
     authorTitle: "Lead Architect",
-    authorImage: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/author_images/professional-woman-portrait.png",
+    authorImage: "/author_images/professional-woman-portrait.png",
     dataAiAuthorHint: "professional woman portrait",
     publishDate: "2024-07-15",
     category: "Industry News",
@@ -75,11 +75,11 @@ const blogPosts = [
       <br/>
       <p>Consulting with professionals like architects and engineers can provide valuable insights and help you make informed decisions. At Sterling Contractors, we offer material consultation as part of our services.</p>
     `,
-    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/various-building-materials.png",
+    imageUrl: "/blog_images/various-building-materials.png",
     dataAiHint: "various building materials",
     author: "John Smith",
     authorTitle: "Materials Expert",
-    authorImage: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/author_images/professional-man-portrait.png",
+    authorImage: "/author_images/professional-man-portrait.png",
     dataAiAuthorHint: "professional man portrait",
     publishDate: "2024-06-28",
     category: "Guides",
@@ -99,11 +99,11 @@ const blogPosts = [
       <br/>
       <p>The center is now open and already hosting various community programs. We look forward to seeing it become a vibrant hub of activity and learning.</p>
     `,
-    imageUrl: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/blog_images/community-center-opening.png",
+    imageUrl: "/blog_images/community-center-opening.png",
     dataAiHint: "community center opening",
     author: "Sterling Team",
     authorTitle: "Sterling Contractors",
-    authorImage: "https://storage.googleapis.com/project-ai-prototyper.appspot.com/site_assets/sterling-contractors-logo.png", 
+    authorImage: "/site_assets/sterling-contractors-logo.png", 
     dataAiAuthorHint: "company logo",
     publishDate: "2024-05-10",
     category: "Project Updates",
@@ -134,6 +134,10 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || [];
 
+  // For local images, we need to provide the full URL for OpenGraph
+  const fullImageUrl = post.imageUrl.startsWith('/') ? `${siteConfig.url}${post.imageUrl}` : post.imageUrl;
+
+
   return {
     title: `${post.title} | ${siteConfig.name}`,
     description: post.excerpt || 'Read this insightful blog post from Sterling Contractors.', // Fallback description
@@ -145,7 +149,7 @@ export async function generateMetadata(
       authors: [post.author],
       images: [
         {
-          url: post.imageUrl,
+          url: fullImageUrl,
           width: 1200, // Provide appropriate dimensions
           height: 630,
           alt: post.title,
@@ -157,7 +161,7 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.imageUrl],
+      images: [fullImageUrl],
     },
   };
 }
