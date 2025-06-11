@@ -88,6 +88,54 @@ const products = [
     stock: 75,
     rating: 4.3,
     reviews: 33,
+  },
+  {
+    id: "prod_007",
+    name: "Corrugated Iron Sheets (Gauge 30, 3m)",
+    description: "Standard corrugated iron sheets for roofing. Durable and weather-resistant. Price per sheet.",
+    price: 1200.00,
+    category: "Roofing",
+    imageUrl: "/product_images/iron-sheets-stack.png",
+    dataAiHint: "iron sheets stack",
+    stock: 500,
+    rating: 4.4,
+    reviews: 70,
+  },
+  {
+    id: "prod_008",
+    name: "PVC Rain Gutters (4m Length)",
+    description: "High-quality PVC rain gutters for effective water drainage. Easy to install. Price per length.",
+    price: 1800.00,
+    category: "Plumbing",
+    imageUrl: "/product_images/pvc-gutters.png",
+    dataAiHint: "pvc gutters",
+    stock: 150,
+    rating: 4.2,
+    reviews: 45,
+  },
+  {
+    id: "prod_009",
+    name: "Premium Emulsion Paint (White, 20L)",
+    description: "High-quality emulsion paint for interior and exterior walls. Excellent coverage and smooth finish.",
+    price: 7500.00,
+    category: "Paint",
+    imageUrl: "/product_images/paint-bucket-white.png",
+    dataAiHint: "paint bucket white",
+    stock: 80,
+    rating: 4.7,
+    reviews: 90,
+  },
+  {
+    id: "prod_010",
+    name: "Twisted Steel Nails (5kg Box)",
+    description: "Assorted sizes of twisted steel nails for general construction and woodworking. High grip strength.",
+    price: 950.00,
+    category: "Fasteners",
+    imageUrl: "/product_images/nails-box.png",
+    dataAiHint: "nails box",
+    stock: 120,
+    rating: 4.3,
+    reviews: 55,
   }
 ];
 
@@ -158,3 +206,4 @@ export default function ShopPage() {
     </div>
   );
 }
+

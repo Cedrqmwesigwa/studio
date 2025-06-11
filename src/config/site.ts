@@ -62,3 +62,4 @@ export const siteConfig: SiteConfig = {
     whatsappLink: `https://wa.me/${whatsappNumberForLink}`,
   },
 };
+
