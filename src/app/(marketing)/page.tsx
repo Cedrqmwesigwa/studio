@@ -3,16 +3,34 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Building, Users, Wrench, TrendingUp, Eye } from 'lucide-react';
+import { CheckCircle, Users, TrendingUp, Eye } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 export const revalidate = 3600; // Revalidate at most once per hour
 
-// Mock data for services and portfolio items
+// Updated mock data for services to include images
 const featuredServices = [
-  { name: "New Construction", description: "Building your vision from the ground up.", icon: Building, href: "/services#new-construction" },
-  { name: "Renovations", description: "Transforming spaces with modern designs.", icon: Wrench, href: "/services#renovations" },
-  { name: "Project Management", description: "Expert oversight for seamless execution.", icon: Users, href: "/services#project-management" },
+  { 
+    name: "New Construction", 
+    description: "Building your vision from the ground up with precision and quality.", 
+    imageUrl: "/service_visuals/new-home-construction-site.png", // Placeholder path
+    dataAiHint: "new home construction site",
+    href: "/services#new-construction" 
+  },
+  { 
+    name: "Renovations", 
+    description: "Transforming spaces with modern designs and expert craftsmanship.", 
+    imageUrl: "/service_visuals/kitchen-renovation-modern.png", // Placeholder path
+    dataAiHint: "kitchen renovation modern",
+    href: "/services#renovations" 
+  },
+  { 
+    name: "Project Management", 
+    description: "Expert oversight for seamless execution and timely delivery.", 
+    imageUrl: "/service_visuals/construction-blueprint-planning.png", // Placeholder path
+    dataAiHint: "construction blueprint planning",
+    href: "/services#project-management" 
+  },
 ];
 
 const whyChooseUsItems = [
@@ -32,12 +50,20 @@ export default function HomePage() {
   return (
     <div className="flex flex-col items-center space-y-16 md:space-y-24">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-primary to-blue-700 rounded-lg shadow-xl fade-in">
-        <div className="container px-4 md:px-6 text-center text-primary-foreground">
-          <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+      <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-center fade-in group">
+        <Image
+          src="/site_assets/hero-background-construction.png" // Placeholder path
+          alt="Modern construction site"
+          fill
+          priority
+          className="object-cover z-0 brightness-50 group-hover:brightness-75 transition-all duration-500 ease-in-out"
+          data-ai-hint="modern construction panoramic"
+        />
+        <div className="relative z-10 p-6 md:p-8 bg-black/50 rounded-lg shadow-xl backdrop-blur-sm max-w-4xl mx-auto">
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             Building Excellence, Delivering Quality
           </h1>
-          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-blue-100">
+          <p className="mt-6 text-lg md:text-xl text-slate-100">
             {siteConfig.description}
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
@@ -61,14 +87,22 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredServices.map((service) => (
-            <Card key={service.name} className="hover:shadow-lg transition-shadow duration-300">
-              <CardHeader className="items-center">
-                <service.icon className="h-12 w-12 text-primary mb-4" />
+            <Card key={service.name} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+              <div className="aspect-video relative">
+                <Image
+                  src={service.imageUrl}
+                  alt={service.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  data-ai-hint={service.dataAiHint}
+                />
+              </div>
+              <CardHeader>
                 <CardTitle className="font-headline text-xl">{service.name}</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-muted-foreground">{service.description}</p>
-                <Button variant="link" asChild className="mt-4 text-primary">
+                <p className="text-muted-foreground mb-4">{service.description}</p>
+                <Button variant="link" asChild className="text-primary">
                   <Link href={service.href}>Learn More &rarr;</Link>
                 </Button>
               </CardContent>
@@ -88,9 +122,9 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyChooseUsItems.map((item) => (
-              <div key={item.title} className="flex flex-col items-center text-center p-4">
-                <item.icon className="h-10 w-10 text-accent mb-3" />
-                <h3 className="font-headline text-lg font-semibold mb-1">{item.title}</h3>
+              <div key={item.title} className="flex flex-col items-center text-center p-4 bg-background rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <item.icon className="h-10 w-10 text-accent mb-4" />
+                <h3 className="font-headline text-lg font-semibold mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
@@ -108,7 +142,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProjects.map((project) => (
-            <Card key={project.title} className="overflow-hidden group">
+            <Card key={project.title} className="overflow-hidden group hover:shadow-xl transition-shadow duration-300">
               <div className="aspect-video overflow-hidden">
                 <Image
                   src={project.image}
