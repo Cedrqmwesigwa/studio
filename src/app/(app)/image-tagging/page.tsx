@@ -1,3 +1,4 @@
+
 import ImageTaggingForm from '@/components/ai/image-tagging-form';
 
 export default function ImageTaggingPage() {
@@ -9,7 +10,9 @@ export default function ImageTaggingPage() {
           Upload your project photos and let our AI automatically generate descriptive tags. This helps in organizing and searching your visual assets efficiently.
         </p>
       </section>
-      <ImageTaggingForm />
+      <div className="fade-in" style={{animationDelay: '0.2s'}}>
+        <ImageTaggingForm />
+      </div>
     </div>
   );
 }

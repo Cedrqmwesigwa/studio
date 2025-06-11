@@ -10,7 +10,9 @@ export default function DepositEstimatorPage() {
           Get an intelligent estimate for your project deposit. This tool uses AI to analyze your project details and provide a reasonable deposit range.
         </p>
       </section>
-      <DepositEstimatorForm />
+      <div className="fade-in" style={{animationDelay: '0.2s'}}>
+        <DepositEstimatorForm />
+      </div>
     </div>
   );
 }

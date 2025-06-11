@@ -57,7 +57,7 @@ export default function DepositsPage() {
         </p>
       </section>
 
-      <Card className="shadow-lg fade-in" style={{animationDelay: '0.2s'}}>
+      <Card className="shadow-lg fade-in hover:shadow-xl transition-shadow" style={{animationDelay: '0.2s'}}>
         <CardHeader>
           <CardTitle className="font-headline text-2xl flex items-center">
             <ShieldCheck className="mr-2 h-6 w-6 text-primary" />
@@ -78,7 +78,7 @@ export default function DepositsPage() {
             <h3 className="font-semibold text-xl text-foreground mb-4">Step 2: Choose Your Preferred Payment Method</h3>
             <div className="space-y-6">
               {paymentMethods.map((method) => (
-                <Card key={method.name} className="bg-secondary/50">
+                <Card key={method.name} className="bg-secondary/50 hover:shadow-md transition-shadow">
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center">
                       <method.icon className="h-6 w-6 mr-3 text-accent" />
@@ -130,7 +130,7 @@ export default function DepositsPage() {
         </CardContent>
       </Card>
 
-      <Card className="shadow-lg fade-in" style={{animationDelay: '0.4s'}}>
+      <Card className="shadow-lg fade-in hover:shadow-xl transition-shadow" style={{animationDelay: '0.4s'}}>
         <CardHeader>
           <CardTitle className="font-headline text-2xl flex items-center">
             <FileText className="mr-2 h-6 w-6 text-primary" />

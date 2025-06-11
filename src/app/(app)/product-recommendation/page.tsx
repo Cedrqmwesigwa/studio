@@ -1,3 +1,4 @@
+
 import ProductRecommendationForm from '@/components/ai/product-recommendation-form';
 
 export default function ProductRecommendationPage() {
@@ -9,7 +10,9 @@ export default function ProductRecommendationPage() {
           Get personalized hardware and material recommendations for your project, powered by AI.
         </p>
       </section>
-      <ProductRecommendationForm />
+      <div className="fade-in" style={{animationDelay: '0.2s'}}>
+        <ProductRecommendationForm />
+      </div>
     </div>
   );
 }
