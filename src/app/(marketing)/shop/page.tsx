@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +10,7 @@ import { ShoppingCart, Tag, Eye } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
+// Metadata can still be exported from a Client Component module
 export const metadata: Metadata = {
   title: `Hardware & Materials Shop | ${siteConfig.name}`,
   description: `Browse high-quality construction hardware, tools, and materials. Secure online purchasing and deposits coming soon to ${siteConfig.name}.`,
@@ -206,4 +209,3 @@ export default function ShopPage() {
     </div>
   );
 }
-
