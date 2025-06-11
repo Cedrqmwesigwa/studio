@@ -34,18 +34,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    // Critical check: If Firebase services aren't available, don't proceed.
     if (!auth || !db) {
-      console.error("Firebase Auth or Firestore service is not available. Authentication and user profile operations will not work.");
+      console.error("AuthContext: Firebase Auth or Firestore service is not available. Authentication and user profile operations will not work.");
       setUser(null);
       setIsAdmin(false);
       setLoading(false);
-      return () => {}; // Return an empty unsubscribe function if services are not available
+      return () => {}; // Return an empty unsubscribe function
     }
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser: FirebaseUser | null) => {
       if (firebaseUser) {
-        // Ensure db is checked here again if it might become unavailable, though module import usually means it's stable if initially available.
-        // For safety, we can assume if auth is available, db should be too from the firebase/client.ts logic.
         const userRef = doc(db, 'users', firebaseUser.uid);
         const userSnap = await getDoc(userRef);
         let userProfileData: UserProfile;
@@ -61,12 +60,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             photoURL: firebaseUser.photoURL,
             isAdmin: false, // Default to not admin
           };
-          // Ensure db is available before setDoc
+          // Re-check db before setDoc, though it should be available if auth was.
           if (db) {
             await setDoc(userRef, userProfileData);
           } else {
-            console.error("Firestore service (db) is not available. Cannot create user profile.");
-            // Handle this case: maybe sign out the user or show an error
+             // This case should ideally be caught by the initial check.
+            console.error("AuthContext: Firestore service (db) became unavailable during user profile creation.");
             setUser(null);
             setIsAdmin(false);
             setLoading(false);
@@ -85,20 +84,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     return () => unsubscribe();
-  }, []); // auth and db are from module scope, their references are stable.
+  }, []); // auth and db are from module scope, their references are stable if initialized.
 
-  if (loading && !user && (typeof window !== 'undefined' && (!auth || !db))) {
-    // If still loading AND services are not available, show a specific message or simplified loader.
-    // This state indicates a fundamental issue with Firebase setup.
+  // This loading state is specifically for the AuthProvider's initial setup.
+  // It also handles the case where Firebase services were detected as unavailable at the start.
+  if (loading && (typeof window !== 'undefined' && (!auth || !db) && !user )) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center">
         <Loader2 className="h-12 w-12 animate-spin text-destructive mb-4" />
         <p className="text-lg font-semibold text-destructive">Firebase Services Unavailable</p>
-        <p className="text-muted-foreground">The application cannot connect to essential services. Please check console for errors.</p>
+        <p className="text-muted-foreground">The application cannot connect to essential Firebase services needed for authentication and data. Please check your Firebase configuration and console for errors.</p>
       </div>
-    )
+    );
   }
-
 
   if (loading) {
     return (
@@ -116,3 +114,4 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+

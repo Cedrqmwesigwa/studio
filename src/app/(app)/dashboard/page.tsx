@@ -23,12 +23,14 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!user) {
       setLoadingTodos(false);
+      setTodos([]); // Clear todos if no user
       return;
     }
     if (!db) {
-      toast({ title: "Error", description: "Database service is not available.", variant: "destructive" });
+      // This check is crucial if db might not be initialized
+      toast({ title: "Database Error", description: "Database service is not available. To-do list cannot be loaded.", variant: "destructive" });
       setLoadingTodos(false);
-      setTodos([]);
+      setTodos([]); // Clear todos
       return;
     }
 
@@ -50,7 +52,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [user, toast]);
+  }, [user, toast]); // db is a stable import from firebase/client, so not strictly needed in deps if it initializes once.
 
   const handleAddTodo = async () => {
     if (!user || newTodo.trim() === '') return;
@@ -135,8 +137,9 @@ export default function DashboardPage() {
               placeholder="Add a new task or item..."
               onKeyPress={(e) => e.key === 'Enter' && handleAddTodo()}
               className="flex-grow"
+              disabled={!db} // Disable if db is not available
             />
-            <Button onClick={handleAddTodo} disabled={newTodo.trim() === ''}>
+            <Button onClick={handleAddTodo} disabled={newTodo.trim() === '' || !db}>
               <Plus className="mr-2 h-4 w-4" /> Add
             </Button>
           </div>
@@ -146,8 +149,8 @@ export default function DashboardPage() {
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
               <p className="ml-2 text-muted-foreground">Loading tasks...</p>
             </div>
-          ) : !db && user ? (
-             <p className="text-center text-destructive py-4">Database service is unavailable. To-do list cannot be loaded.</p>
+          ) : !db && user ? ( // Show this if db is not available but user context exists
+             <p className="text-center text-destructive py-4">Database service is unavailable. To-do list cannot be loaded or modified.</p>
           ) : todos.length === 0 ? (
             <p className="text-center text-muted-foreground py-4">No tasks yet. Add one above!</p>
           ) : (
@@ -163,6 +166,7 @@ export default function DashboardPage() {
                       checked={todo.completed}
                       onCheckedChange={() => handleToggleTodo(todo.id, todo.completed)}
                       aria-label={todo.completed ? "Mark as incomplete" : "Mark as complete"}
+                      disabled={!db} // Disable if db is not available
                     />
                     <label
                       htmlFor={`todo-${todo.id}`}
@@ -177,6 +181,7 @@ export default function DashboardPage() {
                     onClick={() => handleDeleteTodo(todo.id)}
                     aria-label="Delete task"
                     className="text-muted-foreground hover:text-destructive"
+                    disabled={!db} // Disable if db is not available
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
