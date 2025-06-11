@@ -36,7 +36,7 @@ export const siteConfig: SiteConfig = {
   name: "Sterling Contractors",
   description: "Your trusted partner for construction and contracting services in Kampala. We build Uganda's future with quality, transparency, and data-driven efficiency.",
   url: "https://sterlingcontractors.org",
-  ogImage: "/og.jpg", // Updated to local path
+  ogImage: "/og.jpg", 
   logoUrl: "/site_assets/sterling-contractors-logo.png",
   mainNav: [
     { title: "Home", href: "/" },
