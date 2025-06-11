@@ -104,7 +104,7 @@ export default function GalleryPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     data-ai-hint={image.dataAiHint}
-                    priority={index < 4} // Prioritize loading images visible above the fold
+                    priority={index < 8} // Prioritize loading first 8 images (e.g. two rows in a 4-column layout)
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <Expand className="h-8 w-8 text-white" />

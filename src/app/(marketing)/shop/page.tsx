@@ -7,16 +7,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Tag, Eye } from 'lucide-react';
-import type { Metadata } from 'next';
+// Removed: import type { Metadata } from 'next'; 
 import { siteConfig } from '@/config/site';
 
-// Metadata can still be exported from a Client Component module
-export const metadata: Metadata = {
-  title: `Hardware & Materials Shop | ${siteConfig.name}`,
-  description: `Browse high-quality construction hardware, tools, and materials. Secure online purchasing and deposits coming soon to ${siteConfig.name}.`,
-};
-
-export const revalidate = 3600; // Revalidate at most once per hour
+// Removed: export const metadata: Metadata = { ... };
+// Removed: export const revalidate = 3600; 
 
 // Mock data for products
 const products = [
@@ -24,7 +19,7 @@ const products = [
     id: "prod_001",
     name: "Heavy Duty Cement Mixer",
     description: "Reliable and durable cement mixer for large construction projects. 200L capacity.",
-    price: 45000.00,
+    price: 45000.00, // Assuming Ksh pricing was intended from other pages
     category: "Machinery",
     imageUrl: "/product_images/cement-mixer.png",
     dataAiHint: "cement mixer",
@@ -36,7 +31,7 @@ const products = [
     id: "prod_002",
     name: "Premium Quality Cement (50kg Bag)",
     description: "High-strength Portland cement suitable for all types of construction work.",
-    price: 650.00,
+    price: 650.00, // Assuming Ksh
     category: "Materials",
     imageUrl: "/product_images/cement-bag.png",
     dataAiHint: "cement bag",
@@ -48,7 +43,7 @@ const products = [
     id: "prod_003",
     name: "Professional Toolset (52 Pieces)",
     description: "Comprehensive toolset for contractors, including wrenches, screwdrivers, pliers, and more.",
-    price: 8500.00,
+    price: 8500.00, // Assuming Ksh
     category: "Tools",
     imageUrl: "/product_images/tool-set-box.png",
     dataAiHint: "tool set box",
@@ -60,7 +55,7 @@ const products = [
     id: "prod_004",
     name: "Safety Helmet (Yellow)",
     description: "Hard hat for construction site safety. Meets industry standards.",
-    price: 800.00,
+    price: 800.00, // Assuming Ksh
     category: "Safety Gear",
     imageUrl: "/product_images/safety-helmet.png",
     dataAiHint: "safety helmet",
@@ -72,7 +67,7 @@ const products = [
     id: "prod_005",
     name: "Reinforcement Steel Bars (1 Ton)",
     description: "High-tensile deformed steel bars for concrete reinforcement. Various sizes available.",
-    price: 95000.00,
+    price: 95000.00, // Assuming Ksh
     category: "Materials",
     imageUrl: "/product_images/steel-rebar.png",
     dataAiHint: "steel rebar",
@@ -84,7 +79,7 @@ const products = [
     id: "prod_006",
     name: "Waterproof Tarpaulin (10m x 12m)",
     description: "Heavy-duty waterproof tarpaulin for covering materials and equipment.",
-    price: 3200.00,
+    price: 3200.00, // Assuming Ksh
     category: "Equipment",
     imageUrl: "/product_images/blue-tarpaulin.png",
     dataAiHint: "blue tarpaulin",
@@ -96,7 +91,7 @@ const products = [
     id: "prod_007",
     name: "Corrugated Iron Sheets (Gauge 30, 3m)",
     description: "Standard corrugated iron sheets for roofing. Durable and weather-resistant. Price per sheet.",
-    price: 1200.00,
+    price: 1200.00, // Assuming Ksh
     category: "Roofing",
     imageUrl: "/product_images/iron-sheets-stack.png",
     dataAiHint: "iron sheets stack",
@@ -108,7 +103,7 @@ const products = [
     id: "prod_008",
     name: "PVC Rain Gutters (4m Length)",
     description: "High-quality PVC rain gutters for effective water drainage. Easy to install. Price per length.",
-    price: 1800.00,
+    price: 1800.00, // Assuming Ksh
     category: "Plumbing",
     imageUrl: "/product_images/pvc-gutters.png",
     dataAiHint: "pvc gutters",
@@ -120,7 +115,7 @@ const products = [
     id: "prod_009",
     name: "Premium Emulsion Paint (White, 20L)",
     description: "High-quality emulsion paint for interior and exterior walls. Excellent coverage and smooth finish.",
-    price: 7500.00,
+    price: 7500.00, // Assuming Ksh
     category: "Paint",
     imageUrl: "/product_images/paint-bucket-white.png",
     dataAiHint: "paint bucket white",
@@ -132,7 +127,7 @@ const products = [
     id: "prod_010",
     name: "Twisted Steel Nails (5kg Box)",
     description: "Assorted sizes of twisted steel nails for general construction and woodworking. High grip strength.",
-    price: 950.00,
+    price: 950.00, // Assuming Ksh
     category: "Fasteners",
     imageUrl: "/product_images/nails-box.png",
     dataAiHint: "nails box",
@@ -161,9 +156,10 @@ export default function ShopPage() {
                 src={product.imageUrl}
                 alt={product.name}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 data-ai-hint={product.dataAiHint}
+                priority={index < 4} // Prioritize first few images in a 4-column layout
               />
               <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -176,8 +172,6 @@ export default function ShopPage() {
               <CardTitle className="font-headline text-lg h-14 overflow-hidden">
                 {product.name}
               </CardTitle>
-              {/* Optional: Short description if needed, but keeping it clean for now */}
-              {/* <CardDescription className="h-10 overflow-y-auto text-xs">{product.description}</CardDescription> */}
             </CardHeader>
             <CardContent className="flex-grow">
               <div className="flex items-center justify-between mb-2">
@@ -209,3 +203,4 @@ export default function ShopPage() {
     </div>
   );
 }
+

@@ -13,21 +13,21 @@ const featuredServices = [
   { 
     name: "New Construction", 
     description: "Building your vision from the ground up with precision and quality.", 
-    imageUrl: "/service_visuals/new-home-construction-site.png", // Placeholder path
+    imageUrl: "/service_visuals/new-home-construction-site.png",
     dataAiHint: "new home construction site",
     href: "/services#new-construction" 
   },
   { 
     name: "Renovations", 
     description: "Transforming spaces with modern designs and expert craftsmanship.", 
-    imageUrl: "/service_visuals/kitchen-renovation-modern.png", // Placeholder path
+    imageUrl: "/service_visuals/kitchen-renovation-modern.png",
     dataAiHint: "kitchen renovation modern",
     href: "/services#renovations" 
   },
   { 
     name: "Project Management", 
     description: "Expert oversight for seamless execution and timely delivery.", 
-    imageUrl: "/service_visuals/construction-blueprint-planning.png", // Placeholder path
+    imageUrl: "/service_visuals/construction-blueprint-planning.png",
     dataAiHint: "construction blueprint planning",
     href: "/services#project-management" 
   },
@@ -52,10 +52,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-center fade-in group">
         <Image
-          src="/site_assets/hero-background-construction.png" // Placeholder path
+          src="/site_assets/hero-background-construction.png"
           alt="Modern construction site"
           fill
-          priority
+          priority={true}
+          sizes="100vw"
           className="object-cover z-0 brightness-50 group-hover:brightness-75 transition-all duration-500 ease-in-out"
           data-ai-hint="modern construction panoramic"
         />
@@ -86,15 +87,17 @@ export default function HomePage() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featuredServices.map((service) => (
+          {featuredServices.map((service, index) => (
             <Card key={service.name} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
               <div className="aspect-video relative">
                 <Image
                   src={service.imageUrl}
                   alt={service.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   data-ai-hint={service.dataAiHint}
+                  priority={index < 3} // Prioritize first 3 service images if they might be above fold on some screens
                 />
               </div>
               <CardHeader>
