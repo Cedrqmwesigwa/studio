@@ -1,3 +1,4 @@
+
 {
   "name": "nextn",
   "version": "0.1.0",
@@ -9,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "list-images": "node ./scripts/list-image-paths.mjs"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.8.0",
@@ -43,6 +45,7 @@
     "dotenv": "^16.5.0",
     "firebase": "^11.8.1",
     "genkit": "^1.8.0",
+    "glob": "^10.4.2",
     "lucide-react": "^0.475.0",
     "next": "15.2.3",
     "patch-package": "^8.0.0",
