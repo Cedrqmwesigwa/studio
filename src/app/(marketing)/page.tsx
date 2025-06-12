@@ -57,7 +57,7 @@ export default function HomePage() {
           fill
           priority={true}
           sizes="100vw"
-          className="object-cover z-0 brightness-50 group-hover:brightness-75 transition-all duration-500 ease-in-out"
+          className="object-cover z-0 brightness-50 group-hover:brightness-75 transition-filter duration-500 ease-in-out"
           data-ai-hint="modern construction panoramic"
         />
         <div className="relative z-10 p-6 md:p-8 bg-black/50 rounded-lg shadow-xl backdrop-blur-sm max-w-4xl mx-auto">
