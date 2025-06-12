@@ -16,7 +16,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useAuth } from '@/contexts/auth-context';
 import Link from 'next/link';
-import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon, Briefcase, Send } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon, Briefcase, Send, TrendingUp } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function UserNav() {
@@ -108,6 +108,12 @@ export function UserNav() {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
+            <Link href="/dynamic-pricing">
+              <TrendingUp className="mr-2 h-4 w-4" />
+              <span>Dynamic Pricing</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
             <Link href="/deposits">
               <CreditCard className="mr-2 h-4 w-4" />
               <span>Make Deposit</span>
@@ -129,5 +135,3 @@ export function UserNav() {
     </DropdownMenu>
   );
 }
-
-    

@@ -53,6 +53,7 @@ export const siteConfig: SiteConfig = {
     { title: "Product AI", href: "/product-recommendation", authRequired: true },
     { title: "Image Tagger", href: "/image-tagging", authRequired: true },
     { title: "Safety Briefing AI", href: "/safety-briefing", authRequired: true },
+    { title: "Dynamic Pricing", href: "/dynamic-pricing", authRequired: true },
     { title: "Make Deposit", href: "/deposits", authRequired: true },
   ],
   support: {
@@ -65,5 +66,3 @@ export const siteConfig: SiteConfig = {
     whatsappLink: `https://wa.me/${whatsappNumberForLink}`,
   },
 };
-
-    
