@@ -46,7 +46,7 @@ const blogPosts = [
     slug: "sterling-solutions-community-project", // Slug implies old name
     title: "Sterling Contractors Completes Community Center Build", // Title updated
     excerpt: "Sterling Contractors proudly announces the completion of the Mwangaza Community Center, a sustainable project featuring a multi-purpose hall, library, clinic, and recreational areas.", // Excerpt updated
-    imageUrl: "/blog_images/community-center-building-thumb.png",
+    imageUrl: "https://images.unsplash.com/photo-1600132807314-48c50886dc37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb21tdW5pdHklMjBjZW50ZXJ8ZW58MHx8fHwxNzQ5NzM5Mzc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "community center building",
     author: "Sterling Team",
     publishDate: "2024-05-10",
