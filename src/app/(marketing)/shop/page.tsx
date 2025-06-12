@@ -187,7 +187,7 @@ export default function ShopPage() {
                 Add to Cart
               </Button>
                <Button variant="link" asChild className="text-primary p-0 text-sm">
-                 <Link href="/shop">Learn More</Link>
+                 <Link href="/services#hardware-supply">Quality & Benefits</Link>
                </Button>
             </CardFooter>
           </Card>
