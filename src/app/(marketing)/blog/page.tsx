@@ -22,7 +22,7 @@ const blogPosts = [
     slug: "top-5-construction-trends-2024",
     title: "Top 5 Construction Trends to Watch in 2024",
     excerpt: "Explore the leading innovations like sustainable materials, AI in project management, modular construction, advanced BIM, and robotics shaping the future of the building industry.",
-    imageUrl: "/blog_images/construction-site-future-thumb.png",
+    imageUrl: "https://images.unsplash.com/photo-1521708266372-b3547456cc2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb25zdHJ1Y3Rpb24lMjB0cmVuZHN8ZW58MHx8fHwxNzQ5NzMzMjUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "construction site future",
     author: "Jane Doe, Lead Architect",
     publishDate: "2024-07-15",
