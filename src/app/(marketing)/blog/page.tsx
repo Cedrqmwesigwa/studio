@@ -34,7 +34,7 @@ const blogPosts = [
     slug: "choosing-right-materials-project",
     title: "Choosing the Right Materials for Your Project",
     excerpt: "A guide to selecting materials that balance cost, quality, sustainability, aesthetics, and durability for your construction project.",
-    imageUrl: "/blog_images/building-materials-samples-thumb.png",
+    imageUrl: "https://images.unsplash.com/photo-1518709414768-a88981a4515d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoYXJkd2FyZSUyMGNvbnN0cnVjdGlvbnxlbnwwfHx8fDE3NDk3MzkzNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "building materials samples",
     author: "John Smith, Materials Expert",
     publishDate: "2024-06-28",
@@ -75,7 +75,7 @@ export default function BlogPage() {
                 width={600}
                 height={400}
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                data-ai-hint={post.dataAiHint}
+                dataAiHint={post.dataAiHint}
               />
             </Link>
             <CardHeader>
