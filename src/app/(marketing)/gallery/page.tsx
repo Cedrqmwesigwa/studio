@@ -20,6 +20,7 @@ const initialGalleryImages = [
   { id: 7, src: "/gallery_images/custom-staircase.png", alt: "Custom staircase in a Bugolobi home", dataAiHint: "custom staircase", category: "Residential" },
   { id: 8, src: "/gallery_images/building-foundation.png", alt: "Building foundation work for a new construction in Kampala", dataAiHint: "building foundation", category: "Construction Process" },
   { id: 9, src: "/gallery_images/roof-installation.png", alt: "Roof installation on a commercial property", dataAiHint: "roof installation", category: "Construction Process" },
+  { id: 10, src: "/manual_uploads/my_showcase_image.png", alt: "Manually uploaded showcase image", dataAiHint: "showcase example", category: "Showcase" }, // New image from manual_uploads
 ];
 
 // Function to shuffle an array
@@ -87,7 +88,7 @@ export default function GalleryPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Image Gallery</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          A visual showcase of our completed projects, hardware installations, and the quality {siteConfig.name} delivers in Kampala and Uganda.
+          A visual showcase of our completed projects, hardware installations, and the quality ${siteConfig.name} delivers in Kampala and Uganda.
         </p>
       </section>
 
@@ -141,3 +142,4 @@ export default function GalleryPage() {
     </div>
   );
 }
+
