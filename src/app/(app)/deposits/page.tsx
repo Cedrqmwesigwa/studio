@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
 // This page is a placeholder to resolve a route conflict.
+// Version: ConflictFix_Oct26_Reapply
 // The primary /deposits page is located in the (marketing) group.
 // Authenticated users accessing this path will be redirected to the marketing /deposits page.
 export default function AuthenticatedDepositsRedirect() {
