@@ -60,21 +60,15 @@ export default function ContactPage() {
     },
   });
 
-  // This function will now only be called if you decide to handle form data submission via server
-  // For a mailto link, the form submission itself is bypassed by the link's action.
   function onSubmit(data: ContactFormValues) {
     console.log("Form data (would be sent to server if not using mailto):", data); 
-    // Example: If you had a backend, you would send data here.
-    // For now, mailto link handles the action, so this might not be directly used for email sending.
     toast({
-      title: "Form Data Logged", // Changed from "Message Sent!"
+      title: "Form Data Logged", 
       description: "If this were a server submission, your data would be processed.",
     });
-    // form.reset(); // You might still want to reset the form
   }
 
-  const mapCoordinates = { lat: 0.310140, lng: 32.579832 };
-  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${mapCoordinates.lat},${mapCoordinates.lng}&hl=en&z=16&amp;output=embed`;
+  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.support.address)}&hl=en&z=16&output=embed`;
 
   return (
     <div className="space-y-16">
@@ -148,8 +142,6 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              {/* The form tag is kept for structure and potential future server-side submission logic.
-                  The button below will act as a mailto link, bypassing standard form submission. */}
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                   control={form.control}
@@ -216,7 +208,6 @@ export default function ContactPage() {
                     </FormItem>
                   )}
                 />
-                {/* This Button now acts as a mailto link */}
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href={`mailto:${siteConfig.support.email}?subject=${encodeURIComponent(form.getValues('subject') || 'Website Inquiry')}&body=${encodeURIComponent('Name: ' + form.getValues('name') + '\nEmail: ' + form.getValues('email') + (form.getValues('phone') ? '\nPhone: ' + form.getValues('phone') : '') + '\n\nMessage:\n' + form.getValues('message'))}`}>
                     Send Message via Email
@@ -246,3 +237,4 @@ export default function ContactPage() {
     </div>
   );
 }
+
