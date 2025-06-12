@@ -36,9 +36,21 @@ const products = [
     reviews: 130,
   },
   {
+    id: "prod_cem_003",
+    name: "Tororo Cement (50kg Bag)",
+    description: "Locally trusted cement for various building applications.",
+    price: 35000,
+    category: "Cement",
+    imageUrl: "https://placehold.co/600x400.png?text=Tororo+Cement",
+    dataAiHint: "cement bag tororo",
+    stock: 180,
+    rating: 4.5,
+    reviews: 140,
+  },
+  {
     id: "prod_reinf_001",
-    name: "BRC Mesh (Gauge 10, Roll)",
-    description: "Welded steel fabric for concrete reinforcement.",
+    name: "BRC Mesh (A142, Roll)",
+    description: "Welded steel fabric for concrete slab reinforcement.",
     price: 120000,
     category: "Reinforcement",
     imageUrl: "https://placehold.co/600x400.png?text=BRC+Mesh",
@@ -48,8 +60,56 @@ const products = [
     reviews: 40,
   },
   {
+    id: "prod_reinf_002",
+    name: "Binding Wire (Gauge 18, Roll)",
+    description: "Annealed steel wire for tying reinforcement bars.",
+    price: 170000, // Price seems high for binding wire, might be per large roll
+    category: "Reinforcement",
+    imageUrl: "https://placehold.co/600x400.png?text=Binding+Wire",
+    dataAiHint: "wire coil steel",
+    stock: 100,
+    rating: 4.4,
+    reviews: 80,
+  },
+  {
+    id: "prod_reinf_003",
+    name: "Steel Bars (Y10, Per Length)",
+    description: "High tensile deformed steel bars for structural reinforcement.",
+    price: 40000, 
+    category: "Reinforcement",
+    imageUrl: "https://placehold.co/600x400.png?text=Y10+Steel+Bar",
+    dataAiHint: "steel rebar",
+    stock: 300,
+    rating: 4.7,
+    reviews: 90,
+  },
+  {
+    id: "prod_agg_001",
+    name: "Ballast/Kokoto (Per Truck)",
+    description: "Crushed stone aggregate for concrete mixing.",
+    price: 80000,
+    category: "Aggregates",
+    imageUrl: "https://placehold.co/600x400.png?text=Ballast+Kokoto",
+    dataAiHint: "construction aggregate",
+    stock: 20, // Represents truckloads
+    rating: 4.5,
+    reviews: 30,
+  },
+  {
+    id: "prod_agg_002",
+    name: "Lake Sand (Per Truck)",
+    description: "Fine lake sand suitable for plastering and mortar.",
+    price: 180000,
+    category: "Aggregates",
+    imageUrl: "https://placehold.co/600x400.png?text=Lake+Sand",
+    dataAiHint: "construction sand",
+    stock: 15,
+    rating: 4.6,
+    reviews: 25,
+  },
+  {
     id: "prod_fence_001",
-    name: "Barbed Wire (Roll)",
+    name: "Barbed Wire (25kg Roll)",
     description: "Galvanized barbed wire for security fencing.",
     price: 130000,
     category: "Fencing",
@@ -60,16 +120,28 @@ const products = [
     reviews: 65,
   },
   {
-    id: "prod_reinf_002",
-    name: "Binding Wire (Gauge 18, Roll)",
-    description: "Annealed steel wire for tying reinforcement bars.",
-    price: 170000,
-    category: "Reinforcement",
-    imageUrl: "https://placehold.co/600x400.png?text=Binding+Wire",
-    dataAiHint: "wire coil steel",
-    stock: 100,
+    id: "prod_fence_002",
+    name: "Chain Link Fence (25m Roll, 2.5mm)",
+    description: "Galvanized chain link fencing material, standard height.",
+    price: 180000,
+    category: "Fencing",
+    imageUrl: "https://placehold.co/600x400.png?text=Chain+Link",
+    dataAiHint: "chain link fence",
+    stock: 40,
+    rating: 4.6,
+    reviews: 55,
+  },
+  {
+    id: "prod_water_001",
+    name: "DPC Membrane (20m Roll)",
+    description: "Damp Proof Course membrane for moisture protection.",
+    price: 80000,
+    category: "Waterproofing",
+    imageUrl: "https://placehold.co/600x400.png?text=DPC+Membrane",
+    dataAiHint: "damp proof course roll",
+    stock: 60,
     rating: 4.4,
-    reviews: 80,
+    reviews: 35,
   },
   {
     id: "prod_pig_001",
@@ -83,46 +155,22 @@ const products = [
     rating: 4.2,
     reviews: 30,
   },
-  {
-    id: "prod_pig_002",
-    name: "Blue Oxide (1kg)",
-    description: "Cement pigment for coloring concrete and mortar blue.",
-    price: 17000,
-    category: "Pigments",
-    imageUrl: "https://placehold.co/600x400.png?text=Blue+Oxide",
-    dataAiHint: "blue powder pigment",
-    stock: 60,
-    rating: 4.3,
-    reviews: 25,
-  },
-  {
+   {
     id: "prod_fast_001",
-    name: "Bolt and Nut (M10, Each)",
-    description: "Standard M10 steel bolt and nut for various applications.",
-    price: 1000,
+    name: "Roofing Nails (1kg)",
+    description: "Galvanized twisted shank roofing nails with rubber washer.",
+    price: 10000,
     category: "Fasteners",
-    imageUrl: "https://placehold.co/600x400.png?text=Bolt+Nut",
-    dataAiHint: "bolt nut steel",
-    stock: 500,
-    rating: 4.0,
+    imageUrl: "https://placehold.co/600x400.png?text=Roofing+Nails",
+    dataAiHint: "roofing nails",
+    stock: 200,
+    rating: 4.5,
     reviews: 100,
   },
   {
-    id: "prod_fence_002",
-    name: "Chain Link Fence (25m Roll)",
-    description: "Galvanized chain link fencing material, standard height.",
-    price: 180000,
-    category: "Fencing",
-    imageUrl: "https://placehold.co/600x400.png?text=Chain+Link",
-    dataAiHint: "chain link fence",
-    stock: 40,
-    rating: 4.6,
-    reviews: 55,
-  },
-  {
     id: "prod_hw_001",
-    name: "Door Hinges (Steel, Pair)",
-    description: "Durable steel door hinges for interior and exterior doors.",
+    name: "Door Hinges (Steel, 4 inch Pair)",
+    description: "Durable steel butt hinges for doors.",
     price: 5000,
     category: "Hardware",
     imageUrl: "https://placehold.co/600x400.png?text=Door+Hinges",
@@ -144,6 +192,18 @@ const products = [
     reviews: 90,
   },
   {
+    id: "prod_paint_002",
+    name: "Paint Brush (4 inch)",
+    description: "Good quality paint brush for various applications.",
+    price: 5000,
+    category: "Painting",
+    imageUrl: "https://placehold.co/600x400.png?text=Paint+Brush",
+    dataAiHint: "paint brush",
+    stock: 250,
+    rating: 4.3,
+    reviews: 110,
+  },
+  {
     id: "prod_tiles_001",
     name: "Ceramic Floor Tiles (60x60cm, Sqm)",
     description: "Cream-colored ceramic floor tiles, price per square meter.",
@@ -151,7 +211,7 @@ const products = [
     category: "Tiles",
     imageUrl: "https://placehold.co/600x400.png?text=Ceramic+Tiles",
     dataAiHint: "ceramic floor tiles",
-    stock: 300, // Sqm
+    stock: 300, 
     rating: 4.6,
     reviews: 120,
   },
@@ -168,6 +228,18 @@ const products = [
     reviews: 110,
   },
   {
+    id: "prod_safety_002",
+    name: "Safety Gumboots (Size 9)",
+    description: "Heavy-duty rubber gumboots for site work.",
+    price: 25000,
+    category: "Safety Equipment",
+    imageUrl: "https://placehold.co/600x400.png?text=Gumboots",
+    dataAiHint: "rubber gumboots",
+    stock: 100,
+    rating: 4.4,
+    reviews: 60,
+  },
+  {
     id: "prod_tools_001",
     name: "Round Shovel (Heavy Duty)",
     description: "Durable round point shovel for digging and excavation.",
@@ -180,6 +252,30 @@ const products = [
     reviews: 50,
   },
   {
+    id: "prod_tools_002",
+    name: "Claw Hammer (20oz)",
+    description: "Steel claw hammer for general carpentry and construction.",
+    price: 20000,
+    category: "Tools",
+    imageUrl: "https://placehold.co/600x400.png?text=Claw+Hammer",
+    dataAiHint: "claw hammer",
+    stock: 80,
+    rating: 4.6,
+    reviews: 70,
+  },
+  {
+    id: "prod_tools_003",
+    name: "Wheelbarrow (Heavy Duty)",
+    description: "Construction grade wheelbarrow for transporting materials.",
+    price: 150000,
+    category: "Tools",
+    imageUrl: "https://placehold.co/600x400.png?text=Wheelbarrow",
+    dataAiHint: "wheelbarrow construction",
+    stock: 30,
+    rating: 4.7,
+    reviews: 45,
+  },
+  {
     id: "prod_plumb_001",
     name: "PVC Pipe (4 inch, 3m Length)",
     description: "Standard PVC pressure pipe for plumbing applications.",
@@ -190,7 +286,43 @@ const products = [
     stock: 250,
     rating: 4.3,
     reviews: 75,
-  }
+  },
+  {
+    id: "prod_plumb_002",
+    name: "Water Tap (Chrome Finish)",
+    description: "Standard basin/sink water tap with chrome finish.",
+    price: 15000,
+    category: "Plumbing",
+    imageUrl: "https://placehold.co/600x400.png?text=Water+Tap",
+    dataAiHint: "water tap faucet",
+    stock: 100,
+    rating: 4.2,
+    reviews: 60,
+  },
+  {
+    id: "prod_elec_001",
+    name: "Electrical Conduit Pipe (20mm)",
+    description: "PVC conduit pipe for electrical wiring protection.",
+    price: 5000,
+    category: "Electrical",
+    imageUrl: "https://placehold.co/600x400.png?text=Conduit+Pipe",
+    dataAiHint: "pvc conduit pipe",
+    stock: 300,
+    rating: 4.4,
+    reviews: 50,
+  },
+  {
+    id: "prod_roof_001",
+    name: "Iron Sheets (Gauge 30, Coloured)",
+    description: "Corrugated iron sheets for roofing, coloured.",
+    price: 35000,
+    category: "Roofing",
+    imageUrl: "https://placehold.co/600x400.png?text=Iron+Sheet+Coloured",
+    dataAiHint: "corrugated iron sheet",
+    stock: 400,
+    rating: 4.5,
+    reviews: 120,
+  },
 ];
 
 export default function ShopPage() {
@@ -215,7 +347,7 @@ export default function ShopPage() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 data-ai-hint={product.dataAiHint}
-                priority={index < 4} 
+                priority={index < 8} 
               />
               <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -239,7 +371,7 @@ export default function ShopPage() {
                   {product.stock > 0 ? `${product.stock} in stock` : "Out of Stock"}
                 </Badge>
               </div>
-               <p className="text-xs text-muted-foreground">{product.description}</p>
+               <p className="text-xs text-muted-foreground min-h-[3lh]">{product.description}</p> {/* min-h for consistent card height */}
             </CardContent>
             <CardFooter className="flex-col items-stretch space-y-2">
               <Button className="w-full bg-primary hover:bg-primary/90" disabled={product.stock === 0} onClick={() => alert('Adding to cart functionality coming soon!')}>
@@ -260,3 +392,5 @@ export default function ShopPage() {
   );
 }
 
+
+    
