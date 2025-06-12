@@ -144,7 +144,7 @@ const blogPosts = [
     title: "Roofing Wars: Iron Sheets vs. Tiles vs. Asphalt Shingles for Ugandan Homes",
     excerpt: "Choosing the right roofing material in Uganda involves balancing cost, durability, aesthetics, and climate suitability. We compare popular options to help you decide.",
     content: `
-      <p>Your roof is one ofthe most critical components of your home, protecting you from Uganda's diverse weather. Selecting the right material is a long-term investment. Let's compare three popular choices: iron sheets (Mabati), clay/concrete tiles, and asphalt shingles.</p>
+      <p>Your roof is one of the most critical components of your home, protecting you from Uganda's diverse weather. Selecting the right material is a long-term investment. Let's compare three popular choices: iron sheets (Mabati), clay/concrete tiles, and asphalt shingles.</p>
       <br/>
       <h3 class="font-headline text-xl font-semibold mt-4 mb-2">1. Corrugated Iron Sheets (Mabati)</h3>
       <p><strong>Pros:</strong> Highly affordable, lightweight (reducing structural load), readily available, and relatively easy to install. Modern coated versions offer improved rust resistance and color options.</p>
@@ -528,5 +528,7 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
+
+    
 
     

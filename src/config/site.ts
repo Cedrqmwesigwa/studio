@@ -45,6 +45,7 @@ export const siteConfig: SiteConfig = {
     { title: "Gallery", href: "/gallery" },
     { title: "Blog", href: "/blog" },
     { title: "Shop", href: "/shop"},
+    { title: "Book Project", href: "/book-project"},
     { title: "Contact", href: "/contact" },
     { title: "Dashboard", href: "/dashboard", authRequired: true },
     { title: "Admin Projects", href: "/admin/projects", authRequired: true, adminRequired: true },
@@ -64,3 +65,5 @@ export const siteConfig: SiteConfig = {
     whatsappLink: `https://wa.me/${whatsappNumberForLink}`,
   },
 };
+
+    

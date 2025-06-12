@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { CalendarDays, UserCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
+// Import all blog posts from the single source of truth
+import { blogPosts as allBlogPostsData } from './[slug]/page'; 
 
 export const metadata: Metadata = {
   title: `Blog | ${siteConfig.name}`,
@@ -15,47 +17,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600; // Revalidate at most once per hour
 
-// Mock data for blog posts - Ensure excerpts are updated or generated if not present
-const blogPosts = [
-  {
-    id: "1",
-    slug: "top-5-construction-trends-2024",
-    title: "Top 5 Construction Trends to Watch in 2024",
-    excerpt: "Explore the leading innovations like sustainable materials, AI in project management, modular construction, advanced BIM, and robotics shaping the future of the building industry.",
-    imageUrl: "https://images.unsplash.com/photo-1521708266372-b3547456cc2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb25zdHJ1Y3Rpb24lMjB0cmVuZHN8ZW58MHx8fHwxNzQ5NzMzMjUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    dataAiHint: "construction site future",
-    author: "Jane Doe, Lead Architect",
-    publishDate: "2024-07-15",
-    category: "Industry News",
-    tags: ["Trends", "Innovation", "Sustainability"],
-  },
-  {
-    id: "2",
-    slug: "choosing-right-materials-project",
-    title: "Choosing the Right Materials for Your Project",
-    excerpt: "A guide to selecting materials that balance cost, quality, sustainability, aesthetics, and durability for your construction project.",
-    imageUrl: "https://images.unsplash.com/photo-1518709414768-a88981a4515d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoYXJkd2FyZSUyMGNvbnN0cnVjdGlvbnxlbnwwfHx8fDE3NDk3MzkzNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    dataAiHint: "building materials samples",
-    author: "John Smith, Materials Expert",
-    publishDate: "2024-06-28",
-    category: "Guides",
-    tags: ["Materials", "Construction", "DIY"],
-  },
-  {
-    id: "3",
-    slug: "sterling-solutions-community-project", // Slug implies old name
-    title: "Sterling Contractors Completes Community Center Build", // Title updated
-    excerpt: "Sterling Contractors proudly announces the completion of the Mwangaza Community Center, a sustainable project featuring a multi-purpose hall, library, clinic, and recreational areas.", // Excerpt updated
-    imageUrl: "https://images.unsplash.com/photo-1600132807314-48c50886dc37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb21tdW5pdHklMjBjZW50ZXJ8ZW58MHx8fHwxNzQ5NzM5Mzc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    dataAiHint: "community center building",
-    author: "Sterling Team",
-    publishDate: "2024-05-10",
-    category: "Project Updates",
-    tags: ["Community", "CSR", "Completed Projects"],
-  },
-];
 
 export default function BlogPage() {
+  // Sort posts by date, newest first
+  const sortedBlogPosts = [...allBlogPostsData].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+
   return (
     <div className="space-y-12">
       <section className="text-center fade-in">
@@ -66,16 +32,16 @@ export default function BlogPage() {
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in" style={{animationDelay: '0.2s'}}>
-        {blogPosts.map((post, index) => (
+        {sortedBlogPosts.map((post, index) => (
           <Card key={post.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.1 + 0.2}s`}}>
             <Link href={`/blog/${post.slug}`} className="block aspect-video overflow-hidden group">
               <Image
-                src={post.imageUrl}
+                src={post.imageUrl.startsWith('http') ? post.imageUrl : `https://placehold.co/600x400.png?text=${encodeURIComponent(post.title)}`}
                 alt={post.title}
                 width={600}
                 height={400}
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                dataAiHint={post.dataAiHint}
+                data-ai-hint={post.dataAiHint}
               />
             </Link>
             <CardHeader>
@@ -115,3 +81,5 @@ export default function BlogPage() {
     </div>
   );
 }
+
+    
