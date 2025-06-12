@@ -52,7 +52,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center text-center fade-in group">
         <Image
-          src="/site_assets/hero-background-construction.png"
+          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb25zdHJ1Y3Rpb24lMjBzaXRlJTIwdWdhbmRhJTIwYmx1cnJlZHxlbnwwfHx8fDE3NDk3MzA0MDB8MA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Modern construction site"
           fill
           priority={true}
