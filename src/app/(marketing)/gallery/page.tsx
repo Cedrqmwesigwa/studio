@@ -20,7 +20,7 @@ const initialGalleryImages = [
   { id: 7, src: "/gallery_images/custom-staircase.png", alt: "Custom staircase in a Bugolobi home", dataAiHint: "custom staircase", category: "Residential" },
   { id: 8, src: "/gallery_images/building-foundation.png", alt: "Building foundation work for a new construction in Kampala", dataAiHint: "building foundation", category: "Construction Process" },
   { id: 9, src: "/gallery_images/roof-installation.png", alt: "Roof installation on a commercial property", dataAiHint: "roof installation", category: "Construction Process" },
-  { id: 10, src: "/manual_uploads/my_showcase_image.png", alt: "Manually uploaded showcase image", dataAiHint: "showcase example", category: "Showcase" }, // New image from manual_uploads
+  { id: 10, src: "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aW50ZXJpciUyMGRlc2lnbiUyMGluZHVzcmlhbHxlbnwwfHx8fDE3NDk3MzM5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080", alt: "Manually uploaded showcase image", dataAiHint: "showcase example", category: "Showcase" },
 ];
 
 // Function to shuffle an array
@@ -142,4 +142,5 @@ export default function GalleryPage() {
     </div>
   );
 }
+
 
