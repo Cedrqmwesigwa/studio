@@ -7,133 +7,129 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Tag, Eye } from 'lucide-react';
-// Removed: import type { Metadata } from 'next'; 
 import { siteConfig } from '@/config/site';
 
-// Removed: export const metadata: Metadata = { ... };
-// Removed: export const revalidate = 3600; 
-
-// Mock data for products
+// Mock data for products with UGX pricing and new categories
 const products = [
   {
-    id: "prod_001",
-    name: "Heavy Duty Cement Mixer",
-    description: "Reliable and durable cement mixer for large construction projects. 200L capacity.",
-    price: 45000.00, // Assuming Ksh pricing was intended from other pages
-    category: "Machinery",
-    imageUrl: "/product_images/cement-mixer.png",
-    dataAiHint: "cement mixer",
-    stock: 15,
-    rating: 4.5,
-    reviews: 25,
-  },
-  {
-    id: "prod_002",
-    name: "Premium Quality Cement (50kg Bag)",
+    id: "prod_cem_001",
+    name: "Bamburi/Tororo Cement (50kg Bag)",
     description: "High-strength Portland cement suitable for all types of construction work.",
-    price: 650.00, // Assuming Ksh
-    category: "Materials",
+    price: 35000, 
+    category: "Cement",
     imageUrl: "/product_images/cement-bag.png",
     dataAiHint: "cement bag",
-    stock: 200,
+    stock: 150,
     rating: 4.8,
-    reviews: 150,
+    reviews: 180,
   },
   {
-    id: "prod_003",
-    name: "Professional Toolset (52 Pieces)",
-    description: "Comprehensive toolset for contractors, including wrenches, screwdrivers, pliers, and more.",
-    price: 8500.00, // Assuming Ksh
-    category: "Tools",
-    imageUrl: "/product_images/tool-set-box.png",
-    dataAiHint: "tool set box",
-    stock: 30,
-    rating: 4.2,
-    reviews: 40,
-  },
-  {
-    id: "prod_004",
-    name: "Safety Helmet (Yellow)",
-    description: "Hard hat for construction site safety. Meets industry standards.",
-    price: 800.00, // Assuming Ksh
-    category: "Safety Gear",
-    imageUrl: "/product_images/safety-helmet.png",
-    dataAiHint: "safety helmet",
-    stock: 100,
-    rating: 4.0,
-    reviews: 80,
-  },
-  {
-    id: "prod_005",
-    name: "Reinforcement Steel Bars (1 Ton)",
-    description: "High-tensile deformed steel bars for concrete reinforcement. Various sizes available.",
-    price: 95000.00, // Assuming Ksh
-    category: "Materials",
-    imageUrl: "/product_images/steel-rebar.png",
-    dataAiHint: "steel rebar",
-    stock: 50, // tons
-    rating: 4.6,
-    reviews: 65,
-  },
-  {
-    id: "prod_006",
-    name: "Waterproof Tarpaulin (10m x 12m)",
-    description: "Heavy-duty waterproof tarpaulin for covering materials and equipment.",
-    price: 3200.00, // Assuming Ksh
-    category: "Equipment",
-    imageUrl: "/product_images/blue-tarpaulin.png",
-    dataAiHint: "blue tarpaulin",
-    stock: 75,
-    rating: 4.3,
-    reviews: 33,
-  },
-  {
-    id: "prod_007",
+    id: "prod_rf_001",
     name: "Corrugated Iron Sheets (Gauge 30, 3m)",
     description: "Standard corrugated iron sheets for roofing. Durable and weather-resistant. Price per sheet.",
-    price: 1200.00, // Assuming Ksh
+    price: 45000, 
     category: "Roofing",
     imageUrl: "/product_images/iron-sheets-stack.png",
     dataAiHint: "iron sheets stack",
-    stock: 500,
+    stock: 300,
     rating: 4.4,
-    reviews: 70,
+    reviews: 95,
   },
   {
-    id: "prod_008",
-    name: "PVC Rain Gutters (4m Length)",
-    description: "High-quality PVC rain gutters for effective water drainage. Easy to install. Price per length.",
-    price: 1800.00, // Assuming Ksh
-    category: "Plumbing",
-    imageUrl: "/product_images/pvc-gutters.png",
-    dataAiHint: "pvc gutters",
-    stock: 150,
-    rating: 4.2,
-    reviews: 45,
+    id: "prod_rf_002",
+    name: "Clay Roof Tiles (Roman Profile, per Sqm)",
+    description: "Classic Roman profile clay roof tiles offering durability and aesthetic appeal. Price per square meter.",
+    price: 70000,
+    category: "Roofing",
+    imageUrl: "/product_images/clay-roof-tiles.png",
+    dataAiHint: "clay roof tiles",
+    stock: 100, // sqm
+    rating: 4.7,
+    reviews: 60,
   },
   {
-    id: "prod_009",
+    id: "prod_pt_001",
     name: "Premium Emulsion Paint (White, 20L)",
     description: "High-quality emulsion paint for interior and exterior walls. Excellent coverage and smooth finish.",
-    price: 7500.00, // Assuming Ksh
+    price: 180000, 
     category: "Paint",
     imageUrl: "/product_images/paint-bucket-white.png",
     dataAiHint: "paint bucket white",
-    stock: 80,
+    stock: 60,
     rating: 4.7,
-    reviews: 90,
+    reviews: 110,
   },
   {
-    id: "prod_010",
-    name: "Twisted Steel Nails (5kg Box)",
-    description: "Assorted sizes of twisted steel nails for general construction and woodworking. High grip strength.",
-    price: 950.00, // Assuming Ksh
-    category: "Fasteners",
-    imageUrl: "/product_images/nails-box.png",
-    dataAiHint: "nails box",
-    stock: 120,
+    id: "prod_pt_002",
+    name: "Weatherguard Exterior Paint (Various Colors, 20L)",
+    description: "Durable Weatherguard paint for exteriors, providing protection against harsh weather. Multiple colors available.",
+    price: 220000,
+    category: "Paint",
+    imageUrl: "/product_images/paint-buckets-colorful.png",
+    dataAiHint: "paint buckets colorful",
+    stock: 40,
+    rating: 4.6,
+    reviews: 75,
+  },
+  {
+    id: "prod_tl_001",
+    name: "Ceramic Floor Tiles (60x60cm, Cream, per Sqm)",
+    description: "Durable and elegant cream-colored ceramic floor tiles. Ideal for residential and light commercial use. Price per square meter.",
+    price: 55000, 
+    category: "Tiles",
+    imageUrl: "/product_images/ceramic-floor-tiles.png",
+    dataAiHint: "ceramic floor tiles",
+    stock: 250, // sqm
+    rating: 4.5,
+    reviews: 85,
+  },
+  {
+    id: "prod_tl_002",
+    name: "Porcelain Wall Tiles (30x60cm, Grey, per Sqm)",
+    description: "Modern grey porcelain tiles, perfect for bathroom and kitchen walls. Price per square meter.",
+    price: 65000,
+    category: "Tiles",
+    imageUrl: "/product_images/porcelain-wall-tiles.png",
+    dataAiHint: "porcelain wall tiles",
+    stock: 180, // sqm
+    rating: 4.6,
+    reviews: 70,
+  },
+  {
+    id: "prod_sc_001",
+    name: "Steel Security Door (Standard Size, With Frame)",
+    description: "Heavy-duty steel security door with reinforced frame and multi-point locking system.",
+    price: 750000,
+    category: "Security",
+    imageUrl: "/product_images/steel-security-door.png",
+    dataAiHint: "steel security door",
+    stock: 20,
+    rating: 4.8,
+    reviews: 50,
+  },
+  {
+    id: "prod_sc_002",
+    name: "CCTV Dome Camera (Outdoor, Night Vision)",
+    description: "Weatherproof outdoor dome CCTV camera with infrared night vision and HD recording.",
+    price: 150000,
+    category: "Security",
+    imageUrl: "/product_images/cctv-dome-camera.png",
+    dataAiHint: "cctv dome camera",
+    stock: 35,
     rating: 4.3,
-    reviews: 55,
+    reviews: 40,
+  },
+  {
+    id: "prod_sc_003",
+    name: "Safety Helmet (Yellow/White)",
+    description: "Hard hat for construction site safety. Meets industry standards. Available in yellow and white.",
+    price: 25000, 
+    category: "Security", // PPE can be grouped under security/safety
+    imageUrl: "/product_images/safety-helmet.png",
+    dataAiHint: "safety helmet",
+    stock: 120,
+    rating: 4.2,
+    reviews: 90,
   }
 ];
 
@@ -143,7 +139,7 @@ export default function ShopPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Hardware & Materials Shop</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Browse our selection of high-quality construction hardware, tools, and materials. 
+          Browse our selection of high-quality construction hardware, tools, and materials. All prices in Ugandan Shillings (UGX).
           Full e-commerce functionality with cart, checkout, and various payment options is under development.
         </p>
       </section>
@@ -159,7 +155,7 @@ export default function ShopPage() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 data-ai-hint={product.dataAiHint}
-                priority={index < 4} // Prioritize first few images in a 4-column layout
+                priority={index < 4} 
               />
               <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -177,7 +173,7 @@ export default function ShopPage() {
               <div className="flex items-center justify-between mb-2">
                 <p className="text-xl font-semibold text-primary flex items-center">
                   <Tag className="h-5 w-5 mr-1.5 text-accent" />
-                  Ksh {product.price.toLocaleString()}
+                  UGX {product.price.toLocaleString()}
                 </p>
                 <Badge variant={product.stock > 0 ? "default" : "destructive"} className={product.stock > 0 ? "bg-green-600 hover:bg-green-700" : ""}>
                   {product.stock > 0 ? `${product.stock} in stock` : "Out of Stock"}
