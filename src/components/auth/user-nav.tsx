@@ -16,11 +16,11 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useAuth } from '@/contexts/auth-context';
 import Link from 'next/link';
-import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon, Briefcase } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function UserNav() {
-  const { user } = useAuth();
+  const { user } = useAuth(); // useAuth now includes isAdmin directly
   const { toast } = useToast();
 
   const handleSignOut = async () => {
@@ -69,6 +69,14 @@ export function UserNav() {
               <span>Dashboard</span>
             </Link>
           </DropdownMenuItem>
+          {user.isAdmin && (
+            <DropdownMenuItem asChild>
+              <Link href="/admin/projects">
+                <Briefcase className="mr-2 h-4 w-4" />
+                <span>Admin Projects</span>
+              </Link>
+            </DropdownMenuItem>
+          )}
           <DropdownMenuItem asChild>
             <Link href="/deposit-estimator">
               <Hammer className="mr-2 h-4 w-4" />

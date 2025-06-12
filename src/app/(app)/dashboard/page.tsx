@@ -10,11 +10,12 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, Trash2, Loader2, ListChecks } from 'lucide-react';
+import { Plus, Trash2, Loader2, ListChecks, Briefcase } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import Link from 'next/link';
 
 export default function DashboardPage() {
-  const { user } = useAuth();
+  const { user } = useAuth(); // user object now contains isAdmin directly
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState('');
   const [loadingTodos, setLoadingTodos] = useState(true);
@@ -27,10 +28,9 @@ export default function DashboardPage() {
       return;
     }
     if (!db) {
-      // This check is crucial if db might not be initialized
       toast({ title: "Database Error", description: "Database service is not available. To-do list cannot be loaded.", variant: "destructive" });
       setLoadingTodos(false);
-      setTodos([]); // Clear todos
+      setTodos([]); 
       return;
     }
 
@@ -52,7 +52,7 @@ export default function DashboardPage() {
     });
 
     return () => unsubscribe();
-  }, [user, toast]); // db is a stable import from firebase/client, so not strictly needed in deps if it initializes once.
+  }, [user, toast]);
 
   const handleAddTodo = async () => {
     if (!user || newTodo.trim() === '') return;
@@ -118,6 +118,25 @@ export default function DashboardPage() {
         </p>
       </section>
 
+      {user?.isAdmin && (
+        <Card className="shadow-lg fade-in bg-primary/10 border-primary" style={{animationDelay: '0.1s'}}>
+          <CardHeader>
+            <CardTitle className="font-headline text-2xl flex items-center text-primary">
+              <Briefcase className="mr-2 h-6 w-6" />
+              Admin Area
+            </CardTitle>
+            <CardDescription className="text-primary/80">
+              Access administrative tools and project overviews.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild>
+              <Link href="/admin/projects">Manage Projects</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
       <Card className="shadow-lg fade-in" style={{animationDelay: '0.2s'}}>
         <CardHeader>
           <CardTitle className="font-headline text-2xl flex items-center">
@@ -137,7 +156,7 @@ export default function DashboardPage() {
               placeholder="Add a new task or item..."
               onKeyPress={(e) => e.key === 'Enter' && handleAddTodo()}
               className="flex-grow"
-              disabled={!db} // Disable if db is not available
+              disabled={!db}
             />
             <Button onClick={handleAddTodo} disabled={newTodo.trim() === '' || !db}>
               <Plus className="mr-2 h-4 w-4" /> Add
@@ -149,7 +168,7 @@ export default function DashboardPage() {
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
               <p className="ml-2 text-muted-foreground">Loading tasks...</p>
             </div>
-          ) : !db && user ? ( // Show this if db is not available but user context exists
+          ) : !db && user ? ( 
              <p className="text-center text-destructive py-4">Database service is unavailable. To-do list cannot be loaded or modified.</p>
           ) : todos.length === 0 ? (
             <p className="text-center text-muted-foreground py-4">No tasks yet. Add one above!</p>
@@ -166,7 +185,7 @@ export default function DashboardPage() {
                       checked={todo.completed}
                       onCheckedChange={() => handleToggleTodo(todo.id, todo.completed)}
                       aria-label={todo.completed ? "Mark as incomplete" : "Mark as complete"}
-                      disabled={!db} // Disable if db is not available
+                      disabled={!db}
                     />
                     <label
                       htmlFor={`todo-${todo.id}`}
@@ -181,7 +200,7 @@ export default function DashboardPage() {
                     onClick={() => handleDeleteTodo(todo.id)}
                     aria-label="Delete task"
                     className="text-muted-foreground hover:text-destructive"
-                    disabled={!db} // Disable if db is not available
+                    disabled={!db}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -192,7 +211,6 @@ export default function DashboardPage() {
         </CardContent>
       </Card>
       
-      {/* Placeholder for other dashboard sections */}
       <div className="grid md:grid-cols-2 gap-6 mt-8">
         <Card className="fade-in" style={{animationDelay: '0.4s'}}>
             <CardHeader>

@@ -9,6 +9,12 @@ export interface Project {
   projectType: string; // e.g., "Residential", "Commercial"
   year?: number;
   location?: string;
+  clientId?: string; // Reference to a user/customer ID
+  status?: string; // e.g., "Planning", "In Progress", "Completed"
+  estimatedCost?: number;
+  actualCost?: number;
+  startDate?: any; // Firestore Timestamp or Date
+  endDate?: any; // Firestore Timestamp or Date
 }
 
 export interface Service {
@@ -43,4 +49,20 @@ export interface TodoItem {
   text: string;
   completed: boolean;
   createdAt: any; // Firestore Timestamp or Date
+}
+
+// Add a more specific Project document type for Firestore data
+export interface FirestoreProject {
+  id?: string; // ID will be document ID, but good to have when passing around
+  projectName: string;
+  clientId: string;
+  scope: string;
+  estimatedCost: number;
+  actualCost?: number;
+  startDate: any; // Firebase Timestamp
+  expectedEndDate: any; // Firebase Timestamp
+  status: 'Planning' | 'In Progress' | 'On Hold' | 'Completed' | 'Cancelled';
+  createdAt: any; // Firebase Timestamp
+  updatedAt: any; // Firebase Timestamp
+  // You can add more fields like 'address', 'projectManagerId', etc.
 }

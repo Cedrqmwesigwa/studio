@@ -6,7 +6,7 @@ export type NavItem = {
   external?: boolean;
   icon?: React.ComponentType<{ className?: string }>;
   authRequired?: boolean;
-  adminRequired?: boolean; // For future use
+  adminRequired?: boolean; 
 };
 
 export type SiteConfig = {
@@ -47,6 +47,7 @@ export const siteConfig: SiteConfig = {
     { title: "Shop", href: "/shop"},
     { title: "Contact", href: "/contact" },
     { title: "Dashboard", href: "/dashboard", authRequired: true },
+    { title: "Admin Projects", href: "/admin/projects", authRequired: true, adminRequired: true },
     { title: "Deposit Estimator", href: "/deposit-estimator", authRequired: true },
     { title: "Product AI", href: "/product-recommendation", authRequired: true },
     { title: "Image Tagger", href: "/image-tagging", authRequired: true },
