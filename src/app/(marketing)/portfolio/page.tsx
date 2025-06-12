@@ -19,8 +19,8 @@ const allProjects = [
     title: "Modern Villa in Muyenga", // Example Kampala location
     description: "A stunning contemporary villa featuring spacious interiors, smart home technology, and eco-friendly design principles. Completed ahead of schedule and within budget in Kampala.",
     photos: [
-        "/project_showcase_images/modern-villa-exterior.png", 
-        "/project_showcase_images/modern-living-room.png", 
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjB2aWxsYXxlbnwwfHx8fDE3NDk3MzA2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "/project_showcase_images/modern-living-room.png",
         "/project_showcase_images/luxury-bathroom-villa.png"
     ],
     dataAiHints: ["modern villa exterior", "modern living room", "luxury bathroom"],
@@ -34,7 +34,7 @@ const allProjects = [
     title: "Nakasero Commercial Hub", // Example Kampala location
     description: "Development of a multi-story commercial complex in the heart of Nakasero, including office spaces, retail outlets, and modern amenities.",
     photos: [
-        "/project_showcase_images/office-building-exterior-cbd.png", 
+        "/project_showcase_images/office-building-exterior-cbd.png",
         "/project_showcase_images/modern-office-interior-cbd.png"
     ],
     dataAiHints: ["office building exterior", "modern office interior"],
@@ -48,7 +48,7 @@ const allProjects = [
     title: "Kololo Luxury Apartments",
     description: "Construction of high-end residential apartments with premium finishes, rooftop pool, and state-of-the-art security systems in Kololo.",
     photos: [
-        "/project_showcase_images/apartment-building-design-westlands.png", 
+        "/project_showcase_images/apartment-building-design-westlands.png",
         "/project_showcase_images/luxury-apartment-pool-westlands.png"
     ],
     dataAiHints: ["apartment building design", "luxury apartment pool"],
@@ -71,7 +71,7 @@ const allProjects = [
     title: "Entebbe Boutique Hotel Renovation",
     description: "Complete renovation and modernization of a boutique hotel in Entebbe, preserving its charm while upgrading facilities and guest experience.",
     photos: [
-        "/project_showcase_images/hotel-lobby-design-renovated.png", 
+        "/project_showcase_images/hotel-lobby-design-renovated.png",
         "/project_showcase_images/luxury-hotel-room-renovated.png"
     ],
     dataAiHints: ["hotel lobby design", "luxury hotel room"],
@@ -163,3 +163,4 @@ export default function PortfolioPage() {
     </div>
   );
 }
+
