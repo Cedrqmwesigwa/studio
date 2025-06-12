@@ -41,7 +41,7 @@ const whyChooseUsItems = [
 ];
 
 const featuredProjects = [
-  { title: "Modern Villa", image: "/project_showcase_images/modern-villa.png", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
+  { title: "Modern Villa", image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjB2aWxsYXxlbnwwfHx8fDE3NDk3MzA2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
   { title: "Commercial Complex", image: "/project_showcase_images/commercial-building.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
   { title: "Luxury Apartment", image: "/project_showcase_images/luxury-apartment.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
 ];
