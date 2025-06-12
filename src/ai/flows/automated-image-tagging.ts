@@ -42,7 +42,27 @@ const tagImagePrompt = ai.definePrompt({
 
   Image: {{media url=photoDataUri}}
 
-  Return only an array of relevant tags.`,
+  Return only an array of relevant tags for the "tags" field in the JSON output.`,
+  config: {
+    safetySettings: [
+      {
+        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+        threshold: 'BLOCK_ONLY_HIGH',
+      },
+      {
+        category: 'HARM_CATEGORY_HATE_SPEECH',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_HARASSMENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+      {
+        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+      },
+    ],
+  },
 });
 
 const tagImageFlow = ai.defineFlow(
@@ -53,6 +73,13 @@ const tagImageFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await tagImagePrompt(input);
-    return output!;
+    // If the prompt call fails (e.g., API error, safety block, or output doesn't match schema),
+    // Genkit should throw an error, so 'output' would not be reached or would be null.
+    // The non-null assertion is generally safe if Genkit guarantees an error is thrown on failure.
+    if (!output) {
+        throw new Error('AI model did not return the expected output structure for image tags.');
+    }
+    return output;
   }
 );
+

@@ -75,9 +75,15 @@ export default function ImageTaggingForm() {
         });
       } catch (error) {
         console.error("Error tagging image during processing:", error);
+        let description = "An error occurred while processing the image for tagging. Please ensure it's a valid image format (JPEG, PNG, WEBP) and try again.";
+        if (error instanceof Error && error.message) {
+          description += ` Details: ${error.message}`;
+        } else if (typeof error === 'string') {
+          description += ` Details: ${error}`;
+        }
         toast({
           title: "Tagging Failed",
-          description: "An error occurred while processing the image for tagging. Please ensure it's a valid image format (JPEG, PNG, WEBP) and try again.",
+          description: description,
           variant: "destructive",
         });
       } finally {
@@ -174,3 +180,4 @@ export default function ImageTaggingForm() {
     </div>
   );
 }
+
