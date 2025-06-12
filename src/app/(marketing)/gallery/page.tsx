@@ -12,7 +12,7 @@ import { siteConfig } from '@/config/site';
 
 const initialGalleryImages = [
   { id: 1, src: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx8MTc0OTczNDAwMnww&ixlib=rb-4.1.0&q=80&w=1080", alt: "Completed modern kitchen in a Kampala home", dataAiHint: "modern kitchen", category: "Residential" },
-  { id: 2, src: "/gallery_images/office-building.png", alt: "Office building facade in Nakasero", dataAiHint: "office building", category: "Commercial" },
+  { id: 2, src: "https://images.unsplash.com/photo-1483357962636-e8cc552b1a08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvZmZpY2UlMjBidWlsZGluZyUyMGZhY2FkZXxlbnwwfHx8fDE3NDk3MzQwNTV8MA&ixlib=rb-4.1.0&q=80&w=1080", alt: "Office building facade in Nakasero", dataAiHint: "office building", category: "Commercial" },
   { id: 3, src: "/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling in a Kololo apartment", dataAiHint: "luxury bathroom", category: "Residential" },
   { id: 4, src: "https://images.unsplash.com/photo-1553413077-190dd305871c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxM3x8aW5kdXN0cmlhbCUyMHdhcmVob3VzZSUyMGludGVyaXJ8ZW58MHx8fHwxNzQ5NzMzOTA1fDA&ixlib=rb-4.1.0&q=80&w=1080", alt: "Industrial warehouse interior in Ntinda", dataAiHint: "warehouse interior", category: "Industrial" },
   { id: 5, src: "/gallery_images/landscaped-garden.png", alt: "Landscaped garden for a villa in Muyenga", dataAiHint: "landscaped garden", category: "Residential" },
@@ -142,6 +142,3 @@ export default function GalleryPage() {
     </div>
   );
 }
-
-
-
