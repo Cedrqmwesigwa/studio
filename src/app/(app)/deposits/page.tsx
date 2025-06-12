@@ -4,13 +4,15 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
-// This page is a placeholder to resolve a route conflict.
-// The primary /deposits page is located in the (marketing) group.
-// Authenticated users accessing this path will be redirected to the marketing /deposits page.
+// This page is designed to resolve a route conflict for authenticated users.
+// It redirects users from the authenticated route group's /deposits path
+// to the primary /deposits page located in the (marketing) group.
 export default function AuthenticatedDepositsRedirect() {
   const router = useRouter();
   useEffect(() => {
-    router.replace('/deposits'); // Redirect to the marketing page
+    // Immediately replace the current history entry and navigate to the marketing /deposits page.
+    // Using replace avoids adding this redirect page to the browser's history stack.
+    router.replace('/deposits'); 
   }, [router]);
 
   return (
