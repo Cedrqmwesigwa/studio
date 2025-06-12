@@ -13,7 +13,7 @@ const featuredServices = [
   { 
     name: "New Construction", 
     description: "Building your vision from the ground up with precision and quality.", 
-    imageUrl: "/service_visuals/new-home-construction-site.png",
+    imageUrl: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxuZXclMjBjb25zdHJ1Y3Rpb24lMjB1Z2FuZGF8ZW58MHx8fHwxNzQ5NzMwNDQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "new home construction site",
     href: "/services#new-construction" 
   },
