@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -47,6 +48,7 @@ export default function Preloader() {
             height={80} // Adjust size as needed
             className="animate-pulse" // Tailwind's pulse animation
             priority // Ensure logo loads quickly
+            data-ai-hint="company logo"
           />
         ) : (
           <Loader2 className="h-16 w-16 animate-spin text-primary" />
