@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
-import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, TrendingUp } from 'lucide-react';
 
 // SVG for WhatsApp icon as lucide-react doesn't have one directly
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -19,13 +19,17 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export default function Footer() {
+  const footerNavLinks = siteConfig.mainNav
+    .filter(item => !item.authRequired && (item.href === "/" || item.href === "/services" || item.href === "/portfolio" || item.href === "/shop" || item.href === "/contact" || item.href === "/invest-with-us" || item.href === "/blog"))
+    .slice(0, 6); // Show up to 6 main links
+
   return (
     <footer className="bg-muted text-muted-foreground py-12 mt-auto">
-      <div className="container max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div>
           <Link href="/" className="flex items-center space-x-2 mb-4">
             {siteConfig.logoUrl ? (
-                <Image src={siteConfig.logoUrl} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" />
+                <Image src={siteConfig.logoUrl} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" data-ai-hint="company logo" />
               ) : (
                 <span className="font-headline text-2xl font-bold text-primary">{siteConfig.name.charAt(0)}</span>
             )}
@@ -35,17 +39,40 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="font-headline text-lg font-semibold text-foreground mb-4">Quick Links</h3>
+          <h3 className="font-headline text-lg font-semibold text-foreground mb-4">Explore</h3>
           <ul className="space-y-2">
-            {siteConfig.mainNav.filter(item => !item.authRequired).slice(0, 5).map((item) => (
+            {footerNavLinks.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-sm hover:text-primary transition-colors">
                   {item.title}
                 </Link>
               </li>
             ))}
+            <li>
+                <Link href="/book-project" className="text-sm hover:text-primary transition-colors">
+                  Book a Project
+                </Link>
+            </li>
           </ul>
         </div>
+        
+        <div>
+          <h3 className="font-headline text-lg font-semibold text-foreground mb-4">Opportunities</h3>
+          <ul className="space-y-2">
+             <li>
+                <Link href="/invest-with-us" className="text-sm hover:text-primary transition-colors flex items-center">
+                  <TrendingUp className="h-4 w-4 mr-2" /> Invest With Us
+                </Link>
+            </li>
+             <li>
+                <Link href="/deposits" className="text-sm hover:text-primary transition-colors">
+                  Make a Deposit
+                </Link>
+            </li>
+            {/* Add more opportunity-related links here if needed */}
+          </ul>
+        </div>
+
 
         <div>
           <h3 className="font-headline text-lg font-semibold text-foreground mb-4">Contact Us</h3>
@@ -83,6 +110,9 @@ export default function Footer() {
       </div>
       <div className="container max-w-screen-2xl mt-8 pt-8 border-t border-border text-center text-sm">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+         <p className="text-xs mt-1">
+            <Link href="/invest-with-us#disclaimer" className="hover:text-primary">Investment Disclaimer</Link>
+          </p>
       </div>
     </footer>
   );

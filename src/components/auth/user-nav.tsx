@@ -16,7 +16,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useAuth } from '@/contexts/auth-context';
 import Link from 'next/link';
-import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon, Briefcase, Send, TrendingUp } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon, Briefcase, Send, TrendingUp, ShoppingBag } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function UserNav() {
@@ -84,6 +84,20 @@ export function UserNav() {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
+            <Link href="/shop">
+              <ShoppingBag className="mr-2 h-4 w-4" />
+              <span>Shop Hardware</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/invest-with-us">
+              <TrendingUp className="mr-2 h-4 w-4" />
+              <span>Invest With Us</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+           <DropdownMenuLabel className="text-xs text-muted-foreground px-2 py-1.5">AI Tools</DropdownMenuLabel>
+          <DropdownMenuItem asChild>
             <Link href="/deposit-estimator">
               <Hammer className="mr-2 h-4 w-4" />
               <span>Deposit Estimator</span>
@@ -113,6 +127,7 @@ export function UserNav() {
               <span>Dynamic Pricing</span>
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
             <Link href="/deposits">
               <CreditCard className="mr-2 h-4 w-4" />
