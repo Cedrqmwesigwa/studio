@@ -20,7 +20,7 @@ const featuredServices = [
   { 
     name: "Renovations", 
     description: "Transforming spaces with modern designs and expert craftsmanship.", 
-    imageUrl: "/service_visuals/kitchen-renovation-modern.png",
+    imageUrl: "https://images.unsplash.com/photo-1604159848821-104723525eb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZW5vdmF0aW9uJTIwaG91c2V8ZW58MHx8fHwxNzQ5NzMwNTMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "kitchen renovation modern",
     href: "/services#renovations" 
   },
