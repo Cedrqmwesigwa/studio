@@ -42,8 +42,8 @@ const whyChooseUsItems = [
 
 const featuredProjects = [
   { title: "Modern Villa", image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjB2aWxsYXxlbnwwfHx8fDE3NDk3MzA2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080", dataAiHint: "modern villa", type: "Residential", href: "/portfolio" },
-  { title: "Commercial Complex", image: "/project_showcase_images/commercial-building.png", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
-  { title: "Luxury Apartment", image: "/project_showcase_images/luxury-apartment.png", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
+  { title: "Commercial Complex", image: "https://images.unsplash.com/photo-1602082550187-3f954840a0f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21tZXJjaWFsJTIwY29tcGxleHxlbnwwfHx8fDE3NDk3MzA3MjR8MA&ixlib=rb-4.1.0&q=80&w=1080", dataAiHint: "commercial building", type: "Commercial", href: "/portfolio" },
+  { title: "Luxury Apartment", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhcGFydG1lbnR8ZW58MHx8fHwxNzE2NTQ0MDAwfDA&ixlib=rb-4.0.3&q=80&w=1080", dataAiHint: "luxury apartment", type: "Residential", href: "/portfolio" },
 ];
 
 export default function HomePage() {
