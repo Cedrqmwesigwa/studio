@@ -1,4 +1,5 @@
 
+
 export interface Project {
   id: string;
   title: string;
@@ -55,12 +56,12 @@ export interface TodoItem {
 export interface FirestoreProject {
   id?: string; // ID will be document ID, but good to have when passing around
   projectName: string;
-  clientId: string;
+  clientId: string; // For now, can be a string (name or ID). Later, could be a reference.
   scope: string;
   estimatedCost: number;
-  actualCost?: number;
-  startDate: any; // Firebase Timestamp
-  expectedEndDate: any; // Firebase Timestamp
+  actualCost?: number; // Optional, can be filled later
+  startDate: any; // Firebase Timestamp (will be Date in form, converted on save)
+  expectedEndDate: any; // Firebase Timestamp (will be Date in form, converted on save)
   status: 'Planning' | 'In Progress' | 'On Hold' | 'Completed' | 'Cancelled';
   createdAt: any; // Firebase Timestamp
   updatedAt: any; // Firebase Timestamp

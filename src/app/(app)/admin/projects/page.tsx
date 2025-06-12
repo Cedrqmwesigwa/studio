@@ -91,9 +91,9 @@ export default function AdminProjectsPage() {
             Overview of all construction projects.
           </p>
         </div>
-        <Button asChild disabled>
+        <Button asChild>
           <Link href="/admin/projects/new">
-            <PlusCircle className="mr-2 h-5 w-5" /> Create New Project (Coming Soon)
+            <PlusCircle className="mr-2 h-5 w-5" /> Create New Project
           </Link>
         </Button>
       </section>
