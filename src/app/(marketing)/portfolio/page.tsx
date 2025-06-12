@@ -60,8 +60,8 @@ const allProjects = [
     id: "industrial-warehouse-complex-ntinda", // Example Kampala location
     title: "Ntinda Industrial Warehouse",
     description: "Design and construction of a large-scale industrial warehouse complex in Ntinda with optimized logistics flow and heavy-duty infrastructure.",
-    photos: ["https://images.unsplash.com/photo-1587092963069-793810919511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1MzcyNDMyNnww&ixlib=rb-4.0.3&q=80&w=1080"],
-    dataAiHints: ["industrial warehouse"],
+    photos: ["https://images.unsplash.com/photo-1586528116022-aeda1613c63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc0OTczNTA3Nnww&ixlib=rb-4.1.0&q=80&w=1080"],
+    dataAiHints: ["large warehouse exterior"],
     projectType: "Industrial",
     year: 2023,
     location: "Ntinda, Kampala",
@@ -71,10 +71,10 @@ const allProjects = [
     title: "Entebbe Boutique Hotel Renovation",
     description: "Complete renovation and modernization of a boutique hotel in Entebbe, preserving its charm while upgrading facilities and guest experience.",
     photos: [
-        "/project_showcase_images/hotel-lobby-design-renovated.png",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib3V0aXF1ZSUyMGhvdGVsfGVufDB8fHx8MTc0OTczNTE1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
         "/project_showcase_images/luxury-hotel-room-renovated.png"
     ],
-    dataAiHints: ["hotel lobby design", "luxury hotel room"],
+    dataAiHints: ["boutique hotel", "luxury hotel room"],
     projectType: "Commercial",
     year: 2022,
     location: "Entebbe, Uganda"
