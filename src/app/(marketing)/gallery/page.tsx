@@ -14,7 +14,7 @@ const initialGalleryImages = [
   { id: 1, src: "/gallery_images/modern-kitchen.png", alt: "Completed modern kitchen in a Kampala home", dataAiHint: "modern kitchen", category: "Residential" },
   { id: 2, src: "/gallery_images/office-building.png", alt: "Office building facade in Nakasero", dataAiHint: "office building", category: "Commercial" },
   { id: 3, src: "/gallery_images/luxury-bathroom.png", alt: "Luxury bathroom tiling in a Kololo apartment", dataAiHint: "luxury bathroom", category: "Residential" },
-  { id: 4, src: "/gallery_images/warehouse-interior.png", alt: "Industrial warehouse interior in Ntinda", dataAiHint: "warehouse interior", category: "Industrial" },
+  { id: 4, src: "https://images.unsplash.com/photo-1553413077-190dd305871c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxM3x8aW5kdXN0cmlhbCUyMHdhcmVob3VzZSUyMGludGVyaXJ8ZW58MHx8fHwxNzQ5NzMzOTA1fDA&ixlib=rb-4.1.0&q=80&w=1080", alt: "Industrial warehouse interior in Ntinda", dataAiHint: "warehouse interior", category: "Industrial" },
   { id: 5, src: "/gallery_images/landscaped-garden.png", alt: "Landscaped garden for a villa in Muyenga", dataAiHint: "landscaped garden", category: "Residential" },
   { id: 6, src: "/gallery_images/retail-store.png", alt: "Retail store layout in Acacia Mall", dataAiHint: "retail store", category: "Commercial" },
   { id: 7, src: "/gallery_images/custom-staircase.png", alt: "Custom staircase in a Bugolobi home", dataAiHint: "custom staircase", category: "Residential" },
