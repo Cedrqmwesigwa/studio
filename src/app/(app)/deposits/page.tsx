@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { DollarSign, ShieldCheck, Banknote, Smartphone, FileText, MessageSquare, CreditCard, ExternalLink } from "lucide-react";
+import { DollarSign, ShieldCheck, Banknote, Smartphone, FileText, MessageSquare, CreditCard } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -54,6 +54,7 @@ export default function DepositsPage() {
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
           Initiate your project with Sterling Contractors by making a secure deposit. We offer a range of convenient payment options tailored for our clients in Uganda and internationally.
+          Currently, deposits are processed manually using the secure methods detailed on this page. We are actively working on integrating direct online payment facilities for future convenience.
         </p>
       </section>
 
