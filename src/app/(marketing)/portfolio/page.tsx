@@ -48,10 +48,10 @@ const allProjects = [
     title: "Kololo Luxury Apartments",
     description: "Construction of high-end residential apartments with premium finishes, rooftop pool, and state-of-the-art security systems in Kololo.",
     photos: [
-        "/project_showcase_images/apartment-building-design-westlands.png",
+        "https://images.unsplash.com/photo-1604014237800-1c9102c219da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhcGFydG1lbnR8ZW58MHx8fHwxNzUzNTk2NjU4fDA&ixlib=rb-4.0.3&q=80&w=1080",
         "/project_showcase_images/luxury-apartment-pool-westlands.png"
     ],
-    dataAiHints: ["apartment building design", "luxury apartment pool"],
+    dataAiHints: ["luxury apartment", "luxury apartment pool"],
     projectType: "Residential",
     year: 2024,
     location: "Kololo, Kampala",
@@ -60,8 +60,8 @@ const allProjects = [
     id: "industrial-warehouse-complex-ntinda", // Example Kampala location
     title: "Ntinda Industrial Warehouse",
     description: "Design and construction of a large-scale industrial warehouse complex in Ntinda with optimized logistics flow and heavy-duty infrastructure.",
-    photos: ["/project_showcase_images/large-warehouse-exterior-industrial.png"],
-    dataAiHints: ["large warehouse exterior"],
+    photos: ["https://images.unsplash.com/photo-1587092963069-793810919511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1MzcyNDMyNnww&ixlib=rb-4.0.3&q=80&w=1080"],
+    dataAiHints: ["industrial warehouse"],
     projectType: "Industrial",
     year: 2023,
     location: "Ntinda, Kampala",
