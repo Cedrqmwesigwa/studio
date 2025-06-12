@@ -4,95 +4,95 @@
 
 @layer base {
   :root {
-    --background: 213 33% 95%; /* #F0F4F8 */
-    --foreground: 220 13% 12%; /* #1D232A */
+    --background: 0 0% 7%; /* Very Dark Grey/Almost Black */
+    --foreground: 45 60% 85%; /* Pale Gold / Off-White */
 
-    --card: 0 0% 100%; /* white */
-    --card-foreground: 220 13% 12%;
+    --card: 0 0% 10%; /* Slightly Lighter Dark Grey for cards */
+    --card-foreground: 45 60% 85%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 12%;
+    --popover: 0 0% 12%; /* Darker for popovers */
+    --popover-foreground: 45 60% 85%;
 
-    --primary: 212 63% 28%; /* #1A4378 */
-    --primary-foreground: 0 0% 100%; /* white */
+    --primary: 45 85% 50%; /* Rich Gold */
+    --primary-foreground: 0 0% 5%; /* Near Black - for text on Gold buttons */
 
-    --secondary: 210 20% 88%; /* #DDE3EA */
-    --secondary-foreground: 212 63% 28%; /* primary color */
+    --secondary: 45 50% 25%; /* Dark Muted Gold/Bronze for secondary elements */
+    --secondary-foreground: 45 70% 80%; /* Light Gold for text on dark muted gold */
 
-    --muted: 210 25% 92%; /* #E3E8EE */
-    --muted-foreground: 210 15% 55%; /* #7C8A99 */
+    --muted: 0 0% 15%; /* Dark Grey for muted backgrounds */
+    --muted-foreground: 0 0% 50%; /* Medium Grey for muted text */
 
-    --accent: 45 36% 52%; /* #B3A159 */
-    --accent-foreground: 220 13% 12%; /* dark text for gold */
+    --accent: 50 100% 70%; /* Brighter, Lighter Gold for accents - highlight */
+    --accent-foreground: 0 0% 10%; /* Dark text for bright gold accents */
 
-    --destructive: 0 72% 51%; /* #E53E3E */
+    --destructive: 0 72% 51%; /* #E53E3E - Keeping a standard red for destructive */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 80%; /* #BEC8D2 */
-    --input: 210 20% 90%; /* #E0E6EB */
-    --ring: 212 63% 45%; /* Lighter shade of primary */
+    --border: 0 0% 20%; /* Dark Grey border */
+    --input: 0 0% 12%; /* Input background */
+    --ring: 45 85% 60%; /* Slightly lighter gold for focus rings */
     
     --radius: 0.5rem;
 
-    --chart-1: 212 63% 28%;
-    --chart-2: 45 36% 52%;
-    --chart-3: 210 20% 88%;
-    --chart-4: 213 33% 85%;
-    --chart-5: 45 36% 62%;
+    --chart-1: 45 85% 50%; /* Rich Gold */
+    --chart-2: 50 100% 70%; /* Brighter Gold */
+    --chart-3: 45 50% 25%; /* Dark Muted Gold */
+    --chart-4: 0 0% 60%; /* Light Grey for charts */
+    --chart-5: 0 0% 40%; /* Medium Grey for charts */
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 45 60% 85%;
+    --sidebar-primary: 45 85% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 50 100% 70%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 45 85% 60%;
   }
 
   .dark {
-    --background: 220 13% 12%; /* Dark blue/gray */
-    --foreground: 210 25% 92%; /* Light gray */
+    --background: 0 0% 7%; /* Very Dark Grey/Almost Black */
+    --foreground: 45 60% 85%; /* Pale Gold / Off-White */
 
-    --card: 220 13% 10%;
-    --card-foreground: 210 25% 92%;
+    --card: 0 0% 10%; /* Slightly Lighter Dark Grey for cards */
+    --card-foreground: 45 60% 85%;
 
-    --popover: 220 13% 10%;
-    --popover-foreground: 210 25% 92%;
+    --popover: 0 0% 12%; /* Darker for popovers */
+    --popover-foreground: 45 60% 85%;
 
-    --primary: 0 0% 100%; /* white */
-    --primary-foreground: 212 63% 28%; /* primary color */
+    --primary: 45 85% 50%; /* Rich Gold */
+    --primary-foreground: 0 0% 5%; /* Near Black - for text on Gold buttons */
 
-    --secondary: 220 13% 18%; /* Darker secondary */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 45 50% 25%; /* Dark Muted Gold/Bronze for secondary elements */
+    --secondary-foreground: 45 70% 80%; /* Light Gold for text on dark muted gold */
 
-    --muted: 220 13% 22%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 0 0% 15%; /* Dark Grey for muted backgrounds */
+    --muted-foreground: 0 0% 50%; /* Medium Grey for muted text */
 
-    --accent: 45 36% 62%; /* Lighter gold */
-    --accent-foreground: 220 13% 12%;
+    --accent: 50 100% 70%; /* Brighter, Lighter Gold for accents - highlight */
+    --accent-foreground: 0 0% 10%; /* Dark text for bright gold accents */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 25%;
-    --input: 220 13% 20%;
-    --ring: 212 63% 55%;
+    --border: 0 0% 20%; /* Dark Grey border */
+    --input: 0 0% 12%; /* Input background */
+    --ring: 45 85% 60%; /* Slightly lighter gold for focus rings */
 
-    --chart-1: 0 0% 100%;
-    --chart-2: 45 36% 62%;
-    --chart-3: 220 13% 18%;
-    --chart-4: 210 25% 80%;
-    --chart-5: 45 36% 52%;
+    --chart-1: 45 85% 50%;
+    --chart-2: 50 100% 70%;
+    --chart-3: 45 50% 25%;
+    --chart-4: 0 0% 60%;
+    --chart-5: 0 0% 40%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 45 60% 85%;
+    --sidebar-primary: 45 85% 50%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 50 100% 70%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 45 85% 60%;
   }
 }
 
@@ -122,13 +122,6 @@
     }
   }
 }
-
-/* For debugging layout */
-/*
-* {
-  outline: 1px solid red !important;
-}
-*/
 
 /* Preloader Styles */
 .preloader {
