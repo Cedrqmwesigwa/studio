@@ -27,7 +27,7 @@ const featuredServices = [
   { 
     name: "Project Management", 
     description: "Expert oversight for seamless execution and timely delivery.", 
-    imageUrl: "/service_visuals/construction-blueprint-planning.png",
+    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9qZWN0JTIwbWFuYWdlbWVudCUyMGNvbnN0cnVjdGlvbnxlbnwwfHx8fDE3NDk3MzA1OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "construction blueprint planning",
     href: "/services#project-management" 
   },
