@@ -68,7 +68,8 @@ export default function ContactPage() {
     });
   }
 
-  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.support.address)}&hl=en&z=16&output=embed`;
+  const coordinates = "0.310144,32.579771";
+  const googleMapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(coordinates)}&hl=en&z=16&output=embed`;
 
   return (
     <div className="space-y-16">
