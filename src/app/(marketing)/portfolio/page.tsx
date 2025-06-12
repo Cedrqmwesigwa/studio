@@ -34,7 +34,7 @@ const allProjects = [
     title: "Nakasero Commercial Hub", // Example Kampala location
     description: "Development of a multi-story commercial complex in the heart of Nakasero, including office spaces, retail outlets, and modern amenities.",
     photos: [
-        "/project_showcase_images/office-building-exterior-cbd.png",
+        "https://images.unsplash.com/photo-1728325444171-088ccff86658?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb21tZXJjaWFsJTIwaHVifGVufDB8fHx8MTc0OTczNjcyOHww&ixlib=rb-4.1.0&q=80&w=1080",
         "/project_showcase_images/modern-office-interior-cbd.png"
     ],
     dataAiHints: ["office building exterior", "modern office interior"],
@@ -60,8 +60,8 @@ const allProjects = [
     id: "industrial-warehouse-complex-ntinda", // Example Kampala location
     title: "Ntinda Industrial Warehouse",
     description: "Design and construction of a large-scale industrial warehouse complex in Ntinda with optimized logistics flow and heavy-duty infrastructure.",
-    photos: ["https://images.unsplash.com/photo-1586528116022-aeda1613c63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc0OTczNTA3Nnww&ixlib=rb-4.1.0&q=80&w=1080"],
-    dataAiHints: ["large warehouse exterior"],
+    photos: ["https://images.unsplash.com/photo-1587092963069-793810919511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1MzcyNDMyNnww&ixlib=rb-4.0.3&q=80&w=1080"],
+    dataAiHints: ["industrial warehouse"],
     projectType: "Industrial",
     year: 2023,
     location: "Ntinda, Kampala",
