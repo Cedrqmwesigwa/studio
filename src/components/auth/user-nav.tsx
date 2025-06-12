@@ -16,7 +16,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useAuth } from '@/contexts/auth-context';
 import Link from 'next/link';
-import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function UserNav() {
@@ -38,7 +38,7 @@ export function UserNav() {
   }
 
   const getInitials = (name: string | null | undefined) => {
-    if (!name) return 'SS';
+    if (!name) return 'SC'; // Sterling Contractors initials
     const names = name.split(' ');
     if (names.length === 1) return names[0].substring(0, 2).toUpperCase();
     return (names[0][0] + names[names.length - 1][0]).toUpperCase();
@@ -85,6 +85,12 @@ export function UserNav() {
             <Link href="/image-tagging">
               <ImagePlay className="mr-2 h-4 w-4" />
               <span>Image Tagger</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/safety-briefing">
+              <SafetyIcon className="mr-2 h-4 w-4" />
+              <span>Safety Briefing AI</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
