@@ -8,7 +8,7 @@ import { CalendarDays, UserCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 // Import all blog posts from the single source of truth
-import { blogPosts as allBlogPostsData } from './[slug]/page'; 
+import { blogPosts as allBlogPostsData } from '@/lib/blog-data'; 
 
 export const metadata: Metadata = {
   title: `Blog | ${siteConfig.name}`,
