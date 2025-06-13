@@ -65,7 +65,7 @@ const services = [
     name: "Custom Fabrication",
     description: "We provide custom metal and woodwork fabrication services for unique architectural elements, fittings, and fixtures to meet specific project needs with sterling quality and precision.",
     benefits: ["Tailored solutions to specifications", "Precision engineering & craftsmanship", "Durable & high-quality materials", "Unique & aesthetic designs", "Functional integrations"],
-    visualUrl: "/service_visuals/metal-welding-workshop.png",
+    visualUrl: "https://images.unsplash.com/photo-1531053326607-9d349096d887?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYWJyaWNhdGlvbnxlbnwwfHx8fDE3NDk3Mzg2MDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "metal welding workshop",
     icon: Package,
   },
