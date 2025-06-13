@@ -1,6 +1,6 @@
 
 import type { StaticImageData } from 'next/image';
-import siteLogoFile from '@/assets/sterling-contractors-logo.jpg'; // Assumed path
+// Importing the logo is removed, we will use a public path.
 
 export type NavItem = {
   title: string;
@@ -9,7 +9,7 @@ export type NavItem = {
   external?: boolean;
   icon?: React.ComponentType<{ className?: string }>;
   authRequired?: boolean;
-  adminRequired?: boolean; 
+  adminRequired?: boolean;
 };
 
 export type SiteConfig = {
@@ -17,30 +17,30 @@ export type SiteConfig = {
   description: string;
   url: string;
   ogImage: string;
-  logoAsset?: StaticImageData; // Changed from logoUrl
+  logoUrl?: string; // Changed back to logoUrl, type string
   mainNav: NavItem[];
   footerNav?: NavItem[];
   support: {
     phone: string;
-    rawPhone: string; // For tel: links
+    rawPhone: string;
     email: string;
     address: string;
     operatingHours: string;
-    whatsappNumber?: string; // For WhatsApp link generation
-    whatsappLink?: string; // Full WhatsApp link
+    whatsappNumber?: string;
+    whatsappLink?: string;
   };
 };
 
 const rawPhoneNumber = "+256751979777";
-const displayPhoneNumber = "+256 751 979 777"; // Keep this for display if you prefer spaces
-const whatsappNumberForLink = rawPhoneNumber.replace(/\D/g, ''); // Remove non-digits for wa.me link
+const displayPhoneNumber = "+256 751 979 777";
+const whatsappNumberForLink = rawPhoneNumber.replace(/\D/g, '');
 
 export const siteConfig: SiteConfig = {
   name: "Sterling Contractors",
   description: "Your trusted partner for construction and contracting services in Kampala. We build Uganda's future with quality, transparency, and data-driven efficiency.",
   url: "https://sterlingcontractors.org",
-  ogImage: "/og.jpg", 
-  logoAsset: siteLogoFile, // Changed from logoUrl
+  ogImage: "/og.jpg",
+  logoUrl: "/site_assets/sterling-contractors-logo.jpg", // Points to public/site_assets/sterling-contractors-logo.jpg
   mainNav: [
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
@@ -53,12 +53,6 @@ export const siteConfig: SiteConfig = {
     { title: "Contact", href: "/contact" },
     { title: "Dashboard", href: "/dashboard", authRequired: true },
     { title: "Admin Projects", href: "/admin/projects", authRequired: true, adminRequired: true },
-    { title: "Deposit Estimator", href: "/deposit-estimator", authRequired: true },
-    { title: "Product AI", href: "/product-recommendation", authRequired: true },
-    { title: "Image Tagger", href: "/image-tagging", authRequired: true },
-    { title: "Safety Briefing AI", href: "/safety-briefing", authRequired: true },
-    { title: "Dynamic Pricing", href: "/dynamic-pricing", authRequired: true },
-    { title: "Make Deposit", href: "/deposits", authRequired: true },
   ],
   support: {
     phone: displayPhoneNumber,

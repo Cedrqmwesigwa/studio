@@ -12,15 +12,13 @@ export default function Preloader() {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    // Start fading out after a short delay
     const fadeOutTimer = setTimeout(() => {
       setIsFadingOut(true);
-    }, 1200); // Time before fade-out starts (e.g., 1.2 seconds)
+    }, 1200); 
 
-    // Remove from DOM after fade-out is complete
     const removeTimer = setTimeout(() => {
       setIsVisible(false);
-    }, 1700); // Total time visible including fade-out (e.g., 1.2s + 0.5s fade = 1.7s)
+    }, 1700); 
 
     return () => {
       clearTimeout(fadeOutTimer);
@@ -36,18 +34,18 @@ export default function Preloader() {
     <div
       className={cn(
         "preloader",
-        isFadingOut && "opacity-0 pointer-events-none" // CSS will transition opacity
+        isFadingOut && "opacity-0 pointer-events-none"
       )}
     >
       <div className="preloader-content">
-        {siteConfig.logoAsset ? (
+        {siteConfig.logoUrl ? (
           <Image
-            src={siteConfig.logoAsset}
+            src={siteConfig.logoUrl}
             alt={`${siteConfig.name} Loading...`}
-            width={80} // Adjust size as needed
-            height={80} // Adjust size as needed
-            className="animate-pulse" // Tailwind's pulse animation
-            priority // Ensure logo loads quickly
+            width={80}
+            height={80}
+            className="animate-pulse"
+            priority
             data-ai-hint="company logo"
           />
         ) : (

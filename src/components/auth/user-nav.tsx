@@ -16,11 +16,11 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useAuth } from '@/contexts/auth-context';
 import Link from 'next/link';
-import { LogOut, User, LayoutDashboard, Hammer, Bot, ImagePlay, CreditCard, ShieldCheck as SafetyIcon, Briefcase, Send, TrendingUp, ShoppingBag } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Briefcase, Send, TrendingUp, ShoppingBag } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function UserNav() {
-  const { user } = useAuth(); // useAuth now includes isAdmin directly
+  const { user } = useAuth(); 
   const { toast } = useToast();
 
   const handleSignOut = async () => {
@@ -38,7 +38,7 @@ export function UserNav() {
   }
 
   const getInitials = (name: string | null | undefined) => {
-    if (!name) return 'SC'; // Sterling Contractors initials
+    if (!name) return 'SC'; 
     const names = name.split(' ');
     if (names.length === 1) return names[0].substring(0, 2).toUpperCase();
     return (names[0][0] + names[names.length - 1][0]).toUpperCase();
@@ -96,44 +96,7 @@ export function UserNav() {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-           <DropdownMenuLabel className="text-xs text-muted-foreground px-2 py-1.5">AI Tools</DropdownMenuLabel>
-          <DropdownMenuItem asChild>
-            <Link href="/deposit-estimator">
-              <Hammer className="mr-2 h-4 w-4" />
-              <span>Deposit Estimator</span>
-            </Link>
-          </DropdownMenuItem>
-           <DropdownMenuItem asChild>
-            <Link href="/product-recommendation">
-              <Bot className="mr-2 h-4 w-4" />
-              <span>Product AI</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/image-tagging">
-              <ImagePlay className="mr-2 h-4 w-4" />
-              <span>Image Tagger</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/safety-briefing">
-              <SafetyIcon className="mr-2 h-4 w-4" />
-              <span>Safety Briefing AI</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/dynamic-pricing">
-              <TrendingUp className="mr-2 h-4 w-4" />
-              <span>Dynamic Pricing</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link href="/deposits">
-              <CreditCard className="mr-2 h-4 w-4" />
-              <span>Make Deposit</span>
-            </Link>
-          </DropdownMenuItem>
+          {/* Archived AI Tools and Make Deposit removed from here */}
           <DropdownMenuItem asChild>
             <Link href="/profile">
               <User className="mr-2 h-4 w-4" />

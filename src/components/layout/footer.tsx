@@ -28,8 +28,8 @@ export default function Footer() {
       <div className="container max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div>
           <Link href="/" className="flex items-center space-x-2 mb-4">
-            {siteConfig.logoAsset ? (
-                <Image src={siteConfig.logoAsset} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" data-ai-hint="company logo" />
+            {siteConfig.logoUrl ? (
+                <Image src={siteConfig.logoUrl} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" data-ai-hint="company logo" />
               ) : (
                 <span className="font-headline text-2xl font-bold text-primary">{siteConfig.name.charAt(0)}</span>
             )}
@@ -55,7 +55,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        
+
         <div>
           <h3 className="font-headline text-lg font-semibold text-foreground mb-4">Opportunities</h3>
           <ul className="space-y-2">
@@ -64,12 +64,6 @@ export default function Footer() {
                   <TrendingUp className="h-4 w-4 mr-2" /> Invest With Us
                 </Link>
             </li>
-             <li>
-                <Link href="/deposits" className="text-sm hover:text-primary transition-colors">
-                  Make a Deposit
-                </Link>
-            </li>
-            {/* Add more opportunity-related links here if needed */}
           </ul>
         </div>
 
