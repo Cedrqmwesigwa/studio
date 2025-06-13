@@ -63,7 +63,7 @@ export const blogPosts = [
       <br/>
       <p>Consulting with professionals like architects and engineers can provide valuable insights and help you make informed decisions. At Sterling Contractors, we offer material consultation as part of our services.</p>
     `,
-    imageUrl: "/blog_images/various-building-materials.png",
+    imageUrl: "https://images.unsplash.com/photo-1689596312367-39a4461504c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidWlsZGluZyUyMG1hdGVyaWFsfGVufDB8fHx8MTc0OTgxMTkyNXww&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "various building materials",
     author: "John Smith",
     authorTitle: "Materials Expert",
@@ -360,5 +360,7 @@ export const blogPosts = [
   }
 ];
 
+
+    
 
     
