@@ -228,7 +228,7 @@ export default function ContactPage() {
                     Secure Deposit & Payment Information
                 </CardTitle>
                 <CardDescription>
-                    Please use the following details for project deposits and payments. Replace placeholder details with actual company information.
+                    Please use the following details for project deposits and payments.
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-8">
@@ -238,11 +238,10 @@ export default function ContactPage() {
                         Bank Account Details
                     </h3>
                     <div className="space-y-1.5 text-sm text-muted-foreground pl-8">
-                        <p><strong className="text-foreground">Account Name:</strong> Sterling Contractors Ltd. (PLEASE REPLACE)</p>
-                        <p><strong className="text-foreground">Account Number:</strong> 0123456789 (PLEASE REPLACE)</p>
-                        <p><strong className="text-foreground">Bank Name:</strong> Example Bank Uganda (PLEASE REPLACE)</p>
-                        <p><strong className="text-foreground">Branch:</strong> Main Branch, Kampala (PLEASE REPLACE)</p>
-                        <p><strong className="text-foreground">Swift Code:</strong> EXABUGKA (PLEASE REPLACE IF APPLICABLE)</p>
+                        <p><strong className="text-foreground">Account Name:</strong> Cedric Mwesigwa</p>
+                        <p><strong className="text-foreground">Account Number:</strong> 1000103443030</p>
+                        <p><strong className="text-foreground">Bank Name:</strong> Standard Chartered Bank (PLEASE VERIFY/UPDATE)</p>
+                        <p><strong className="text-foreground">Branch:</strong> Kampala Main</p>
                     </div>
                 </div>
                 <hr/>
@@ -252,8 +251,9 @@ export default function ContactPage() {
                         Airtel Money Details
                     </h3>
                     <div className="space-y-1.5 text-sm text-muted-foreground pl-8">
-                        <p><strong className="text-foreground">Registered Name:</strong> Sterling Contractors (PLEASE REPLACE)</p>
-                        <p><strong className="text-foreground">Airtel Money Number:</strong> 075X XXX XXX (PLEASE REPLACE)</p>
+                        <p><strong className="text-foreground">Registered Name:</strong> Multiple Investments</p>
+                        <p><strong className="text-foreground">Airtel Money Number:</strong> 0751979777</p>
+                        <p><strong className="text-foreground">Merchant Code:</strong> 6772374</p>
                     </div>
                 </div>
                 <hr/>
@@ -293,6 +293,5 @@ export default function ContactPage() {
     </div>
   );
 }
-
 
     
