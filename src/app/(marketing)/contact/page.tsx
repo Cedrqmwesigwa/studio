@@ -17,8 +17,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { siteConfig } from "@/config/site";
-import { Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Phone, Mail, MapPin, Clock, MessageSquare, Landmark, Smartphone, ShieldCheck, AlertTriangle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 
 // SVG for WhatsApp icon as lucide-react doesn't have one directly
@@ -220,6 +220,61 @@ export default function ContactPage() {
         </Card>
       </section>
 
+      <section className="fade-in" style={{ animationDelay: '0.3s' }}>
+        <Card className="shadow-xl border-primary/30">
+            <CardHeader>
+                <CardTitle className="font-headline text-2xl flex items-center">
+                    <ShieldCheck className="h-7 w-7 mr-3 text-primary" />
+                    Secure Deposit & Payment Information
+                </CardTitle>
+                <CardDescription>
+                    Please use the following details for project deposits and payments. Replace placeholder details with actual company information.
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-8">
+                <div>
+                    <h3 className="font-semibold text-xl text-foreground mb-3 flex items-center">
+                        <Landmark className="h-6 w-6 mr-2 text-accent" />
+                        Bank Account Details
+                    </h3>
+                    <div className="space-y-1.5 text-sm text-muted-foreground pl-8">
+                        <p><strong className="text-foreground">Account Name:</strong> Sterling Contractors Ltd. (PLEASE REPLACE)</p>
+                        <p><strong className="text-foreground">Account Number:</strong> 0123456789 (PLEASE REPLACE)</p>
+                        <p><strong className="text-foreground">Bank Name:</strong> Example Bank Uganda (PLEASE REPLACE)</p>
+                        <p><strong className="text-foreground">Branch:</strong> Main Branch, Kampala (PLEASE REPLACE)</p>
+                        <p><strong className="text-foreground">Swift Code:</strong> EXABUGKA (PLEASE REPLACE IF APPLICABLE)</p>
+                    </div>
+                </div>
+                <hr/>
+                <div>
+                    <h3 className="font-semibold text-xl text-foreground mb-3 flex items-center">
+                        <Smartphone className="h-6 w-6 mr-2 text-accent" />
+                        Airtel Money Details
+                    </h3>
+                    <div className="space-y-1.5 text-sm text-muted-foreground pl-8">
+                        <p><strong className="text-foreground">Registered Name:</strong> Sterling Contractors (PLEASE REPLACE)</p>
+                        <p><strong className="text-foreground">Airtel Money Number:</strong> 075X XXX XXX (PLEASE REPLACE)</p>
+                    </div>
+                </div>
+                <hr/>
+                <div className="mt-4 p-4 bg-amber-500/10 border border-amber-500/30 rounded-md text-amber-700">
+                    <div className="flex items-start">
+                        <AlertTriangle className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-amber-600" />
+                        <div>
+                            <h4 className="font-semibold text-amber-800">Important Payment Instructions:</h4>
+                            <ul className="list-disc list-inside text-xs space-y-1 mt-1">
+                                <li>Always include your <strong className="text-amber-800">Project Name or Invoice Number</strong> as the payment reference.</li>
+                                <li>After making a payment, please send a confirmation (e.g., screenshot or transaction ID) to <a href={`mailto:${siteConfig.support.email}`} className="underline hover:text-amber-900">{siteConfig.support.email}</a> or our WhatsApp.</li>
+                                <li>For your security, if you receive payment details from any other source, please verify them by contacting us directly through our official phone number <a href={`tel:${siteConfig.support.rawPhone}`} className="underline hover:text-amber-900">{siteConfig.support.phone}</a> before making any payment.</li>
+                                <li>All transactions are processed securely. We prioritize the safety of your funds and information.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+      </section>
+
       <section className="fade-in" style={{ animationDelay: '0.4s' }}>
         <h2 className="font-headline text-2xl font-semibold text-center mb-6">Find Us On The Map</h2>
         <div className="aspect-video bg-muted rounded-lg shadow-md overflow-hidden">
@@ -239,3 +294,5 @@ export default function ContactPage() {
   );
 }
 
+
+    
