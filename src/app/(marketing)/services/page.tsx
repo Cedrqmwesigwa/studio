@@ -20,7 +20,7 @@ const services = [
     name: "New Construction",
     description: "From concept to completion, we build robust and beautiful structures tailored to your specifications. We handle all phases of new construction projects for residential, commercial, and industrial clients in Kampala and across Uganda.",
     benefits: ["Turnkey solutions", "High-quality materials", "Adherence to timelines & budget", "Experienced professionals", "Transparent processes"],
-    visualUrl: "/service_visuals/construction-site-building.png",
+    visualUrl: "https://images.unsplash.com/photo-1672390849364-fa3cd700f072?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMXx8bmV3JTIwY29uc3RydWN0aW9ufGVufDB8fHx8MTc0OTgyOTEzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "construction site building",
     icon: Building,
   },
