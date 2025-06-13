@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Book Your Project | ${siteConfig.name}`,
-  description: `Start your construction project with ${siteConfig.name}. Fill out our project booking form to get a personalized consultation and quote.`,
+  description: `Start your construction project with ${siteConfig.name}. Fill out our project booking form to get a personalized consultation and quote. All completed projects come with a 12-month workmanship guarantee.`,
 };
 
 export default function BookProjectPage() {
@@ -18,7 +18,7 @@ export default function BookProjectPage() {
         </div>
         <h1 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Book Your Project Consultation</h1>
         <p className="mt-3 text-lg text-muted-foreground">
-          Ready to start building your vision? Fill out the form below with your project details. Our team will review your submission and get back to you promptly to discuss the next steps, provide a consultation, and prepare a formal quotation.
+          Ready to start building your vision? Fill out the form below with your project details. Our team will review your submission and get back to you promptly to discuss the next steps, provide a consultation, and prepare a formal quotation. Plus, all our completed projects come with a 12-month workmanship guarantee for your peace of mind.
         </p>
       </section>
       <div className="fade-in" style={{animationDelay: '0.2s'}}>

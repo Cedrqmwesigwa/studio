@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: `Our Services | ${siteConfig.name}`,
-  description: `Explore comprehensive construction services from ${siteConfig.name} in Kampala, including new construction, renovations, project management, hardware supply, and consultation.`,
+  description: `Explore comprehensive construction services from ${siteConfig.name} in Kampala, including new construction, renovations, project management, hardware supply, and consultation. All projects come with a 12-month workmanship guarantee.`,
 };
 export const revalidate = 3600; // Revalidate at most once per hour
 
@@ -77,7 +77,7 @@ export default function ServicesPage() {
       <section className="text-center fade-in">
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Services</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Comprehensive solutions for all your construction and hardware needs, backed by data-driven efficiency and transparent practices. We are committed to quality, reliability, and customer satisfaction in every project we undertake in Kampala and beyond.
+          Comprehensive solutions for all your construction and hardware needs, backed by data-driven efficiency and transparent practices. We are committed to quality, reliability, and customer satisfaction in every project we undertake in Kampala and beyond, and we stand by our work with a 12-month guarantee on workmanship for all completed projects.
         </p>
       </section>
 

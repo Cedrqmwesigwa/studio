@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Users, TrendingUp, Eye } from 'lucide-react';
+import { CheckCircle, Users, TrendingUp, Eye, Award } from 'lucide-react'; // Added Award icon
 import { siteConfig } from '@/config/site';
 
 export const revalidate = 3600; // Revalidate at most once per hour
@@ -38,6 +38,7 @@ const whyChooseUsItems = [
   { title: "Efficient & Timely", description: "Data-driven project management ensures on-schedule delivery, because your time is valuable.", icon: TrendingUp },
   { title: "Transparent Operations", description: "Clear communication, upfront pricing, and transparent use of funds to build lasting trust.", icon: Eye },
   { title: "Experienced & Analytical", description: "Leveraging years of industry experience and quantitative expertise for your project's success.", icon: Users },
+  { title: "12-Month Guarantee", description: "All our completed projects come with a 12-month workmanship guarantee for your peace of mind.", icon: Award },
 ];
 
 const featuredProjects = [
@@ -127,7 +128,7 @@ export default function HomePage() {
              Experience the difference with our commitment to quality, transparency, data-driven efficiency, and client satisfaction.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"> {/* Adjusted gap for potentially 5 items */}
             {whyChooseUsItems.map((item, index) => (
               <div 
                 key={item.title} 
