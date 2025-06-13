@@ -40,9 +40,9 @@ export default function Preloader() {
       )}
     >
       <div className="preloader-content">
-        {siteConfig.logoUrl ? (
+        {siteConfig.logoAsset ? (
           <Image
-            src={siteConfig.logoUrl}
+            src={siteConfig.logoAsset}
             alt={`${siteConfig.name} Loading...`}
             width={80} // Adjust size as needed
             height={80} // Adjust size as needed

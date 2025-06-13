@@ -28,8 +28,8 @@ export default function Footer() {
       <div className="container max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div>
           <Link href="/" className="flex items-center space-x-2 mb-4">
-            {siteConfig.logoUrl ? (
-                <Image src={siteConfig.logoUrl} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" data-ai-hint="company logo" />
+            {siteConfig.logoAsset ? (
+                <Image src={siteConfig.logoAsset} alt={siteConfig.name} width={40} height={40} className="h-10 w-auto" data-ai-hint="company logo" />
               ) : (
                 <span className="font-headline text-2xl font-bold text-primary">{siteConfig.name.charAt(0)}</span>
             )}

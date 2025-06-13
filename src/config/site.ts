@@ -1,4 +1,7 @@
 
+import type { StaticImageData } from 'next/image';
+import siteLogoFile from '@/assets/sterling-contractors-logo.jpg'; // Assumed path
+
 export type NavItem = {
   title: string;
   href: string;
@@ -14,7 +17,7 @@ export type SiteConfig = {
   description: string;
   url: string;
   ogImage: string;
-  logoUrl?: string;
+  logoAsset?: StaticImageData; // Changed from logoUrl
   mainNav: NavItem[];
   footerNav?: NavItem[];
   support: {
@@ -37,7 +40,7 @@ export const siteConfig: SiteConfig = {
   description: "Your trusted partner for construction and contracting services in Kampala. We build Uganda's future with quality, transparency, and data-driven efficiency.",
   url: "https://sterlingcontractors.org",
   ogImage: "/og.jpg", 
-  logoUrl: "/site_assets/sterling-contractors-logo.jpg",
+  logoAsset: siteLogoFile, // Changed from logoUrl
   mainNav: [
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
