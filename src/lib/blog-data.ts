@@ -87,7 +87,7 @@ export const blogPosts = [
       <br/>
       <p>The center is now open and already hosting various community programs. We look forward to seeing it become a vibrant hub of activity and learning.</p>
     `,
-    imageUrl: "/blog_images/community-center-opening.png",
+    imageUrl: "https://images.unsplash.com/photo-1600132807314-48c50886dc37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb21tdW5pdHklMjBjZW50ZXJ8ZW58MHx8fHwxNzQ5NzM5Mzc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "community center opening",
     author: "Sterling Team",
     authorTitle: "Sterling Contractors",
@@ -359,3 +359,6 @@ export const blogPosts = [
     tags: ["Industrial", "Warehouse", "Ntinda", "Kampala", "Construction", "Logistics", "Case Study"],
   }
 ];
+
+
+    
