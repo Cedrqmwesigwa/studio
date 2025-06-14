@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: `Stay updated with the latest news, insights, construction tips, and project updates from ${siteConfig.name} in Kampala, Uganda.`,
 };
 
-export const revalidate = 3600; // Revalidate at most once per hour
+export const revalidate = 86400; // Revalidate at most once per day
 
 
 export default function BlogPage() {

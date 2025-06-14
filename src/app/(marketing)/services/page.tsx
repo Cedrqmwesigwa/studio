@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: `Our Services | ${siteConfig.name}`,
   description: `Explore comprehensive construction services from ${siteConfig.name} in Kampala, including new construction, renovations, project management, hardware supply, and consultation. All projects come with a 12-month workmanship guarantee.`,
 };
-export const revalidate = 3600; // Revalidate at most once per hour
+export const revalidate = 86400; // Revalidate at most once per day
 
 // Mock data for services
 const services = [

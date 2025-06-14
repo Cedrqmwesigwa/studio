@@ -12,7 +12,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { blogPosts } from '@/lib/blog-data'; // Import from centralized location
 
-export const revalidate = 3600; // Revalidate at most once per hour
+export const revalidate = 86400; // Revalidate at most once per day
 
 async function getPostData(slug: string) {
   return blogPosts.find(post => post.slug === slug);
