@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Header from './header';
 import Footer from './footer';
+import RecommendedProducts from './recommended-products'; // Import the new component
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -13,6 +14,9 @@ export default function MainLayout({ children }: MainLayoutProps) {
       <main className="flex-grow container max-w-screen-2xl py-8">
         {children}
       </main>
+      <div className="container max-w-screen-2xl"> {/* Container for RecommendedProducts */}
+        <RecommendedProducts />
+      </div>
       <Footer />
     </>
   );

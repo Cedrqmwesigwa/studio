@@ -901,7 +901,8 @@ export default function ShopPage() {
           {productsByCategory[category] && productsByCategory[category].length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {productsByCategory[category].map((product, productIndex) => (
-                <Card 
+                <Card
+                  id={product.id} // Added ID here for potential anchor linking
                   key={product.id} 
                   className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" 
                   style={{animationDelay: `${(categoryIndex * 0.1) + (productIndex * 0.05) + 0.4}s`}}
@@ -976,3 +977,4 @@ export default function ShopPage() {
     </div>
   );
 }
+
