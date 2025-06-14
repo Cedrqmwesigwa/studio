@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Tag, Eye, FileImage } from 'lucide-react'; // Added FileImage
+import { ShoppingCart, Tag, Eye, FileImage, Lightbulb, Sparkles } from 'lucide-react'; // Added FileImage, Lightbulb, Sparkles
 import { siteConfig } from '@/config/site';
+import { useMemo } from 'react'; // Added useMemo
 
 // Updated product list
 const products = [
@@ -734,6 +735,18 @@ const products = [
 ];
 
 export default function ShopPage() {
+  const categories = useMemo(() => {
+    const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
+    return uniqueCategories.sort();
+  }, []);
+
+  const productsByCategory = useMemo(() => {
+    return categories.reduce((acc, category) => {
+      acc[category] = products.filter(p => p.category === category);
+      return acc;
+    }, {} as Record<string, typeof products>);
+  }, [categories]);
+
   return (
     <div className="space-y-12">
       <section className="text-center fade-in">
@@ -744,65 +757,109 @@ export default function ShopPage() {
         </p>
       </section>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 fade-in" style={{animationDelay: '0.2s'}}>
-        {products.map((product, index) => (
-          <Card key={product.id} className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.05 + 0.2}s`}}>
-            <div className="aspect-[4/3] overflow-hidden relative bg-muted"> {/* Added bg-muted */}
-              {product.imageUrl ? (
-                <Image
-                  src={product.imageUrl}
-                  alt={product.name}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  data-ai-hint={product.dataAiHint}
-                  priority={index < 8} 
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full">
-                  <FileImage className="h-16 w-16 text-muted-foreground" />
-                </div>
-              )}
-              <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <Button variant="outline" size="sm" className="text-white border-white hover:bg-white/20" onClick={() => alert('Product page coming soon!')}>
-                  <Eye className="mr-2 h-4 w-4" /> Quick View
-                </Button>
-              </div>
+      <Card className="shadow-lg fade-in bg-primary/10 border-primary/30" style={{animationDelay: '0.1s'}}>
+        <CardHeader className="text-center">
+          <div className="flex justify-center items-center mb-2">
+            <Lightbulb className="h-10 w-10 text-primary" />
+          </div>
+          <CardTitle className="font-headline text-2xl text-primary">Need Help Choosing Products?</CardTitle>
+          <CardDescription className="text-primary/80">
+            Let our AI assistant help you find the perfect items for your project!
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-center">
+          <p className="mb-4 text-muted-foreground">
+            Get personalized recommendations based on your project requirements and browsing behavior using advanced AI and Cialdini's principles of persuasion.
+          </p>
+          <Button asChild size="lg">
+            <Link href="/product-recommendation">
+              <Sparkles className="mr-2 h-5 w-5" />
+              Try AI Product Recommender
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
+
+      {categories.map((category, categoryIndex) => (
+        <section key={category} className="fade-in" style={{ animationDelay: `${categoryIndex * 0.1 + 0.2}s` }}>
+          <h2 className="font-headline text-3xl font-bold tracking-tight mb-6 mt-8 border-b pb-2 border-primary/30 text-primary">
+            {category}
+          </h2>
+          {productsByCategory[category] && productsByCategory[category].length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {productsByCategory[category].map((product, productIndex) => (
+                <Card 
+                  key={product.id} 
+                  className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" 
+                  style={{animationDelay: `${(categoryIndex * 0.1) + (productIndex * 0.05) + 0.3}s`}}
+                >
+                  <div className="aspect-[4/3] overflow-hidden relative bg-muted">
+                    {product.imageUrl ? (
+                      <Image
+                        src={product.imageUrl}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        data-ai-hint={product.dataAiHint}
+                        priority={productIndex < 4 && categoryIndex === 0} 
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center h-full">
+                        <FileImage className="h-16 w-16 text-muted-foreground" />
+                      </div>
+                    )}
+                    <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Button variant="outline" size="sm" className="text-white border-white hover:bg-white/20" onClick={() => alert('Product page coming soon!')}>
+                        <Eye className="mr-2 h-4 w-4" /> Quick View
+                      </Button>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="font-headline text-lg h-14 overflow-hidden">
+                      {product.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-xl font-semibold text-primary flex items-center">
+                        <Tag className="h-5 w-5 mr-1.5 text-accent" />
+                        UGX {product.price.toLocaleString()}
+                      </p>
+                      <Badge variant={product.stock > 0 ? "default" : "destructive"} className={product.stock > 0 ? "bg-green-600 hover:bg-green-700" : ""}>
+                        {product.stock > 0 ? `${product.stock} in stock` : "Out of Stock"}
+                      </Badge>
+                    </div>
+                    <p className="text-xs text-muted-foreground min-h-[3lh]">{product.description}</p>
+                  </CardContent>
+                  <CardFooter className="flex-col items-stretch space-y-2">
+                    <Button className="w-full bg-primary hover:bg-primary/90" disabled={product.stock === 0} onClick={() => alert('Adding to cart functionality coming soon!')}>
+                      <ShoppingCart className="mr-2 h-4 w-4" />
+                      Add to Cart
+                    </Button>
+                    <Button variant="link" asChild className="text-primary p-0 text-sm">
+                      <Link href="/services#hardware-supply">Quality & Benefits</Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
             </div>
-            <CardHeader>
-              <CardTitle className="font-headline text-lg h-14 overflow-hidden">
-                {product.name}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xl font-semibold text-primary flex items-center">
-                  <Tag className="h-5 w-5 mr-1.5 text-accent" />
-                  UGX {product.price.toLocaleString()}
-                </p>
-                <Badge variant={product.stock > 0 ? "default" : "destructive"} className={product.stock > 0 ? "bg-green-600 hover:bg-green-700" : ""}>
-                  {product.stock > 0 ? `${product.stock} in stock` : "Out of Stock"}
-                </Badge>
-              </div>
-               <p className="text-xs text-muted-foreground min-h-[3lh]">{product.description}</p> {/* min-h for consistent card height */}
-            </CardContent>
-            <CardFooter className="flex-col items-stretch space-y-2">
-              <Button className="w-full bg-primary hover:bg-primary/90" disabled={product.stock === 0} onClick={() => alert('Adding to cart functionality coming soon!')}>
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Add to Cart
-              </Button>
-               <Button variant="link" asChild className="text-primary p-0 text-sm">
-                 <Link href="/services#hardware-supply">Quality & Benefits</Link>
-               </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </section>
-       <p className="text-center text-muted-foreground text-sm fade-in" style={{animationDelay: '0.4s'}}>
+          ) : (
+            <p className="text-muted-foreground">No products found in this category yet.</p>
+          )}
+        </section>
+      ))}
+      
+      {categories.length === 0 && (
+        <p className="text-center text-muted-foreground py-8 text-lg">
+          Our shop is currently being stocked. Please check back soon for products!
+        </p>
+      )}
+
+      <p className="text-center text-muted-foreground text-sm fade-in" style={{animationDelay: `${categories.length * 0.1 + 0.3}s`}}>
         Note: Product search, filtering, individual product pages, cart, and checkout functionalities are currently under development. For purchases or inquiries, please <Link href="/contact" className="text-primary hover:underline">contact us</Link>.
       </p>
     </div>
   );
 }
-
