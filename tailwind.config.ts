@@ -10,7 +10,12 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: '0rem', // Edge-to-edge for xs
+        sm: '1rem',      // 1rem padding for sm
+        md: '1.5rem',    // 1.5rem padding for md
+        lg: '2rem',      // 2rem padding for lg (original default for larger screens)
+      },
       screens: {
         "2xl": "1400px",
       },

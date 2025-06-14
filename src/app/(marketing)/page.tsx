@@ -80,7 +80,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Services Section */}
-      <section className="container px-4 md:px-6">
+      <section className="container px-0 sm:px-4 md:px-6">
         <div className="text-center mb-12 fade-in">
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Our Core Services</h2>
           <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -121,7 +121,7 @@ export default function HomePage() {
 
       {/* Why Choose Us Section */}
       <section className="w-full py-12 md:py-20 bg-secondary rounded-lg">
-        <div className="container px-4 md:px-6">
+        <div className="container px-0 sm:px-4 md:px-6">
           <div className="text-center mb-12 fade-in" style={{animationDelay: '0.2s'}}>
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Why {siteConfig.name}?</h2>
             <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -145,7 +145,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="container px-4 md:px-6">
+      <section className="container px-0 sm:px-4 md:px-6">
         <div className="text-center mb-12 fade-in" style={{animationDelay: '0.2s'}}>
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Featured Projects</h2>
           <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -191,7 +191,7 @@ export default function HomePage() {
 
       {/* Call to Action Section */}
       <section className="w-full py-16 bg-primary text-primary-foreground rounded-lg shadow-lg fade-in" style={{animationDelay: '0.2s'}}>
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container px-0 sm:px-4 md:px-6 text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Ready to Start Your Next Project?</h2>
           <p className="mt-4 max-w-xl mx-auto text-lg text-blue-100">
             Let's discuss how {siteConfig.name} can bring your vision to life.

@@ -25,7 +25,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-muted text-muted-foreground py-12 mt-auto">
-      <div className="container max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div>
           <Link href="/" className="flex items-center space-x-2 mb-4">
             {siteConfig.logoUrl ? (
@@ -102,7 +102,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container max-w-screen-2xl mt-8 pt-8 border-t border-border text-center text-sm">
+      <div className="container mt-8 pt-8 border-t border-border text-center text-sm">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
          <p className="text-xs mt-1">
             <Link href="/invest-with-us#disclaimer" className="hover:text-primary">Investment Disclaimer</Link>
