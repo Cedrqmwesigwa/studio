@@ -51,50 +51,48 @@
   }
 
   .dark {
-    /* For now, the "dark" theme will also use the new modern theme. 
-       A distinct dark theme can be implemented later if desired. */
-    --background: 220 20% 98%;
-    --foreground: 220 15% 25%;
+    --background: 220 15% 15%;
+    --foreground: 220 20% 90%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 25%;
+    --card: 220 15% 20%;
+    --card-foreground: 220 20% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 25%;
+    --popover: 220 15% 20%;
+    --popover-foreground: 220 20% 90%;
 
-    --primary: 217 91% 60%;
+    --primary: 217 91% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 80% 75%;
-    --secondary-foreground: 217 91% 30%;
+    --secondary: 217 80% 55%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 20% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 220 15% 25%;
+    --muted-foreground: 220 10% 65%;
 
-    --accent: 35 100% 58%;
-    --accent-foreground: 220 15% 20%;
+    --accent: 35 100% 65%;
+    --accent-foreground: 220 15% 10%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 62% 50%; /* Slightly darker red for dark mode to maintain contrast */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 88%;
-    --input: 0 0% 100%;
-    --ring: 217 91% 70%;
+    --border: 220 15% 30%;
+    --input: 220 15% 22%;
+    --ring: 217 91% 75%;
+    
+    --chart-1: 217 91% 65%;
+    --chart-2: 35 100% 65%;
+    --chart-3: 217 80% 55%;
+    --chart-4: 220 10% 65%;
+    --chart-5: 220 20% 80%;
 
-    --chart-1: 217 91% 60%;
-    --chart-2: 35 100% 58%;
-    --chart-3: 217 80% 75%;
-    --chart-4: 220 15% 55%;
-    --chart-5: 220 10% 35%;
-
-    --sidebar-background: 220 25% 97%;
-    --sidebar-foreground: 220 15% 25%;
-    --sidebar-primary: 217 91% 60%;
+    --sidebar-background: 220 15% 18%;
+    --sidebar-foreground: 220 20% 90%;
+    --sidebar-primary: 217 91% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 50% 90%;
-    --sidebar-accent-foreground: 217 91% 40%;
-    --sidebar-border: 220 20% 88%;
-    --sidebar-ring: 217 91% 70%;
+    --sidebar-accent: 217 50% 30%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 220 15% 30%;
+    --sidebar-ring: 217 91% 75%;
   }
 }
 
