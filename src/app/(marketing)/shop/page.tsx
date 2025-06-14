@@ -24,6 +24,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { aiProductRecommendation, type AIProductRecommendationInput, type AIProductRecommendationOutput } from '@/ai/flows/ai-product-recommendation';
+import { cn } from '@/lib/utils';
 
 const recommendationFormSchema = z.object({
   browsingHistory: z.string().min(10, { message: "Please describe some browsing history or viewed items (min 10 characters)." }).max(1000),
@@ -140,6 +141,7 @@ const products = [
     stock: 500,
     rating: 4.7,
     reviews: 250,
+    isFeatured: true,
   },
   {
     id: "prod_fence_004",
@@ -476,6 +478,7 @@ const products = [
     stock: 300,
     rating: 4.7,
     reviews: 90,
+    isFeatured: true,
   },
   {
     id: "prod_roof_007",
@@ -728,6 +731,7 @@ const products = [
     stock: 35,
     rating: 4.9,
     reviews: 40,
+    isFeatured: true,
   },
   {
     id: "prod_tools_003",
@@ -899,12 +903,15 @@ export default function ShopPage() {
             {category}
           </h2>
           {productsByCategory[category] && productsByCategory[category].length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {productsByCategory[category].map((product, productIndex) => (
                 <Card
-                  id={product.id} // Added ID here for potential anchor linking
+                  id={product.id} 
                   key={product.id} 
-                  className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" 
+                  className={cn(
+                    "flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in",
+                    (product as any).isFeatured ? "md:col-span-2" : ""
+                  )}
                   style={{animationDelay: `${(categoryIndex * 0.1) + (productIndex * 0.05) + 0.4}s`}}
                 >
                   <div className="aspect-[4/3] overflow-hidden relative bg-muted">
@@ -913,7 +920,7 @@ export default function ShopPage() {
                         src={product.imageUrl}
                         alt={product.name}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                         data-ai-hint={product.dataAiHint}
                         priority={productIndex < 4 && categoryIndex === 0} 
