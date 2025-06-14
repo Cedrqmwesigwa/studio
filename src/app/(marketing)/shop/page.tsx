@@ -6,11 +6,32 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Tag, Eye, FileImage, Lightbulb, Sparkles } from 'lucide-react'; // Added FileImage, Lightbulb, Sparkles
+import { ShoppingCart, Tag, Eye, FileImage, Lightbulb, Sparkles, Loader2 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { useMemo } from 'react'; // Added useMemo
+import { useMemo, useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+import {
+  Form,
+  FormControl,
+  FormDescription as FormDesc, // Renamed to avoid conflict with CardDescription
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+import { aiProductRecommendation, type AIProductRecommendationInput, type AIProductRecommendationOutput } from '@/ai/flows/ai-product-recommendation';
 
-// Updated product list
+const recommendationFormSchema = z.object({
+  browsingHistory: z.string().min(10, { message: "Please describe some browsing history or viewed items (min 10 characters)." }).max(1000),
+  projectRequirements: z.string().min(10, { message: "Please describe your project requirements (min 10 characters)." }).max(1000),
+});
+
+type RecommendationFormValues = z.infer<typeof recommendationFormSchema>;
+
 const products = [
   {
     id: "prod_adh_001",
@@ -735,6 +756,44 @@ const products = [
 ];
 
 export default function ShopPage() {
+  const { toast } = useToast();
+  const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false);
+  const [recommendationResult, setRecommendationResult] = useState<AIProductRecommendationOutput | null>(null);
+
+  const recommendationForm = useForm<RecommendationFormValues>({
+    resolver: zodResolver(recommendationFormSchema),
+    defaultValues: {
+      browsingHistory: "",
+      projectRequirements: "",
+    },
+  });
+
+  async function onRecommendationSubmit(data: RecommendationFormValues) {
+    setIsLoadingRecommendations(true);
+    setRecommendationResult(null);
+    try {
+      const input: AIProductRecommendationInput = {
+        browsingHistory: data.browsingHistory,
+        projectRequirements: data.projectRequirements,
+      };
+      const result = await aiProductRecommendation(input);
+      setRecommendationResult(result);
+      toast({
+        title: "Recommendations Generated!",
+        description: "AI has provided product suggestions based on your input.",
+      });
+    } catch (error: any) {
+      console.error("Error getting product recommendations:", error);
+      toast({
+        title: "Recommendation Failed",
+        description: error.message || "An error occurred while generating recommendations. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoadingRecommendations(false);
+    }
+  }
+
   const categories = useMemo(() => {
     const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
     return uniqueCategories.sort();
@@ -753,35 +812,89 @@ export default function ShopPage() {
         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Hardware & Materials Shop</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
           Browse our selection of high-quality construction hardware, tools, and materials. All prices in Ugandan Shillings (UGX).
-          Full e-commerce functionality with cart, checkout, and various payment options is under development.
         </p>
       </section>
 
-      <Card className="shadow-lg fade-in bg-primary/10 border-primary/30" style={{animationDelay: '0.1s'}}>
-        <CardHeader className="text-center">
-          <div className="flex justify-center items-center mb-2">
-            <Lightbulb className="h-10 w-10 text-primary" />
-          </div>
-          <CardTitle className="font-headline text-2xl text-primary">Need Help Choosing Products?</CardTitle>
-          <CardDescription className="text-primary/80">
-            Let our AI assistant help you find the perfect items for your project!
+      <Card className="shadow-lg fade-in bg-primary/5 border-primary/20" style={{animationDelay: '0.1s'}}>
+        <CardHeader>
+          <CardTitle className="font-headline text-xl flex items-center">
+            <Lightbulb className="mr-2 h-6 w-6 text-primary" />
+            Need Help? Get AI Product Recommendations!
+          </CardTitle>
+          <CardDescription className="text-primary/90">
+            Tell us about your project and what you've looked at, and our AI will suggest relevant products.
           </CardDescription>
         </CardHeader>
-        <CardContent className="text-center">
-          <p className="mb-4 text-muted-foreground">
-            Get personalized recommendations based on your project requirements and browsing behavior using advanced AI and Cialdini's principles of persuasion.
-          </p>
-          <Button asChild size="lg">
-            <Link href="/product-recommendation">
-              <Sparkles className="mr-2 h-5 w-5" />
-              Try AI Product Recommender
-            </Link>
-          </Button>
+        <CardContent>
+          <Form {...recommendationForm}>
+            <form onSubmit={recommendationForm.handleSubmit(onRecommendationSubmit)} className="space-y-6">
+              <FormField
+                control={recommendationForm.control}
+                name="browsingHistory"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Browsing History / Viewed Items</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="e.g., Looked at cement bags, iron sheets, and paint rollers..." {...field} rows={3} />
+                    </FormControl>
+                    <FormDesc>What products or types of items have you been looking at?</FormDesc>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={recommendationForm.control}
+                name="projectRequirements"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Project Requirements</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="e.g., Building a small residential house, need materials for roofing and basic plumbing, budget around 20M UGX." {...field} rows={4} />
+                    </FormControl>
+                    <FormDesc>Describe your project, materials needed, and any budget constraints.</FormDesc>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" disabled={isLoadingRecommendations} className="w-full md:w-auto">
+                {isLoadingRecommendations ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="mr-2 h-4 w-4" /> Get AI Recommendations
+                  </>
+                )}
+              </Button>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
+      {recommendationResult && (
+        <Card className="mt-8 shadow-lg fade-in bg-secondary/10 border-secondary/30">
+          <CardHeader>
+            <CardTitle className="font-headline text-xl flex items-center text-secondary-foreground">
+              <Sparkles className="mr-2 h-5 w-5 text-accent" />
+              AI Recommendations For You
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-lg text-foreground">Recommended Products:</h4>
+              <p className="text-muted-foreground whitespace-pre-wrap">{recommendationResult.productRecommendations}</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg text-foreground">Reasoning:</h4>
+              <p className="text-muted-foreground whitespace-pre-wrap">{recommendationResult.reasoning}</p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {categories.map((category, categoryIndex) => (
-        <section key={category} className="fade-in" style={{ animationDelay: `${categoryIndex * 0.1 + 0.2}s` }}>
+        <section key={category} className="fade-in" style={{ animationDelay: `${categoryIndex * 0.1 + 0.3}s` }}>
           <h2 className="font-headline text-3xl font-bold tracking-tight mb-6 mt-8 border-b pb-2 border-primary/30 text-primary">
             {category}
           </h2>
@@ -791,7 +904,7 @@ export default function ShopPage() {
                 <Card 
                   key={product.id} 
                   className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" 
-                  style={{animationDelay: `${(categoryIndex * 0.1) + (productIndex * 0.05) + 0.3}s`}}
+                  style={{animationDelay: `${(categoryIndex * 0.1) + (productIndex * 0.05) + 0.4}s`}}
                 >
                   <div className="aspect-[4/3] overflow-hidden relative bg-muted">
                     {product.imageUrl ? (
@@ -857,8 +970,8 @@ export default function ShopPage() {
         </p>
       )}
 
-      <p className="text-center text-muted-foreground text-sm fade-in" style={{animationDelay: `${categories.length * 0.1 + 0.3}s`}}>
-        Note: Product search, filtering, individual product pages, cart, and checkout functionalities are currently under development. For purchases or inquiries, please <Link href="/contact" className="text-primary hover:underline">contact us</Link>.
+      <p className="text-center text-muted-foreground text-sm fade-in" style={{animationDelay: `${categories.length * 0.1 + 0.4}s`}}>
+        Note: Product search, filtering, individual product pages, cart, and checkout functionalities are currently under development. For purchases or inquiries, please <Link href="/contact" className="text-primary hover:underline">contact us</Link>. Full e-commerce functionality with cart, checkout, and various payment options is under development.
       </p>
     </div>
   );
