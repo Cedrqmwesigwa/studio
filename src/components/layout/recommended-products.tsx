@@ -3,23 +3,74 @@
 
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ThumbsUp } from 'lucide-react'; // Using ThumbsUp as a placeholder icon
-
-// Example: Manually curated list of product IDs and names
-// In a real scenario, these would be fetched dynamically based on ML recommendations
-const staticRecommendedItems = [
-  { id: "prod_cem_001", name: "Cement (50kg Bag)" },
-  { id: "prod_reinf_001", name: "Reinforcement Steel (Y-grade)" },
-  { id: "prod_paint_003", name: "Weather Guard Paint (Outdoor, 20L)" },
-  { id: "prod_roof_004", name: "Ironsheets (Galvanized)" },
-];
+import { ThumbsUp, Loader2, AlertTriangle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { getRecommendedProducts, type GetRecommendedProductsOutput, type RecommendedProductItem } from '@/ai/flows/get-recommended-products-flow';
 
 export default function RecommendedProducts() {
-  // This component currently shows static recommendations.
-  // Future enhancement: Fetch dynamic recommendations from a Genkit flow.
+  const [recommendations, setRecommendations] = useState<RecommendedProductItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (!staticRecommendedItems.length) {
-    return null;
+  useEffect(() => {
+    async function fetchRecommendations() {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const result: GetRecommendedProductsOutput = await getRecommendedProducts();
+        setRecommendations(result.recommendations || []);
+      } catch (err: any) {
+        console.error("Failed to fetch recommendations:", err);
+        setError(err.message || "Could not load recommendations.");
+        setRecommendations([]);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchRecommendations();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <aside className="my-8">
+        <Card className="shadow-lg bg-secondary/20 border-primary/30">
+          <CardHeader>
+            <CardTitle className="font-headline text-xl flex items-center text-primary">
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              Loading Recommendations...
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">Fetching popular items for you...</p>
+          </CardContent>
+        </Card>
+      </aside>
+    );
+  }
+
+  if (error) {
+    return (
+      <aside className="my-8">
+        <Card className="shadow-lg bg-destructive/10 border-destructive/30">
+          <CardHeader>
+            <CardTitle className="font-headline text-xl flex items-center text-destructive">
+              <AlertTriangle className="mr-2 h-5 w-5" />
+              Error Loading Recommendations
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-destructive/80">{error}</p>
+            <p className="text-xs text-muted-foreground mt-2">Please try again later.</p>
+          </CardContent>
+        </Card>
+      </aside>
+    );
+  }
+
+  if (!recommendations.length && !isLoading) {
+    // Optionally, don't render anything if there are no recommendations and no error.
+    // Or show a "No recommendations available" message.
+    return null; 
   }
 
   return (
@@ -33,17 +84,17 @@ export default function RecommendedProducts() {
         </CardHeader>
         <CardContent>
           <ul className="space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-            {staticRecommendedItems.map((item) => (
+            {recommendations.map((item) => (
               <li key={item.id}>
                 <Link href={`/shop#${item.id}`} className="text-sm text-primary hover:underline hover:text-accent transition-colors">
                   {item.name}
                 </Link>
-                {/* Placeholder for more details like a small image or price in the future */}
               </li>
             ))}
           </ul>
           <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
-            Dynamic, personalized recommendations based on your activity and popular trends are coming soon!
+            {/* This message can be updated once ML is integrated */}
+            Curated list of popular products. Personalized recommendations coming soon!
           </p>
         </CardContent>
       </Card>
