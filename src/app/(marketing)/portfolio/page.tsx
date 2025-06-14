@@ -60,7 +60,7 @@ const allProjects = [
     id: "industrial-warehouse-complex-ntinda", // Example Kampala location
     title: "Ntinda Industrial Warehouse",
     description: "Design and construction of a large-scale industrial warehouse complex in Ntinda with optimized logistics flow and heavy-duty infrastructure.",
-    photos: ["https://images.unsplash.com/photo-1587092963069-793810919511?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1MzcyNDMyNnww&ixlib=rb-4.0.3&q=80&w=1080"],
+    photos: ["https://images.unsplash.com/photo-1730215185101-270817dc82c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8V2FyZWhvdXNlJTIwaW5kdXN0cmlhbCUyMHxlbnwwfHx8fDE3NDk5MTYyNDR8MA&ixlib=rb-4.1.0&q=80&w=1080"],
     dataAiHints: ["industrial warehouse"],
     projectType: "Industrial",
     year: 2023,
@@ -163,4 +163,5 @@ export default function PortfolioPage() {
     </div>
   );
 }
+
 
