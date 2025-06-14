@@ -4,97 +4,97 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%; /* Off-White */
-    --foreground: 210 10% 23%; /* Dark Slate Grey */
+    --background: 220 20% 98%; /* Slightly Cool Off-White */
+    --foreground: 220 15% 25%; /* Dark Cool Grey/Charcoal */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 210 10% 23%; /* Dark Slate Grey */
+    --card-foreground: 220 15% 25%; /* Dark Cool Grey/Charcoal */
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 210 10% 23%; /* Dark Slate Grey */
+    --popover-foreground: 220 15% 25%; /* Dark Cool Grey/Charcoal */
 
-    --primary: 175 70% 40%; /* Teal */
+    --primary: 217 91% 60%; /* Modern Blue */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 175 50% 65%; /* Lighter Teal */
-    --secondary-foreground: 175 70% 25%; /* Dark Teal */
+    --secondary: 217 80% 75%; /* Lighter Modern Blue */
+    --secondary-foreground: 217 91% 30%; /* Darker Modern Blue */
 
-    --muted: 210 40% 90%; /* Light Cool Grey */
-    --muted-foreground: 210 10% 45%; /* Medium Slate Grey */
+    --muted: 220 20% 92%; /* Light Cool Grey */
+    --muted-foreground: 220 10% 45%; /* Medium Cool Grey */
 
-    --accent: 170 80% 45%; /* Bright Aqua-Teal */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 35 100% 58%; /* Vibrant Orange/Gold */
+    --accent-foreground: 220 15% 20%; /* Darker grey for text on accent, for better readability */
 
     --destructive: 0 72% 51%; /* Standard Red */
     --destructive-foreground: 0 0% 100%; /* White */
 
-    --border: 210 40% 85%; /* Light Grey Border */
+    --border: 220 20% 88%; /* Cool Grey Border */
     --input: 0 0% 100%; /* White Input Background */
-    --ring: 175 70% 50%; /* Lighter Teal for Focus Rings */
+    --ring: 217 91% 70%; /* Lighter Blue for Focus Rings */
     
     --radius: 0.5rem;
 
-    --chart-1: 175 70% 40%; /* Teal */
-    --chart-2: 170 80% 45%; /* Bright Aqua-Teal */
-    --chart-3: 175 50% 65%; /* Lighter Teal */
-    --chart-4: 210 20% 70%; /* Medium-Light Grey */
-    --chart-5: 210 10% 50%; /* Medium Grey */
+    --chart-1: 217 91% 60%; /* Primary Blue */
+    --chart-2: 35 100% 58%; /* Accent Orange/Gold */
+    --chart-3: 217 80% 75%; /* Secondary Blue */
+    --chart-4: 220 15% 55%; /* Medium Cool Grey */
+    --chart-5: 220 10% 35%; /* Darker Cool Grey */
 
-    --sidebar-background: 210 20% 96%; /* Slightly Off-white Cool */
-    --sidebar-foreground: 210 10% 23%; /* Dark Slate Grey */
-    --sidebar-primary: 175 70% 40%; /* Teal */
+    --sidebar-background: 220 25% 97%; /* Very Light Cool Grey */
+    --sidebar-foreground: 220 15% 25%; /* Dark Cool Grey */
+    --sidebar-primary: 217 91% 60%; /* Primary Blue */
     --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 175 30% 90%; /* Very Light Teal/Grey */
-    --sidebar-accent-foreground: 175 70% 30%; /* Darker Teal */
-    --sidebar-border: 210 40% 85%; /* Light Grey */
-    --sidebar-ring: 175 70% 50%; /* Lighter Teal Ring */
+    --sidebar-accent: 217 50% 90%; /* Very Light Blue/Grey Hover */
+    --sidebar-accent-foreground: 217 91% 40%; /* Darker Blue for text on sidebar accent */
+    --sidebar-border: 220 20% 88%; /* Cool Grey Border */
+    --sidebar-ring: 217 91% 70%; /* Lighter Blue Ring */
   }
 
   .dark {
-    /* For now, the "dark" theme will also use the new lively theme. 
+    /* For now, the "dark" theme will also use the new modern theme. 
        A distinct dark theme can be implemented later if desired. */
-    --background: 0 0% 98%; /* Off-White */
-    --foreground: 210 10% 23%; /* Dark Slate Grey */
+    --background: 220 20% 98%;
+    --foreground: 220 15% 25%;
 
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 210 10% 23%; /* Dark Slate Grey */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 25%;
 
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 210 10% 23%; /* Dark Slate Grey */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 25%;
 
-    --primary: 175 70% 40%; /* Teal */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 175 50% 65%; /* Lighter Teal */
-    --secondary-foreground: 175 70% 25%; /* Dark Teal */
+    --secondary: 217 80% 75%;
+    --secondary-foreground: 217 91% 30%;
 
-    --muted: 210 40% 90%; /* Light Cool Grey */
-    --muted-foreground: 210 10% 45%; /* Medium Slate Grey */
+    --muted: 220 20% 92%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 170 80% 45%; /* Bright Aqua-Teal */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 35 100% 58%;
+    --accent-foreground: 220 15% 20%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 40% 85%; /* Light Grey Border */
-    --input: 0 0% 100%; /* White Input Background */
-    --ring: 175 70% 50%; /* Lighter Teal for Focus Rings */
+    --border: 220 20% 88%;
+    --input: 0 0% 100%;
+    --ring: 217 91% 70%;
 
-    --chart-1: 175 70% 40%;
-    --chart-2: 170 80% 45%;
-    --chart-3: 175 50% 65%;
-    --chart-4: 210 20% 70%;
-    --chart-5: 210 10% 50%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 35 100% 58%;
+    --chart-3: 217 80% 75%;
+    --chart-4: 220 15% 55%;
+    --chart-5: 220 10% 35%;
 
-    --sidebar-background: 210 20% 96%;
-    --sidebar-foreground: 210 10% 23%;
-    --sidebar-primary: 175 70% 40%;
+    --sidebar-background: 220 25% 97%;
+    --sidebar-foreground: 220 15% 25%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 175 30% 90%;
-    --sidebar-accent-foreground: 175 70% 30%;
-    --sidebar-border: 210 40% 85%;
-    --sidebar-ring: 175 70% 50%;
+    --sidebar-accent: 217 50% 90%;
+    --sidebar-accent-foreground: 217 91% 40%;
+    --sidebar-border: 220 20% 88%;
+    --sidebar-ring: 217 91% 70%;
   }
 }
 
