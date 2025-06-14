@@ -29,7 +29,7 @@ const services = [
     name: "Renovations & Remodeling",
     description: "Modernize your space with our expert renovation services. We specialize in kitchen, bathroom, office, and full-home/business remodels, enhancing functionality and aesthetic appeal with a keen eye for detail.",
     benefits: ["Innovative designs", "Space optimization", "Increased property value", "Minimal disruption", "Quality craftsmanship"],
-    visualUrl: "/service_visuals/modern-kitchen-renovation.png",
+    visualUrl: "https://images.unsplash.com/flagged/photo-1573168710465-7f7da9a23a15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8UmVub3ZhdGlvbiUyMHxlbnwwfHx8fDE3NDk5MTU4ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "modern kitchen renovation",
     icon: Wrench,
   },
