@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Tag, Eye } from 'lucide-react';
+import { ShoppingCart, Tag, Eye, FileImage } from 'lucide-react'; // Added FileImage
 import { siteConfig } from '@/config/site';
 
 // Updated product list
@@ -747,16 +747,22 @@ export default function ShopPage() {
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 fade-in" style={{animationDelay: '0.2s'}}>
         {products.map((product, index) => (
           <Card key={product.id} className="flex flex-col overflow-hidden group hover:shadow-xl transition-shadow duration-300 ease-in-out fade-in" style={{animationDelay: `${index * 0.05 + 0.2}s`}}>
-            <div className="aspect-[4/3] overflow-hidden relative">
-              <Image
-                src={product.imageUrl}
-                alt={product.name}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                data-ai-hint={product.dataAiHint}
-                priority={index < 8} 
-              />
+            <div className="aspect-[4/3] overflow-hidden relative bg-muted"> {/* Added bg-muted */}
+              {product.imageUrl ? (
+                <Image
+                  src={product.imageUrl}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  data-ai-hint={product.dataAiHint}
+                  priority={index < 8} 
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full">
+                  <FileImage className="h-16 w-16 text-muted-foreground" />
+                </div>
+              )}
               <Badge variant="secondary" className="absolute top-2 right-2">{product.category}</Badge>
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <Button variant="outline" size="sm" className="text-white border-white hover:bg-white/20" onClick={() => alert('Product page coming soon!')}>
@@ -799,3 +805,4 @@ export default function ShopPage() {
     </div>
   );
 }
+
