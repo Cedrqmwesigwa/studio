@@ -14,11 +14,11 @@ export default function Preloader() {
   useEffect(() => {
     const fadeOutTimer = setTimeout(() => {
       setIsFadingOut(true);
-    }, 1200); 
+    }, 500); // Start fading out after 500ms
 
     const removeTimer = setTimeout(() => {
       setIsVisible(false);
-    }, 1700); 
+    }, 1500); // Remove from DOM after 500ms solid + 1000ms fade-out
 
     return () => {
       clearTimeout(fadeOutTimer);
