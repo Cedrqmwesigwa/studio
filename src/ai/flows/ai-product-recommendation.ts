@@ -1,3 +1,4 @@
+
 // src/ai/flows/ai-product-recommendation.ts
 'use server';
 
@@ -47,8 +48,12 @@ const prompt = ai.definePrompt({
   Consider the user's browsing history and project requirements to provide personalized product recommendations.
   Explain the reasoning behind each recommendation, explicitly stating which principle of persuasion is being applied (e.g., Reciprocity, Scarcity, Authority, Commitment and Consistency, Liking, Social Proof, and Unity).
 
+  Input Data:
   Browsing History: {{{browsingHistory}}}
   Project Requirements: {{{projectRequirements}}}
+
+  Provide your output in the following JSON format. Ensure the 'productRecommendations' field contains specific product suggestions and the 'reasoning' field clearly explains how Cialdini's principles were applied to arrive at these recommendations:
+  {{outputFormat schema="AIProductRecommendationOutputSchema"}}
   `,
 });
 
@@ -60,6 +65,10 @@ const aiProductRecommendationFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    return output!;
+    if (!output) {
+      throw new Error('AI model did not return the expected output structure for product recommendations.');
+    }
+    return output;
   }
 );
+
