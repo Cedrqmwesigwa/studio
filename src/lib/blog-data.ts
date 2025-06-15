@@ -348,7 +348,7 @@ export const blogPosts = [
       <br/>
       <p>The Ntinda Industrial Warehouse Complex was successfully handed over, providing the client with a state-of-the-art facility tailored to their operational needs. This project demonstrates Sterling Contractors' expertise in managing complex industrial builds, from initial site challenges to the integration of specialized infrastructure, all while adhering to timelines and quality standards.</p>
     `,
-    imageUrl: "/blog_images/ntinda-industrial-warehouse-construction.png",
+    imageUrl: "https://images.unsplash.com/photo-1674252281682-2eec258cfa30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxJbmR1c3RyaWFsJTIwd2FyZWhvdXNlJTIwfGVufDB8fHx8MTc0OTk5Njk3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
     dataAiHint: "industrial warehouse construction",
     author: "David Kibuuka",
     authorTitle: "Senior Project Manager",
@@ -360,6 +360,8 @@ export const blogPosts = [
   }
 ];
 
+
+    
 
     
 
