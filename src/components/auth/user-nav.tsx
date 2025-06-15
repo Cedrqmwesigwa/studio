@@ -16,7 +16,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useAuth } from '@/contexts/auth-context';
 import Link from 'next/link';
-import { LogOut, User, LayoutDashboard, Briefcase, Send, TrendingUp, ShoppingBag } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Briefcase, Send, TrendingUp, ShoppingBag, Gift } from 'lucide-react'; // Added Gift
 import { useToast } from '@/hooks/use-toast';
 
 export function UserNav() {
@@ -87,6 +87,12 @@ export function UserNav() {
             <Link href="/shop">
               <ShoppingBag className="mr-2 h-4 w-4" />
               <span>Shop Hardware</span>
+            </Link>
+          </DropdownMenuItem>
+           <DropdownMenuItem asChild>
+            <Link href="/rewards">
+              <Gift className="mr-2 h-4 w-4" />
+              <span>Rewards</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>

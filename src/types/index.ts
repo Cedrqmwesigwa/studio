@@ -1,4 +1,13 @@
 
+export interface UserProfile {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+  isAdmin?: boolean;
+  coins?: number; 
+  engagementScore?: number; 
+}
 
 export interface Project {
   id: string;

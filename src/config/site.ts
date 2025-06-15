@@ -52,6 +52,7 @@ export const siteConfig: SiteConfig = {
     { title: "Book Project", href: "/book-project"},
     { title: "Contact", href: "/contact" },
     { title: "Dashboard", href: "/dashboard", authRequired: true },
+    { title: "Rewards", href: "/rewards", authRequired: true },
     { title: "Admin Projects", href: "/admin/projects", authRequired: true, adminRequired: true },
   ],
   support: {
