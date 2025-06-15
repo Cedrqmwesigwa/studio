@@ -12,7 +12,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { blogPosts } from '@/lib/blog-data'; // Import from centralized location
 
-export const revalidate = 86400; // Revalidate at most once per day
+export const revalidate = 259200; // Revalidate at most once per 3 days
 
 async function getPostData(slug: string) {
   return blogPosts.find(post => post.slug === slug);
@@ -169,7 +169,5 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-
-    
 
     

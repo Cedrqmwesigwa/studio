@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { CheckCircle, Users, TrendingUp, Eye, Award } from 'lucide-react'; // Added Award icon
 import { siteConfig } from '@/config/site';
 
-export const revalidate = 86400; // Revalidate at most once per day
+export const revalidate = 259200; // Revalidate at most once per 3 days
 
 // Updated mock data for services to include images
 const featuredServices = [
@@ -204,3 +204,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    

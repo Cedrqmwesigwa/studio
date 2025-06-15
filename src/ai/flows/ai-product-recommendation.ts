@@ -27,10 +27,10 @@ export type AIProductRecommendationInput = z.infer<typeof AIProductRecommendatio
 const AIProductRecommendationOutputSchema = z.object({
   productRecommendations: z
     .string()
-    .describe('A list of personalized product recommendations based on the user browsing history and project requirements, leveraging principles of persuasion.'),
+    .describe("A string listing specific, actionable product recommendations. For example: 'Based on your interest in roofing and a mid-range budget, consider our Galvanized Iron Sheets (Standard Gauge) and WeatherGuard Exterior Paint. For plumbing, our PVC pipes and fittings are a popular choice.'"),
   reasoning: z
     .string()
-    .describe('The reasoning behind the product recommendations, including how the principles of persuasion were applied.'),
+    .describe("A string explaining the reasoning behind the recommendations, explicitly stating how Cialdini's principles of persuasion (e.g., Social Proof, Scarcity, Authority) were applied. For example: 'These items are frequently bought together (Social Proof) and are currently part of a limited-time bundle offer (Scarcity). Our experts (Authority) often recommend this combination for similar projects.'"),
 });
 
 export type AIProductRecommendationOutput = z.infer<typeof AIProductRecommendationOutputSchema>;
@@ -43,17 +43,24 @@ const prompt = ai.definePrompt({
   name: 'aiProductRecommendationPrompt',
   input: {schema: AIProductRecommendationInputSchema},
   output: {schema: AIProductRecommendationOutputSchema},
-  prompt: `You are an AI product recommendation expert, specializing in recommending hardware and materials based on user browsing history and project requirements, leveraging Robert Cialdini's principles of persuasion.
+  prompt: `You are an AI product recommendation expert for a construction and hardware supply company. Your goal is to provide personalized product recommendations.
+You MUST leverage Robert Cialdini's principles of persuasion (Reciprocity, Scarcity, Authority, Commitment and Consistency, Liking, Social Proof, Unity) in your reasoning.
 
-  Consider the user's browsing history and project requirements to provide personalized product recommendations.
-  Explain the reasoning behind each recommendation, explicitly stating which principle of persuasion is being applied (e.g., Reciprocity, Scarcity, Authority, Commitment and Consistency, Liking, Social Proof, and Unity).
+Input Data:
+Browsing History: {{{browsingHistory}}}
+Project Requirements: {{{projectRequirements}}}
 
-  Input Data:
-  Browsing History: {{{browsingHistory}}}
-  Project Requirements: {{{projectRequirements}}}
+Based on this input, generate product recommendations.
+Your entire response MUST be a JSON object that strictly adheres to the schema defined for AIProductRecommendationOutputSchema.
+The 'productRecommendations' field must be a string listing specific products.
+The 'reasoning' field must be a string explaining your choices AND how Cialdini's principles were applied.
+Do not include any text or explanations outside of this JSON structure.
 
-  Provide your output in the following JSON format. Ensure the 'productRecommendations' field contains specific product suggestions and the 'reasoning' field clearly explains how Cialdini's principles were applied to arrive at these recommendations:
-  {{outputFormat schema="AIProductRecommendationOutputSchema"}}
+Example of how to structure the 'reasoning' field:
+"Based on your interest in 'X' (Commitment & Consistency), we recommend 'Product A' and 'Product B'. 'Product A' is a bestseller (Social Proof) and often paired with 'Product C' by professionals (Authority). We're also offering a small discount if you purchase today (Reciprocity/Scarcity)."
+
+Output JSON:
+{{outputFormat schema="AIProductRecommendationOutputSchema"}}
   `,
 });
 
@@ -72,3 +79,5 @@ const aiProductRecommendationFlow = ai.defineFlow(
   }
 );
 
+
+    

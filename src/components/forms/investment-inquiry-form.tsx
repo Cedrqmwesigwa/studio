@@ -23,8 +23,8 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Loader2, Send, DollarSign } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
-import { db } from '@/firebase/client';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { siteConfig } from '@/config/site'; // Import siteConfig for email
+import { format } from 'date-fns'; // Import format if using dates in email body
 
 const investmentInquirySchema = z.object({
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
@@ -46,6 +46,8 @@ export default function InvestmentInquiryForm() {
   const { toast } = useToast();
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const [emailSubject, setEmailSubject] = useState("New Investment Inquiry");
+  const [emailBody, setEmailBody] = useState("");
 
   const form = useForm<InvestmentInquiryFormValues>({
     resolver: zodResolver(investmentInquirySchema),
@@ -60,56 +62,61 @@ export default function InvestmentInquiryForm() {
     },
   });
 
- useEffect(() => {
+  useEffect(() => {
     if (user) {
       form.reset({
-        ...form.getValues(), // Keep already typed values
+        ...form.getValues(),
         fullName: user.displayName || form.getValues('fullName') || "",
         email: user.email || form.getValues('email') || "",
       });
     }
   }, [user, form]);
 
-  async function onSubmit(data: InvestmentInquiryFormValues) {
-    if (!db) {
-      toast({ title: "Error", description: "Database service is not available. Cannot submit inquiry.", variant: "destructive" });
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const inquiryData = {
-        ...data,
-        userId: user?.uid || null,
-        status: 'Pending Review',
-        submittedAt: serverTimestamp(),
-      };
+  useEffect(() => {
+    const subscription = form.watch((values) => {
+      const subject = `Investment Inquiry: ${values.investmentAmount || 'General Interest'} - ${values.fullName || 'New Inquiry'}`;
+      setEmailSubject(subject);
 
-      await addDoc(collection(db, 'investmentInquiries'), inquiryData);
-      
-      toast({
-        title: "Inquiry Submitted!",
-        description: "Thank you for your interest! Our team will review your inquiry and contact you soon.",
-      });
-      form.reset({ // Reset form but keep user details if logged in
-        fullName: user?.displayName || "",
-        email: user?.email || "",
-        phone: "",
-        investmentAmount: "",
-        investmentHorizon: undefined,
-        message: "",
-        agreedToTerms: false,
-      });
-    } catch (error) {
-      console.error("Error submitting investment inquiry:", error);
-      toast({
-        title: "Submission Failed",
-        description: "An error occurred while submitting your inquiry. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+      const body = `
+Investment Inquiry Details:
+--------------------------------
+Full Name: ${values.fullName || 'N/A'}
+Email: ${values.email || 'N/A'}
+Phone: ${values.phone || 'N/A'}
+
+Prospective Investment Amount (UGX): ${values.investmentAmount || 'N/A'}
+Investment Horizon: ${values.investmentHorizon || 'N/A'}
+Agreed to Terms: ${values.agreedToTerms ? 'Yes' : 'No'}
+
+Additional Information/Message:
+${values.message || 'N/A'}
+--------------------------------
+Please follow up with this potential investor.
+      `.trim();
+      setEmailBody(body);
+    });
+    return () => subscription.unsubscribe();
+  }, [form]);
+
+  function onSubmit(data: InvestmentInquiryFormValues) {
+    setIsLoading(true); // Simulate loading for immediate feedback
+    // Logic moved to mailtoHref generation and button onClick
+    setTimeout(() => {
+        toast({
+          title: "Inquiry Prepared!",
+          description: "Your investment inquiry details are ready. Please click the 'Submit Inquiry via Email' button to send it to us.",
+        });
+        setIsLoading(false);
+        // Optionally reset form here if desired after "preparation"
+        // form.reset({ 
+        //   fullName: user?.displayName || "", email: user?.email || "", 
+        //   phone: "", investmentAmount: "", investmentHorizon: undefined, 
+        //   message: "", agreedToTerms: false 
+        // });
+    }, 500);
   }
+  
+  const mailtoHref = `mailto:${siteConfig.support.email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <Card className="shadow-lg border-primary/50">
@@ -190,7 +197,7 @@ export default function InvestmentInquiryForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Investment Horizon *</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="How long do you plan to invest?" />
@@ -238,7 +245,7 @@ export default function InvestmentInquiryForm() {
                       Acknowledgement *
                     </FormLabel>
                     <FormDescription>
-                      I acknowledge that this form is an expression of interest and not a formal investment. I have read and understood the disclaimer on this page.
+                      I acknowledge that this form is an expression of interest and not a formal investment. I have read and understood the disclaimer on the "Invest With Us" page.
                     </FormDescription>
                     <FormMessage />
                   </div>
@@ -246,21 +253,42 @@ export default function InvestmentInquiryForm() {
               )}
             />
             
-            <Button type="submit" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground" size="lg" disabled={isLoading || !db}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting Inquiry...
-                </>
-              ) : (
-                <>
-                  <Send className="mr-2 h-4 w-4" /> Submit Investment Inquiry
-                </>
-              )}
+            <Button asChild className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground" size="lg" disabled={isLoading || !form.formState.isValid}>
+              <a href={form.formState.isValid ? mailtoHref : undefined} onClick={(e) => {
+                if (!form.formState.isValid) {
+                    e.preventDefault();
+                    form.trigger(); 
+                    toast({title: "Incomplete Form", description: "Please fill all required fields before submitting.", variant: "destructive"});
+                } else {
+                    toast({title: "Opening Email Client...", description: "Please send the prepared email to submit your inquiry."});
+                     // Reset form after successfully preparing mailto link
+                    form.reset({ 
+                      fullName: user?.displayName || "", email: user?.email || "", 
+                      phone: "", investmentAmount: "", investmentHorizon: undefined, 
+                      message: "", agreedToTerms: false 
+                    });
+                }
+              }}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Preparing...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" /> Submit Inquiry via Email
+                  </>
+                )}
+              </a>
             </Button>
-            {!db && <p className="text-sm text-destructive text-center">Database service unavailable. Cannot submit inquiry.</p>}
+            {!form.formState.isValid && <p className="text-sm text-destructive text-center mt-2">Please complete all required fields above.</p>}
+            <p className="text-xs text-muted-foreground text-center mt-2">
+                Clicking "Submit Inquiry via Email" will open your default email application with a pre-filled message. Please review and send it to us.
+            </p>
           </form>
         </Form>
       </CardContent>
     </Card>
   );
 }
+
+    
